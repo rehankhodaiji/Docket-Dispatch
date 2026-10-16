@@ -169,14 +169,14 @@ const D = {
     ["7 Maintain","Rechecks before each deadline","Daily watch exists; no verified rows to watch","warn"]
   ],
   docs: [
-    ["Docket Source Method","Document","How sources are found, read and verified","https://claude.ai/artifact/XUrwybecCJjRdTQ7gLM5JP"],
-    ["Docket Verification Options","Document","Option A human-verified vs Option B Claude-verified","https://claude.ai/artifact/UZV27wMfQsCY65frXRmA2F"],
-    ["Docket Mailer and Distribution","Document","Sample Issue 001, send process, platform and sending rules","https://claude.ai/artifact/TqgdQSYB7mqKciZSyf3CP2"],
-    ["Docket Viability and Automation","Document","Money, time, scraping answer, safeguards, funder links","https://claude.ai/artifact/E7K1YbFWDA2AQK4M2RjkPQ"],
+    ["Docket Source Method","Document","How sources are found, read and verified","../documents/docket-source-method.html"],
+    ["Docket Verification Options","Document","Option A human-verified vs Option B Claude-verified","../documents/docket-verification-options.html"],
+    ["Docket Mailer and Distribution","Document","Sample Issue 001, send process, platform and sending rules","../documents/docket-mailer-and-distribution.html"],
+    ["Docket Viability and Automation","Document","Money, time, scraping answer, safeguards, funder links","../documents/docket-viability-and-automation.html"],
     ["sources.csv","Data","22 sources with official and application links, status and evidence phrase","data\\sources.csv"],
     ["check_sources.py","Script","Page checker. Not run: Python is not installed on this PC","data\\check_sources.py"],
     ["regional-research.md","Research","7 regions, open and closed calls","documents\\regional-research.md"],
-    ["docket-walkthrough.html","Page","Walkthrough page (created outside this conversation)","documents\\docket-walkthrough.html"],
+    ["docket-walkthrough.html","Page","Walkthrough page (created outside this conversation)","../documents/docket-walkthrough.html"],
     ["funder-links.md","Data","Funder registry (live copy in the parent folder)","data\\funder-links_snapshot-2026-10-16.md"],
     ["verified-listings.md","Data","Verified rows; currently empty","data\\verified-listings_snapshot-2026-10-16.md"],
     ["date-check-2026-10-15.md","Report","First automated check report","data\\date-check-2026-10-15.md"]
@@ -239,9 +239,10 @@ el('regions').innerHTML = table(["Region","Leads","Closed seen (approx.)","Note"
 
 el('tasks').innerHTML = table(["Task","Schedule","Last run","Next run","What it does"], D.tasks.map(t=>[td(`<span style="font-family:var(--mono);font-size:12.5px">${esc(t[0])}</span>`),td(esc(t[1])),td(esc(t[2]),'mono'),td(esc(t[3]),'mono'),td(esc(t[4]))]));
 el('pipeline').innerHTML = table(["Stage","Purpose","Status"], D.pipeline.map(p=>[td(`<b>${esc(p[0])}</b>`),td(esc(p[1])),td(pill(p[2],p[3]))]));
-el('docs').innerHTML = table(["Name","Type","What it is","Where"], D.docs.map(d=>[td(esc(d[0])),td(esc(d[1])),td(esc(d[2])),td(d[3].startsWith('http')?`<a href="${esc(d[3])}" target="_blank" rel="noopener">Open</a>`:`<span style="font-family:var(--mono);font-size:12px">${esc(d[3])}</span>`)]));
+el('docs').innerHTML = table(["Name","Type","What it is","Where"], D.docs.map(d=>[td(esc(d[0])),td(esc(d[1])),td(esc(d[2])),td((d[3].startsWith('http')||d[3].endsWith('.html'))?`<a href="${esc(d[3])}" target="_blank" rel="noopener">Open</a>`:`<span style="font-family:var(--mono);font-size:12px">${esc(d[3])}</span>`)]));
 el('timeline').innerHTML = table(["Date","Time","What happened"], D.timeline.map(t=>[td(esc(t[0]),'mono'),td(esc(t[1]),'mono'),td(esc(t[2]))]));
 el('risks').innerHTML = D.risks.map(r=>{const k={High:'bad',Med:'warn',Low:'info',Decision:'ok'}[r[0]];return `<div class="risk">${pill(r[0],k)}<div>${esc(r[1])}</div></div>`}).join('');
 </script>
+
 
 
