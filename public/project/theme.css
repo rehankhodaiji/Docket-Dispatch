@@ -1,0 +1,41 @@
+/* Docket project pages: same paper, ink, teal and marigold as the Docket landing page.
+   Loaded after each page's own styles. The triple :root wins over the pages' light and dark token blocks. */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+:root:root:root{
+  color-scheme:light;
+  --bg:#F8F5EE; --surface:#FFFFFF; --fg:#1A1714; --muted:#5D564C; --line:#E2DBCE;
+  --accent:#0D4952; --accent-soft:#E8F2F3; --accent-fg:#FFFFFF;
+  --ok:#2A6A47; --ok-bg:#E4F0E8;
+  --warn:#8F4A0A; --warn-bg:#FBF2E5;
+  --bad:#9B2C1C; --bad-bg:#F8E3DF;
+  --info:#4A443B; --info-bg:#F3EFE6;
+  --marigold:#C86A14;
+  --display:'Newsreader',Georgia,Cambria,serif;
+  --body:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:#F8F5EE}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+img{max-width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em}
+h3{font-family:var(--body);font-weight:600;letter-spacing:0}
+.kicker,th,.pill,.chip,code,pre{font-family:var(--mono)}
+/* sharp corners, hairline borders: trade-publication look */
+.tablewrap,.kpi,.step,.opt,.callout,.risks,.two>div,.steps div,.facts div,.stage,.mail,.item,.main,.notice,.list,.claim,.loop div,.bar .track,.bar .fill{border-radius:2px!important}
+.pill,.chip{border-radius:2px!important}
+.callout{background:var(--accent-soft);border-left:3px solid var(--accent)}
+a{color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);color:#FFFFFF;border-color:var(--accent)}
+.bar .fill,.loop b,.step b,.steps b{color:var(--accent)}
+.bar .fill{background:var(--accent)}
+.kpi .n{font-family:var(--mono)}
+
+/* masthead strip, same as the Docket page */
+.topbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between;padding:7px 16px;border-bottom:1px solid #ECE5D8;background:#F8F5EE;font:500 11px/1.4 var(--mono);letter-spacing:.06em;color:#736B5E;text-transform:uppercase}
+.topbar a{color:#1A1714;text-decoration:none;font-weight:600}
+.topbar a:hover{text-decoration:underline}
+.topbar .sep{color:#C4BAA9;margin-inline:6px}
+.topbar .right{color:#C86A14}

@@ -1,4 +1,9 @@
-﻿<title>Docket Project Dashboard</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docket Project Dashboard</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@600&display=swap">
 <style>
 /* Layout: status strip on top, then Funders, Leads (filterable), Regions, Automation, Documents, Timeline, Risks. Scan top to bottom. */
@@ -53,6 +58,10 @@ td.mono{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nu
 a{color:var(--accent)}
 footer{font-size:12.5px;color:var(--muted)}
 </style>
+<link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<nav class="topbar" aria-label="Site"><span><a href="/">The Docket Dispatch</a><span class="sep">/</span><a href="/project/">Project workspace</a></span><span class="right"><a href="/">Back to Docket</a></span></nav>
 <div class="wrap">
 <header>
   <div class="kicker">Docket Â· Project dashboard</div>
@@ -246,3 +255,6 @@ el('risks').innerHTML = D.risks.map(r=>{const k={High:'bad',Med:'warn',Low:'info
 
 
 
+
+</body>
+</html>

@@ -3,54 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Docket Dispatch</title>
+<title>Docket Dispatch: Project Workspace</title>
 <meta name="description" content="Working notes for Docket Dispatch, a planned monthly newsletter of documentary funding calls.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@600&display=swap">
+<link rel="stylesheet" href="theme.css">
 <style>
-/* Layout: one column. A status notice, the dashboard as the main link, then the documents as a list. */
-:root{
-  --bg:#f6f7f9; --surface:#ffffff; --fg:#161b26; --muted:#5a6272; --line:#d9dde5; --accent:#1f3a8a; --accent-fg:#ffffff;
-  --warn:#8a5a00; --warn-bg:#fbefd2;
-  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){:root{
-  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff; --accent-fg:#10131a;
-  --warn:#f0c46a; --warn-bg:#352a0e; color-scheme:dark}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:40px 64px}
-.wrap{max-width:760px;margin-inline:auto;display:flex;flex-direction:column;gap:32px}
-.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-h1{font-family:var(--display);font-size:clamp(30px,6vw,44px);line-height:1.12;margin:6px 0 12px;text-wrap:balance}
-h2{font-family:var(--display);font-size:22px;margin:0 0 12px}
-p{margin:0 0 12px;max-width:62ch}
-.lede{font-size:18px}
-.notice{background:var(--warn-bg);color:var(--warn);border-radius:6px;padding:12px 14px;font-size:14.5px;max-width:62ch}
-.notice b{font-weight:600}
-.main{display:block;background:var(--accent);color:var(--accent-fg);text-decoration:none;border-radius:8px;padding:18px 20px}
-.main:hover{filter:brightness(1.08)}
-.main:focus-visible,.list a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.main b{display:block;font-family:var(--display);font-size:20px}
-.main span{font-size:14.5px;opacity:.92}
-.list{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:8px;background:var(--surface);overflow:hidden}
-.list li{border-bottom:1px solid var(--line)}
+/* Same paper and ink as the Docket page. Masthead strip, serif headline, one dark teal action, hairline lists. */
+body{padding-bottom:64px}
+.wrap{max-width:860px;margin-inline:auto;padding-inline:16px;display:flex;flex-direction:column;gap:40px;padding-top:48px}
+.kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C86A14;font-weight:500}
+h1{font-size:clamp(36px,7vw,60px);line-height:1.04;margin:10px 0 16px;font-weight:600;text-wrap:balance}
+.lede{font-size:18px;line-height:1.6;color:#5D564C;max-width:60ch;margin:0 0 16px}
+.notice{background:#FBF2E5;border:1px solid #EBD9BC;color:#6F4108;padding:12px 14px;font-size:14px;max-width:60ch}
+.notice b{font-weight:700}
+.main{display:block;background:#0D4952;color:#FFFFFF;text-decoration:none;padding:20px 22px;border:1px solid #0D4952}
+.main:hover{background:#0A3A41}
+.main b{display:block;font:600 22px/1.2 var(--display);margin-bottom:4px}
+.main span{font-size:14.5px;color:#D5E6E8}
+.main:focus-visible,.list a:focus-visible{outline:3px solid #C86A14;outline-offset:3px}
+h2{font-size:26px;margin:0 0 14px;font-weight:600}
+.rule{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#736B5E;border-bottom:1px solid #E2DBCE;padding-bottom:8px;margin-bottom:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.facts div{background:#FFFFFF;border:1px solid #E2DBCE;padding:14px 16px;min-width:0}
+.facts b{display:block;font:500 30px/1.1 var(--mono);color:#1A1714}
+.facts span{font-size:13.5px;color:#5D564C}
+.list{list-style:none;margin:0;padding:0;border:1px solid #E2DBCE;background:#FFFFFF}
+.list li{border-bottom:1px solid #E2DBCE}
 .list li:last-child{border-bottom:0}
-.list a{display:block;padding:14px 16px;text-decoration:none;color:var(--fg)}
-.list a:hover{background:var(--bg)}
-.list b{display:block;font-weight:600}
-.list span{display:block;font-size:14px;color:var(--muted)}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.facts div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
-.facts b{display:block;font-family:var(--mono);font-size:22px;font-weight:500}
-.facts span{font-size:13.5px;color:var(--muted)}
-footer{font-size:13px;color:var(--muted);max-width:62ch}
+.list a{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:16px 18px;text-decoration:none;color:#1A1714}
+.list a:hover{background:#F8F5EE}
+.list b{display:block;font:600 19px/1.3 var(--display)}
+.list span.d{display:block;font-size:14px;color:#5D564C;margin-top:2px}
+.list .go{font:500 11px var(--mono);letter-spacing:.1em;color:#0D4952;white-space:nowrap}
+footer{font-size:13px;color:#736B5E;max-width:60ch;border-top:1px solid #E2DBCE;padding-top:16px}
 </style>
 </head>
 <body>
+<nav class="topbar" aria-label="Site">
+  <span><a href="/">The Docket Dispatch</a><span class="sep">/</span>Project workspace<span class="sep">/</span>Updated 16 Oct 2026</span>
+  <span class="right"><a href="/">Back to Docket</a></span>
+</nav>
 <div class="wrap">
   <header>
-    <div class="kicker">Project workspace · updated 16 Oct 2026</div>
-    <h1>Docket Dispatch</h1>
+    <div class="kicker">Working notes · Not a product</div>
+    <h1>How Docket is being built</h1>
     <p class="lede">Planning notes for a monthly newsletter of documentary funding calls: how funders are found, how dates are checked, what an issue looks like and how it would be sent.</p>
     <p class="notice"><b>Work in progress.</b> Nothing here has been confirmed by a person yet. Funder dates change often, so always check the funder's own page before applying.</p>
   </header>
@@ -61,7 +56,7 @@ footer{font-size:13px;color:var(--muted);max-width:62ch}
   </a>
 
   <section>
-    <h2>Where things stand</h2>
+    <div class="rule">Where things stand</div>
     <div class="facts">
       <div><b>0</b><span>listings confirmed by a person</span></div>
       <div><b>22</b><span>sources in the registry, 13 read on official pages</span></div>
@@ -70,17 +65,17 @@ footer{font-size:13px;color:var(--muted);max-width:62ch}
   </section>
 
   <section>
-    <h2>Documents</h2>
+    <div class="rule">Documents</div>
     <ul class="list">
-      <li><a href="documents/docket-source-method.html"><b>Source method</b><span>How funding calls are found, read and verified</span></a></li>
-      <li><a href="documents/docket-verification-options.html"><b>Verification options</b><span>Checked by a person, or checked by Claude with a process that improves</span></a></li>
-      <li><a href="documents/docket-viability-and-automation.html"><b>Viability and automation</b><span>The money, the hours, safeguards against mistakes, and funder links</span></a></li>
-      <li><a href="documents/docket-mailer-and-distribution.html"><b>Mailer and distribution</b><span>A sample issue, the monthly send process and sending rules</span></a></li>
-      <li><a href="documents/docket-walkthrough.html"><b>Walkthrough</b><span>A short animated tour of the idea</span></a></li>
+      <li><a href="documents/docket-source-method.html"><span><b>Source method</b><span class="d">How funding calls are found, read and verified</span></span><span class="go">READ</span></a></li>
+      <li><a href="documents/docket-verification-options.html"><span><b>Verification options</b><span class="d">Checked by a person, or checked by Claude with a process that improves</span></span><span class="go">READ</span></a></li>
+      <li><a href="documents/docket-viability-and-automation.html"><span><b>Viability and automation</b><span class="d">The money, the hours, safeguards against mistakes, and funder links</span></span><span class="go">READ</span></a></li>
+      <li><a href="documents/docket-mailer-and-distribution.html"><span><b>Mailer and distribution</b><span class="d">A sample issue, the monthly send process and sending rules</span></span><span class="go">READ</span></a></li>
+      <li><a href="documents/docket-walkthrough.html"><span><b>Walkthrough</b><span class="d">A short animated tour of the idea</span></span><span class="go">WATCH</span></a></li>
     </ul>
   </section>
 
-  <footer>This page and its documents are planning notes, not a product and not advice. Funder names belong to their owners.</footer>
+  <footer>These pages are planning notes, not a product and not advice. Funder names belong to their owners.</footer>
 </div>
 </body>
 </html>
