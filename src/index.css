@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --paper-bg: #F8F5EE;
+    --paper-surface: #FFFFFF;
+    --paper-subtle: #F3EFE6;
+    --paper-border: #E3DCСD;
+    --ink-primary: #1A1714;
+    --ink-secondary: #5D564C;
+    --ink-tertiary: #8C8476;
+    --marigold: #C86A14;
+    --marigold-hover: #AF570B;
+    --marigold-subtle: #FBF2E5;
+    --deep-teal: #0D4952;
+    --deep-teal-subtle: #E8F2F3;
+  }
+
+  body {
+    background-color: #F8F5EE;
+    color: #1A1714;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-serif {
+  font-family: 'Newsreader', Georgia, Cambria, serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Trade publication hairline borders and subtle paper textures */
+.border-paper {
+  border-color: #E2DBCE;
+}
+
+.border-paper-strong {
+  border-color: #CEC3B0;
+}
+
+.bg-paper {
+  background-color: #F8F5EE;
+}
+
+.bg-paper-surface {
+  background-color: #FFFFFF;
+}
+
+.bg-paper-tint {
+  background-color: #F3EFE5;
+}
+
+/* Sharp minimal corners per design prompt */
+.sharp-card {
+  border-radius: 2px;
+}
+

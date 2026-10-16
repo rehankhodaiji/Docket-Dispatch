@@ -1,31 +1,31 @@
-# Docket project
+﻿# Docket Dispatch
 
-Everything for the Docket documentary funding tracker lives here. Last updated 2026-10-16.
+The Docket landing page (built in Google AI Studio) plus the project notes, in one repository. Last updated 2026-10-16.
 
-## Folders
-| Folder | What is in it |
+## What is where
+| Path | What it is |
 |---|---|
-| `documents/` | Written deliverables: source method, verification options, walkthrough page, regional research |
-| `data/` | Dated snapshots of the working data files and the check reports |
-| `logs/` | `PROJECT-LOG.md`, the time-stamped history of tasks, actions and results |
-| `dashboard/` | `dashboard.html`, the project dashboard (a snapshot; ask Claude to refresh it) |
+| `src/`, `index.html`, `public/images/` | The Docket landing page (React + Vite). Served at `/` |
+| `public/project/` | Project hub, dashboard and documents. Served at `/project/` |
+| `data/` | Source registry (`sources.csv`), snapshots and check reports. Not published |
+| `logs/PROJECT-LOG.md` | Time-stamped history of tasks, actions and results. Not published |
 
-## Live files that stay in the parent folder
-The scheduled tasks read and write these by their full path, so they were NOT moved. The copies in `data/` are snapshots.
+## Run it
+```
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # output in dist/
+```
+`.npmrc` sets `legacy-peer-deps=true` because the AI Studio package list has a version conflict (esbuild and Vite) that otherwise stops `npm install`.
 
-- `..\funder-links.md` (funder registry)
-- `..\verified-listings.md` (only rows the automated check verified; currently empty)
-- `..\date-check-*.md`, `..\digest-draft-*.md`, `..\alerts.md` (task outputs, when they exist)
+## Deploy on Vercel
+Import this repo, Framework Preset **Vite**, build command `npm run build`, output `dist`.
 
-## Scheduled tasks (3)
-- `docket-funder-date-check`: monthly
-- `docket-friday-digest-draft`: monthly
-- `docket-closing-soon-watch`: weekdays
+## Known gaps
+- The waitlist form saves the email only in the visitor's own browser. It sends nothing to you. The confirmation code and queue position it shows are generated on the page.
+- The page says "70+ active sources". The registry has 22, and 13 have been read on their official pages.
+- No listing has been confirmed by a person.
 
-## Not part of Docket
-`..\output\CorpFin_*` and `..\work\*` are from a different project (13 Oct). They were left alone.
-
-## Rules this project follows
+## Rules
 - Only a funder's official page can confirm a date. Aggregators are leads.
-- Nothing is called "human-verified" until a person has confirmed it.
 - Nothing is emailed or published automatically.
