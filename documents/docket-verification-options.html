@@ -1,0 +1,157 @@
+<title>Docket Verification Options</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: one column; two option cards side by side near the top; comparison table; the improvement loop as a cycle strip. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#161b26; --muted:#5a6272; --line:#d9dde5;
+  --accent:#1f3a8a; --accent-soft:#e6ebf8; --b:#0f6b62; --b-soft:#dff2ef;
+  --ok:#17663a; --ok-bg:#e1f3e8; --warn:#8a5a00; --warn-bg:#fbefd2; --bad:#9b1c1c; --bad-bg:#f9e0e0;
+  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242;
+  --accent:#9db4ff; --accent-soft:#1d2744; --b:#6fd0c4; --b-soft:#12302c;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242;
+  --accent:#9db4ff; --accent-soft:#1d2744; --b:#6fd0c4; --b-soft:#12302c;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:860px;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:12px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.25;margin:0 0 12px;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:0 0 6px}
+p{margin:0 0 12px;max-width:68ch}
+.lede{font-size:18px;max-width:62ch}
+section{display:flex;flex-direction:column}
+ul{margin:0 0 12px;padding-left:20px;max-width:68ch} li{margin-bottom:6px}
+code{font-family:var(--mono);font-size:.88em}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.opt.a{border-top:4px solid var(--accent)} .opt.b{border-top:4px solid var(--b)}
+.tag{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.a .tag{color:var(--accent)} .b .tag{color:var(--b)}
+.opt h2{margin:0;font-size:21px}
+.opt p,.opt ul{font-size:15px}
+.claim{background:var(--bg);border:1px dashed var(--line);border-radius:4px;padding:10px 12px;font-size:14px}
+.claim span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ok{background:var(--ok-bg);color:var(--ok)} .warn{background:var(--warn-bg);color:var(--warn)} .bad{background:var(--bad-bg);color:var(--bad)}
+.loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.loop div{background:var(--b-soft);border-radius:6px;padding:12px;font-size:14px;min-width:0}
+.loop b{display:block;font-family:var(--mono);font-size:12px;color:var(--b);margin-bottom:4px}
+.callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 16px;border-radius:4px;max-width:68ch}
+.callout p:last-child{margin:0}
+footer{font-size:13px;color:var(--muted)}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Docket · Operating options · 16 Oct 2026</div>
+  <h1>Two ways to verify what Docket publishes</h1>
+  <p class="lede">Option A is checked by a person every issue. Option B is checked by Claude, with a written process that gets corrected and tightened after every run.</p>
+</header>
+
+<section>
+  <div class="opts">
+    <div class="opt a">
+      <div class="tag">Option A</div>
+      <h2>Human-verified</h2>
+      <p>You or a hired researcher open each funder's official page, confirm the details and sign off. Claude only helps find leads and draft the issue.</p>
+      <ul>
+        <li>Claude flags changes and drafts entries with source quotes.</li>
+        <li>A person checks every listing before it goes out.</li>
+        <li>Nothing is published unchecked.</li>
+      </ul>
+      <div class="claim"><span>What the site can say</span>"Every listing is checked by hand against the funder's official page."</div>
+    </div>
+    <div class="opt b">
+      <div class="tag">Option B</div>
+      <h2>Claude-verified, improving each run</h2>
+      <p>Claude reads each official page, extracts the dates and rules, and records the evidence. A written playbook is corrected after every mistake, and a fixed test set shows whether accuracy is getting better.</p>
+      <ul>
+        <li>Claude does the checking and keeps the evidence log.</li>
+        <li>A person skims a sample and anything flagged, about 15 minutes.</li>
+        <li>The playbook and test set grow with each issue.</li>
+      </ul>
+      <div class="claim"><span>What the site can say</span>"Checked by AI against the funder's official page, spot-checked by a person, with the source linked."</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Side by side</h2>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Option A · Human</th><th>Option B · Claude + loop</th></tr>
+    <tr><td>Who reads the official page</td><td>A person, every listing</td><td>Claude, every listing; a person on a sample</td></tr>
+    <tr><td>Time per issue (estimate)</td><td>About 5 minutes per listing. A twice-monthly issue of 8 listings is roughly 1 hour of checking plus rechecks.</td><td>About 15–30 minutes of skimming, plus fixing flagged items</td></tr>
+    <tr><td>Speed</td><td>Limited by your week</td><td>Daily page checks; issue drafted in minutes</td></tr>
+    <tr><td>Main failure</td><td>A tired person misses a changed date</td><td>Claude misreads a page, or reads a page that loads late and sees nothing</td></tr>
+    <tr><td>Hardest cases</td><td>Handled by judgement and a phone call</td><td>Rolling calls, PDFs, login-only portals and time zones go to a person</td></tr>
+    <tr><td>Scales to more regions</td><td><span class="pill warn">Slowly</span> cost grows with each region</td><td><span class="pill ok">Well</span> person time grows slowly</td></tr>
+    <tr><td>Strength of the "verified" claim</td><td><span class="pill ok">Strongest</span></td><td><span class="pill warn">Honest but weaker</span> must say it is AI-checked</td></tr>
+    <tr><td>Best for</td><td>Launch, a paid tier, building trust</td><td>Breadth, alerts, calendar, a free tier</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>How each option runs</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Day</th><th>Option A</th><th>Option B</th></tr>
+    <tr><td>Daily</td><td>Page watcher flags changes</td><td>Page watcher flags changes; Claude reads changed pages and logs evidence</td></tr>
+    <tr><td>Wednesday</td><td>Person works through the queue</td><td>Claude runs the full check, marks each listing Verified, Conflict or Needs a person</td></tr>
+    <tr><td>Thursday</td><td>Second look at anything closing within 14 days</td><td>Person skims about 20% of listings plus everything marked Needs a person</td></tr>
+    <tr><td>Friday</td><td>Send the issue</td><td>Send the issue; Claude writes the error log</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>The improvement loop for Option B</h2>
+  <p>Option B is only as good as its process, so the process is written down and changed after every mistake. Claude proposes the changes; you approve them.</p>
+  <div class="loop">
+    <div><b>1 · RUN</b>Claude follows the playbook file and checks every listing</div>
+    <div><b>2 · LOG</b>Every correction by a person is recorded with the cause</div>
+    <div><b>3 · FIX</b>The cause becomes a new rule in the playbook</div>
+    <div><b>4 · TEST</b>The case is added to a fixed set of known answers; the whole set is rerun</div>
+    <div><b>5 · MEASURE</b>Accuracy is compared with the last run before the change is kept</div>
+  </div>
+  <h3 style="margin-top:16px">What gets measured each issue</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Measure</th><th>Meaning</th><th>Starting target (proposed)</th></tr>
+    <tr><td>Wrong-open listings</td><td>Published as open but actually closed</td><td>0, always</td></tr>
+    <tr><td>Deadline accuracy</td><td>Date and time zone exactly right against the official page</td><td>98% before reducing spot checks</td></tr>
+    <tr><td>Unreadable pages</td><td>Pages Claude could not read and had to pass to a person</td><td>Falling each month</td></tr>
+    <tr><td>Time to detect a change</td><td>Official change to our record updated</td><td>Under 2 days</td></tr>
+    <tr><td>Spot-check size</td><td>Share of listings a person re-reads</td><td>20% to start; lower only after 3 clean issues</td></tr>
+  </table></div>
+  <p style="margin-top:12px">The targets are proposals, not industry standards. Change them once real numbers exist.</p>
+</section>
+
+<section>
+  <h2>Rules that apply to both</h2>
+  <ul>
+    <li>Only the funder's official page can confirm a date. Aggregators are leads.</li>
+    <li>Every listing links to the official page and shows the date it was last checked.</li>
+    <li>Claude must quote the sentence each date came from. No quote, no date.</li>
+    <li>Anything unclear (rolling calls, conflicting pages, login portals) goes to a person and is labelled unconfirmed until then.</li>
+    <li>Countdowns are computed from the stored date, never typed in.</li>
+    <li>A wrong listing is corrected within a day and noted in the next issue.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Recommendation</h2>
+  <div class="callout">
+    <p>Start with Option B for the first three issues, with a person checking every listing, not a sample. That gives you Option A's trust and builds Option B's test set. Then drop to a sample once the numbers hold. Keep the paid tier's wording honest at each step: say "checked by hand" only while a person is checking every listing.</p>
+  </div>
+</section>
+
+<footer>Time and accuracy figures are planning estimates, not measurements. Confirm every funder date on the funder's own page.</footer>
+</div>

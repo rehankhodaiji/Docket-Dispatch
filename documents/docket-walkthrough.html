@@ -1,0 +1,212 @@
+<title>Docket Walkthrough</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a 16:9 "screen" that plays timed scenes, with captions and a scrubber beneath. */
+:root{
+  --paper:#f3efe6; --card:#fbf9f3; --ink:#1c1f1a; --muted:#6b6a5f; --rule:#d8d2c2;
+  --accent:#1f4d3a; --accent-fg:#f3efe6; --alert:#b4491f; --stage:#e6e1d3; --ok:#2f7d4f;
+  --serif:'Fraunces',Georgia,serif; --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#171a16; --card:#1f231d; --ink:#ece8dc; --muted:#a09e90; --rule:#34382f; --accent:#7fc4a0; --accent-fg:#10140f; --alert:#e2865a; --stage:#0f110e; --ok:#7fc4a0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171a16; --card:#1f231d; --ink:#ece8dc; --muted:#a09e90; --rule:#34382f; --accent:#7fc4a0; --accent-fg:#10140f; --alert:#e2865a; --stage:#0f110e; --ok:#7fc4a0; color-scheme:dark}
+body{background:var(--stage);color:var(--ink);font-family:var(--sans);padding-inline:16px;padding-block:20px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.bar h1{font:800 20px var(--serif);margin:0;letter-spacing:-.01em}
+.bar span{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+#screen{position:relative;aspect-ratio:16/9;width:100%;background:var(--paper);border:1px solid var(--rule);overflow:hidden;container-type:inline-size}
+.scene{position:absolute;inset:0;padding:5cqw 6cqw;display:flex;flex-direction:column;justify-content:center;gap:1.6cqw;opacity:0;visibility:hidden;transition:opacity .4s}
+.scene.on{opacity:1;visibility:visible}
+.eyebrow{font:500 1.1cqw var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.h{font:800 4.6cqw/1.05 var(--serif);margin:0;max-width:20ch;text-wrap:balance;letter-spacing:-.02em}
+.p{font-size:1.6cqw;line-height:1.5;max-width:52ch;margin:0;color:var(--muted)}
+.row{display:flex;gap:3cqw;align-items:center}
+.row>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--rule);padding:1.6cqw}
+.lbl{font:500 .95cqw var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font:600 1.2cqw var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:1.1cqw 1.8cqw}
+.field{border:1px solid var(--ink);background:var(--card);padding:1cqw 1.2cqw;font:500 1.3cqw var(--mono);min-height:3.2cqw;display:flex;align-items:center}
+.caret{display:inline-block;width:.1cqw;height:1.4cqw;background:var(--ink);margin-left:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+/* reveal helpers: elements start visible-at-rest, animation only plays while scene is on */
+.scene.on .rise{animation:rise .7s both}
+.scene.on .d1{animation-delay:.3s}.scene.on .d2{animation-delay:.9s}.scene.on .d3{animation-delay:1.5s}.scene.on .d4{animation-delay:2.1s}.scene.on .d5{animation-delay:2.7s}
+@keyframes rise{from{opacity:0;transform:translateY(1.4cqw)}to{opacity:1;transform:none}}
+/* scene specifics */
+.big{font:800 9cqw/1 var(--serif);color:var(--alert);letter-spacing:-.03em}
+.type{overflow:hidden;white-space:nowrap;width:0;display:inline-block}
+.scene.on .type{animation:typing 2s steps(24) .6s forwards}
+@keyframes typing{to{width:21ch}}
+.chips{display:flex;flex-wrap:wrap;gap:1cqw}
+.chip{border:1px solid var(--rule);background:var(--card);padding:.8cqw 1.3cqw;font:500 1.25cqw var(--sans)}
+.ticker{display:grid;grid-template-columns:repeat(4,1fr);gap:1cqw}
+.list{display:flex;flex-direction:column;gap:.9cqw;width:100%}
+.item{background:var(--card);border:1px solid var(--rule);padding:1.1cqw 1.4cqw;display:grid;grid-template-columns:1fr auto;gap:.4cqw 2cqw;align-items:center}
+.item b{font:600 1.5cqw var(--serif)}
+.item small{font:400 1.05cqw var(--sans);color:var(--muted)}
+.tag{font:500 .95cqw var(--mono);letter-spacing:.1em;padding:.3cqw .8cqw;border:1px solid currentColor;color:var(--ok);justify-self:end}
+.tag.soon{color:var(--alert)}
+.amt{font:600 1.3cqw var(--mono)}
+.expand{grid-column:1/-1;max-height:0;overflow:hidden;font-size:1.15cqw;line-height:1.5;color:var(--muted)}
+.scene.on .item.open .expand{animation:ex 1s 3.4s both}
+@keyframes ex{to{max-height:9cqw;padding-top:.6cqw}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw}
+.steps h3{font:800 2cqw var(--serif);margin:.6cqw 0}
+.steps p{font-size:1.2cqw;line-height:1.5;color:var(--muted);margin:0}
+.mail{width:56cqw;align-self:center}
+.mail .hd{display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:1cqw;margin-bottom:1cqw;font:500 1.1cqw var(--mono);color:var(--muted)}
+.mail h3{font:800 2.2cqw var(--serif);margin:0 0 1cqw}
+.mail li{font-size:1.25cqw;line-height:1.7;list-style:none}
+.mail ul{padding:0;margin:0}
+.price{display:grid;grid-template-columns:1fr 1.25fr;gap:2cqw;align-items:stretch}
+.price .n{font:800 5cqw/1 var(--serif);letter-spacing:-.02em}
+.price .n small{font:500 1.2cqw var(--mono);color:var(--muted)}
+.price .hot{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.price .hot .lbl{color:var(--accent-fg);opacity:.8}
+.meter{height:.9cqw;background:color-mix(in srgb,var(--accent-fg) 25%,transparent);margin-top:1.2cqw}
+.meter i{display:block;height:100%;width:0;background:var(--accent-fg)}
+.scene.on .meter i{animation:fill 2s 1.2s forwards}
+@keyframes fill{to{width:68%}}
+.cursor{position:absolute;width:2cqw;height:2cqw;z-index:5;pointer-events:none;transition:left 1s ease,top 1s ease;left:50%;top:50%}
+.cursor svg{width:100%;height:100%;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+/* controls */
+.ctl{display:flex;align-items:center;gap:12px}
+.ctl button{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--accent-fg);border:0;padding:9px 14px;cursor:pointer;min-width:84px}
+.ctl button:focus-visible,#scrub:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#scrub{flex:1;accent-color:var(--accent);min-width:0}
+#time{font:500 12px var(--mono);color:var(--muted);min-width:78px;text-align:right}
+#cap{font:500 15px/1.5 var(--sans);color:var(--ink);min-height:3em;padding:10px 14px;background:var(--card);border:1px solid var(--rule)}
+#cap b{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:2px}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dots button{font:500 11px var(--mono);background:transparent;color:var(--muted);border:1px solid var(--rule);padding:5px 9px;cursor:pointer}
+.dots button.cur{color:var(--accent-fg);background:var(--accent);border-color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.scene.on .rise,.scene.on .type,.scene.on .meter i,.scene.on .item.open .expand{animation-duration:.01s;animation-delay:0s}}
+</style>
+
+<div class="wrap">
+  <div class="bar"><h1>Docket, start to finish</h1><span>A subscriber's first month · about 55 seconds</span></div>
+
+  <div id="screen" aria-live="off">
+    <!-- 1 -->
+    <section class="scene" data-t="0" data-d="6" data-cap="The problem|Independent filmmakers lose grants to quiet deadlines on obscure subpages. Docket exists so that does not happen.">
+      <div class="eyebrow rise">US non-fiction financing</div>
+      <h2 class="h rise d1">Stop losing $50,000 grants to silent deadlines.</h2>
+      <p class="p rise d2">Most documentaries do not die from lack of vision. They die from missed filing windows.</p>
+      <div class="lbl rise d3">Field report 2026</div>
+    </section>
+    <!-- 2 -->
+    <section class="scene" data-t="6" data-d="9" data-cap="Step 1: Join the waitlist|A filmmaker lands on the site, enters an email, picks a role, and joins. No card is taken today.">
+      <div class="row" style="align-items:flex-start">
+        <div style="flex:1.1;display:flex;flex-direction:column;gap:1.4cqw">
+          <div class="eyebrow">Lead briefing</div>
+          <h2 class="h" style="font-size:3.4cqw">A monthly digest of open grants and commissioning calls, confirmed by a person.</h2>
+          <p class="p">Monitored automatically across 70+ film institutes, broadcast desks, and funds. Every listing is checked against the official page before it is sent. Once a month.</p>
+        </div>
+        <div class="card" style="flex:1;display:flex;flex-direction:column;gap:1cqw">
+          <div class="lbl">Join early access waitlist · 32 of 100 spots left</div>
+          <div class="lbl rise d1" style="margin-top:.4cqw">Filmmaker / production email</div>
+          <div class="field"><span class="type">maya@riverbedfilms.org</span><span class="caret"></span></div>
+          <div class="lbl rise d3">Primary role</div>
+          <div class="field rise d3" style="justify-content:space-between"><span>Director &amp; Producer</span><span>▾</span></div>
+          <div class="btn rise d4" id="joinbtn" style="text-align:center">Join the waitlist &amp; secure $79/yr rate</div>
+          <div class="lbl rise d5" style="text-transform:none;letter-spacing:.02em">Zero spam · No card required today</div>
+        </div>
+      </div>
+    </section>
+    <!-- 3 -->
+    <section class="scene" data-t="15" data-d="6" data-cap="Behind the digest|Docket watches the sources so subscribers do not have to.">
+      <div class="eyebrow rise">Monitored funders &amp; broadcasters · 70+ sources</div>
+      <h2 class="h rise d1" style="font-size:3.6cqw">Eight of the desks on the watchlist</h2>
+      <div class="ticker">
+        <div class="chip rise d2">Sundance Institute</div><div class="chip rise d2">ITVS / Independent Lens</div><div class="chip rise d3">IDA Enterprise Fund</div><div class="chip rise d3">BBC Storyville</div>
+        <div class="chip rise d4">Netflix Non-Fiction Call</div><div class="chip rise d4">National Geographic Doc</div><div class="chip rise d5">CNN Films Open Submission</div><div class="chip rise d5">Channel 4 First Cut</div>
+      </div>
+    </section>
+    <!-- 4 -->
+    <section class="scene" data-t="21" data-d="11" data-cap="Step 2: Read the digest|Each listing shows the funder, amount, stage, deadline, and decision time. Tapping one opens eligibility, fiscal sponsorship, fee, and note details.">
+      <div class="row" style="justify-content:space-between;align-items:baseline"><div class="eyebrow">Issue no. 047 · Sample monthly briefing</div><div class="lbl">Filter: All · Production · Commissioning</div></div>
+      <div class="list">
+        <div class="item open rise d1"><div><b>Sundance Institute: DFP Production Grant</b><br><small>Stage: Production · Decision 12–14 weeks</small></div><div style="text-align:right"><div class="amt">$25,000–$40,000</div><div class="tag">OPEN</div></div>
+          <div class="expand">Eligibility: US-based directors or producers with creative control; feature-length non-fiction. Fiscal sponsorship required. Application fee $0. Rough cut or 10-minute sample required.</div></div>
+        <div class="item rise d2"><div><b>ITVS: Open Call Co-Production</b><br><small>Stage: Production · Round 1 within 8 weeks</small></div><div style="text-align:right"><div class="amt">Up to $350,000</div><div class="tag soon">CLOSES SOON</div></div></div>
+        <div class="item rise d3"><div><b>IDA: Enterprise Documentary Fund</b><br><small>Stage: Production · Decision 16 weeks</small></div><div style="text-align:right"><div class="amt">$25,000–$100,000</div><div class="tag">OPEN</div></div></div>
+        <div class="item rise d4"><div><b>BBC Storyville &amp; Channel 4: Co-commissioning</b><br><small>Stage: Commissioning · 4–6 weeks to shortlist</small></div><div style="text-align:right"><div class="amt">£40,000–£120,000</div><div class="tag soon">CLOSES SOON</div></div></div>
+      </div>
+      <div class="lbl">Illustrative sample digest · 4 of 19 listings shown</div>
+    </section>
+    <!-- 5 -->
+    <section class="scene" data-t="32" data-d="8" data-cap="How Docket works|Three phases: automated monitoring, a person confirms each listing against the official page, and one concise email goes out.">
+      <div class="eyebrow rise">Methodology &amp; curation</div>
+      <h2 class="h rise d1" style="font-size:3.6cqw">Monitor. Confirm. Deliver.</h2>
+      <div class="steps">
+        <div class="card rise d2"><div class="lbl">Phase 01</div><h3>Automated checks watch the sources</h3><p>Grant portals, broadcaster desks, and guild boards, checked daily and monthly for changes.</p></div>
+        <div class="card rise d3"><div class="lbl">Phase 02</div><h3>A person confirms each listing</h3><p>Before anything goes out, a researcher opens the official page and confirms the deadline, US eligibility, and fee waivers.</p></div>
+        <div class="card rise d4"><div class="lbl">Phase 03</div><h3>One email, monthly</h3><p>Segmented by stage, with direct portal links and calendar sync.</p></div>
+      </div>
+    </section>
+    <!-- 6 -->
+    <section class="scene" data-t="40" data-d="8" data-cap="Step 3: The monthly digest|The digest arrives. In five minutes the filmmaker knows what is open, what closes this month, and whether their project qualifies.">
+      <div class="card mail rise d1">
+        <div class="hd"><span>From: Docket · Monthly Dispatch</span><span>1st of the month</span></div>
+        <h3>Issue 047: 19 listings, 4 close this month</h3>
+        <ul>
+          <li class="rise d2">▸ Production grants: 7 open · direct portal links included</li>
+          <li class="rise d3">▸ Commissioning calls: 4 open · US-eligible only</li>
+          <li class="rise d4">▸ Closing soon: add each deadline to Google Calendar or iCal</li>
+        </ul>
+      </div>
+    </section>
+    <!-- 7 -->
+    <section class="scene" data-t="48" data-d="7" data-cap="Membership|Founding members lock $79 a year for life. The standard rate at public launch is $15 a month.">
+      <div class="eyebrow rise">Early access allocation</div>
+      <div class="price">
+        <div class="card rise d1"><div class="lbl">Public launch tier · Standard monthly</div><div class="n" style="margin-top:1cqw">$15<small> / month</small></div><p class="p" style="font-size:1.2cqw;margin-top:1cqw">$180 a year. Available once the waitlist closes.</p></div>
+        <div class="card hot rise d2"><div class="lbl">★ Founding member · 68/100 claimed</div><div class="n" style="margin-top:1cqw">$79<small> / year, locked for life</small></div><p class="p" style="font-size:1.2cqw;margin-top:1cqw;color:inherit">Early beta editions, funder tracking requests, calendar feeds, and quarterly office hours with the founder.</p><div class="meter"><i></i></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="cap" aria-live="polite"></div>
+  <div class="ctl">
+    <button id="pp" type="button">Pause</button>
+    <input id="scrub" type="range" min="0" max="55" step="0.1" value="0" aria-label="Playback position">
+    <span id="time">0:00 / 0:55</span>
+  </div>
+  <div class="dots" id="dots"></div>
+</div>
+
+<script>
+(function(){
+  var scenes=[].slice.call(document.querySelectorAll('.scene')),total=55,t=0,playing=true,last=null;
+  var cap=document.getElementById('cap'),sc=document.getElementById('scrub'),pp=document.getElementById('pp'),tm=document.getElementById('time'),dots=document.getElementById('dots');
+  var names=['Problem','Join','Sources','Digest','Method','Email','Pricing'];
+  var cur=-1;
+  scenes.forEach(function(s,i){
+    var b=document.createElement('button');b.type='button';b.textContent=(i+1)+' '+names[i];
+    b.onclick=function(){seek(+s.dataset.t)};dots.appendChild(b);
+  });
+  function fmt(x){x=Math.floor(x);return Math.floor(x/60)+':'+('0'+x%60).slice(-2)}
+  function show(i){
+    if(i===cur)return;cur=i;
+    scenes.forEach(function(s,k){s.classList.remove('on')});
+    void document.getElementById('screen').offsetWidth;
+    scenes[i].classList.add('on');
+    var c=scenes[i].dataset.cap.split('|');cap.innerHTML='<b>'+c[0]+'</b>'+c[1];
+    [].forEach.call(dots.children,function(d,k){d.classList.toggle('cur',k===i)});
+  }
+  function seek(x){t=Math.max(0,Math.min(total-.01,x));cur=-1;render()}
+  function render(){
+    var i=0;scenes.forEach(function(s,k){if(t>=+s.dataset.t)i=k});
+    show(i);sc.value=t;tm.textContent=fmt(t)+' / '+fmt(total);
+  }
+  function tick(ts){
+    if(last!==null&&playing){t+=(ts-last)/1000;if(t>=total)t=0,cur=-1;render()}
+    last=ts;requestAnimationFrame(tick);
+  }
+  pp.onclick=function(){playing=!playing;pp.textContent=playing?'Pause':'Play'};
+  sc.oninput=function(){seek(+sc.value)};
+  render();requestAnimationFrame(tick);
+})();
+</script>

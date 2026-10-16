@@ -1,0 +1,5 @@
+check_report.md
+last_hashes.json
+Thumbs.db
+.DS_Store
+__pycache__/

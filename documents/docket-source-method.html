@@ -1,0 +1,197 @@
+<title>Docket Source Method</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@500;600&display=swap">
+<style>
+/* Layout: single readable column, a pipeline strip near the top, status-coded tables below. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#161b26; --muted:#5a6272; --line:#d9dde5;
+  --accent:#1f3a8a; --accent-soft:#e6ebf8;
+  --ok:#17663a; --ok-bg:#e1f3e8; --warn:#8a5a00; --warn-bg:#fbefd2; --bad:#9b1c1c; --bad-bg:#f9e0e0; --info:#3b4a6b; --info-bg:#e8ecf3;
+  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242;
+  --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242;
+  --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:820px;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:12px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.25;margin:0 0 12px;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.lede{font-size:18px;color:var(--fg);max-width:62ch}
+section{display:flex;flex-direction:column}
+ul{margin:0 0 12px;padding-left:20px;max-width:68ch} li{margin-bottom:6px}
+code,.mono{font-family:var(--mono);font-size:.88em}
+.callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 16px;border-radius:4px;max-width:68ch}
+.callout p:last-child{margin:0}
+.pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:8px 0 4px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;min-width:0}
+.step b{display:block;font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:4px;letter-spacing:.04em}
+.step span{font-size:14px;color:var(--muted)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ok{background:var(--ok-bg);color:var(--ok)} .warn{background:var(--warn-bg);color:var(--warn)} .bad{background:var(--bad-bg);color:var(--bad)} .info{background:var(--info-bg);color:var(--info)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.two>div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
+pre{margin:0;font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;overflow-x:auto}
+footer{font-size:13px;color:var(--muted)}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Docket · Method note · 16 Oct 2026</div>
+  <h1>How Docket finds, reads and verifies funding calls</h1>
+  <p class="lede">What was done so far in this project, where it falls short, and a pipeline that would make the "human-verified" claim true.</p>
+</header>
+
+<section>
+  <h2>What was actually done so far</h2>
+  <p>Everything in the earlier checks came from three tools. None of them is a scraper, and none of it was verified by a person.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Step</th><th>Tool</th><th>What it gave</th><th>Limit</th></tr>
+    <tr><td>Find candidate funders and dates</td><td>Web search</td><td>Official pages plus many aggregator listings</td><td>Results mix 2014 pages with 2026 pages and sometimes contradict each other</td></tr>
+    <tr><td>Read one page</td><td>Page fetch, Chrome</td><td>Full text of the Docket site; the funder pages I opened</td><td>Cannot see pages behind logins or content loaded late by scripts</td></tr>
+    <tr><td>Recheck weekly</td><td>Scheduled task (Thursdays)</td><td>A dated checklist plus an updated <code>funder-links.md</code></td><td>Covers 5 funders only, and a person still has to confirm</td></tr>
+  </table></div>
+  <p style="margin-top:12px">Result: the four sample listings on the Docket page could not be matched to an official open call, and many dates for other regions came from aggregators. Those are leads. They are not verified listings.</p>
+</section>
+
+<section>
+  <h2>The pipeline</h2>
+  <p>Seven stages. The first four can be automated. The fifth needs a person, and that is the part subscribers pay for.</p>
+  <div class="pipeline">
+    <div class="step"><b>1 · REGISTER</b><span>A master list of funders and their official pages</span></div>
+    <div class="step"><b>2 · DISCOVER</b><span>Find funders not yet on the list</span></div>
+    <div class="step"><b>3 · MONITOR</b><span>Detect when an official page changes</span></div>
+    <div class="step"><b>4 · EXTRACT</b><span>Pull dates and rules into fixed fields, with a quote</span></div>
+    <div class="step"><b>5 · VERIFY</b><span>A person confirms against the official page</span></div>
+    <div class="step"><b>6 · PUBLISH</b><span>Status and "last verified" shown on every item</span></div>
+    <div class="step"><b>7 · MAINTAIN</b><span>Recheck on a schedule before each deadline</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>1. Source tiers</h2>
+  <p>Where a fact comes from decides how far it can be trusted. Only the first tier can make a listing "verified".</p>
+  <div class="tablewrap"><table>
+    <tr><th>Tier</th><th>Examples</th><th>Use</th></tr>
+    <tr><td><span class="pill ok">Tier 1 · official</span></td><td>Funder application page, rules PDF, application portal</td><td>The only source for dates, amounts and eligibility</td></tr>
+    <tr><td><span class="pill info">Tier 2 · field bodies</span></td><td>IDA, Doc Society, Film Independent, festival industry pages, national film agencies</td><td>Good for finding programs; confirm on Tier 1</td></tr>
+    <tr><td><span class="pill warn">Tier 3 · aggregators</span></td><td>Grant databases and opportunity listing sites</td><td>Leads only. Several showed wrong or stale dates in my checks</td></tr>
+    <tr><td><span class="pill bad">Tier 4 · hearsay</span></td><td>Social posts, forwarded emails, blogs</td><td>Tip-offs. Never published without a Tier 1 check</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>2. Discovery</h2>
+  <ul>
+    <li><b>Seed list by region.</b> Start from the funders already found: US, Canada, UK, Europe, India/South Asia, Australia/NZ, Middle East, Africa and Latin America. One row each: funder, program, official URL, region, stage (development, production, post, commissioning).</li>
+    <li><b>Directories.</b> Government grant portals and state or national arts agencies list their own calls. Paid funder databases exist; check their terms before relying on them.</li>
+    <li><b>Alerts.</b> Search alerts on terms like "documentary open call" and "call for projects", plus funder newsletters sent to one shared inbox.</li>
+    <li><b>Reader tips.</b> The site already invites tips by email. Treat each as Tier 4 and send it to verification.</li>
+    <li><b>Festival and market pages.</b> Pitch forums and co-production markets publish their own call dates every year.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>3. Monitoring and "scraping"</h2>
+  <p>For this use, a full scraper is not needed. The goal is to know when an official page has changed, then read it.</p>
+  <div class="two">
+    <div><h3>Change detection</h3><p>A page-watching tool checks each official URL daily and flags text changes. Open-source and hosted options exist. Cost is low, and it covers most funder pages.</p></div>
+    <div><h3>Headless browser</h3><p>For pages that load dates with scripts, a headless browser renders the page first, then saves the text. Needed for a minority of pages.</p></div>
+    <div><h3>Orchestration</h3><p>A workflow tool (n8n and Make are both connected in this workspace) runs the checks, stores results in a sheet and alerts the person doing verification.</p></div>
+    <div><h3>Rules to follow</h3><p>Read each site's terms and robots file, keep request rates low, and store facts and links, not copied text, so the digest does not republish a funder's copy.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>4. Extraction into fixed fields</h2>
+  <p>An AI model can read a changed page and fill the same fields every time. Every field must carry the exact sentence it came from. A field with no supporting sentence stays empty.</p>
+<pre>funder, program, region, stage
+status        open | upcoming | closed | paused | unknown
+opens, deadline, timezone      (ISO date + zone, e.g. 2026-12-21 13:00 Europe/London)
+amount_min, amount_max, currency
+eligibility   (country, career stage, fiscal sponsor, fee)
+portal_url, source_url, retrieved_at
+evidence      (verbatim quote for status and deadline)</pre>
+</section>
+
+<section>
+  <h2>5. Verification</h2>
+  <p>Each listing carries one of these states. Only the first can be called human-verified.</p>
+  <div class="tablewrap"><table>
+    <tr><th>State</th><th>Meaning</th><th>Can be published?</th></tr>
+    <tr><td><span class="pill ok">Verified</span></td><td>Official page read by a person in the last 7 days; date, time zone and eligibility match the evidence quote</td><td>Yes, with "last verified" date</td></tr>
+    <tr><td><span class="pill info">Machine-read</span></td><td>Extracted from the official page, not yet confirmed by a person</td><td>Only labelled as unconfirmed</td></tr>
+    <tr><td><span class="pill warn">Unconfirmed</span></td><td>Seen only on an aggregator or in a tip</td><td>No</td></tr>
+    <tr><td><span class="pill warn">Conflict</span></td><td>Official page and another source disagree</td><td>No, until resolved. Official page wins</td></tr>
+    <tr><td><span class="pill bad">Closed</span></td><td>Deadline passed or page says not accepting</td><td>In a "recently closed" list only</td></tr>
+  </table></div>
+  <h3 style="margin-top:16px">Human checklist, per listing (about 5 minutes)</h3>
+  <ul>
+    <li>Open the official page, not a saved copy. Is the program still listed?</li>
+    <li>Does the page state the deadline with a time and time zone? Convert it once and record it.</li>
+    <li>Does the stated eligibility (country, residency, fiscal sponsor, fee) match the digest wording?</li>
+    <li>Does the application portal link work, and does it show the same round?</li>
+    <li>Is it a competition, a grant, or an investment with rights attached? Say so in the listing.</li>
+    <li>Record who checked it and when.</li>
+  </ul>
+  <div class="callout"><p><b>Unclear cases:</b> rolling programs, "periodic" calls, rounds announced only by email, and PDFs. Mark these "rolling" or "unconfirmed" and contact the funder, rather than guessing a date.</p></div>
+</section>
+
+<section>
+  <h2>6. Keeping it fresh</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Situation</th><th>Recheck</th></tr>
+    <tr><td>Open, deadline more than 30 days away</td><td>Weekly automatic check; person reconfirms at 14 days</td></tr>
+    <tr><td>Open, deadline within 14 days</td><td>Person rechecks at 14, 7 and 2 days</td></tr>
+    <tr><td>Closed, next window unknown</td><td>Monthly check; watch for the funder's announcement</td></tr>
+    <tr><td>Any change flagged by the page watcher</td><td>Same day, before the next digest</td></tr>
+  </table></div>
+  <p style="margin-top:12px">Countdowns on the site should be computed from the stored date on each page load, never typed in. The sample digest showed countdowns about two weeks out of date.</p>
+</section>
+
+<section>
+  <h2>7. Rules for publishing</h2>
+  <ul>
+    <li>Show "Last verified" and the verifier's initials on every listing.</li>
+    <li>Link to the funder's official page, not to an aggregator.</li>
+    <li>Do not call a listing "human-verified" unless the state is Verified. The sample digest currently says "Verified Oct 2026" on listings that failed this check.</li>
+    <li>Publish a correction policy: a wrong deadline gets fixed within one day and noted in the next issue.</li>
+    <li>Add a short notice that readers should confirm dates with the funder before applying.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Evidence from the first check</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Listing on Docket</th><th>Docket says</th><th>Official source (checked 13–15 Oct)</th><th>State</th></tr>
+    <tr><td>Sundance DFP Production Grant</td><td>Closes 24 Oct 2026</td><td>Last call ran 18 May – 15 Jun 2026; next window unannounced</td><td><span class="pill bad">Mismatch</span></td></tr>
+    <tr><td>ITVS Open Call</td><td>Closed 9 Oct 2026</td><td>"Not currently accepting applications"</td><td><span class="pill bad">Closed</span></td></tr>
+    <tr><td>IDA Enterprise Fund</td><td>Closes 14 Nov 2026</td><td>No 2026 deadline found; fund reported paused</td><td><span class="pill warn">Unconfirmed</span></td></tr>
+    <tr><td>BBC Storyville / Channel 4</td><td>Closed 12 Oct 2026</td><td>No joint call found; Channel 4 pitches are rolling</td><td><span class="pill warn">Unconfirmed</span></td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Build order</h2>
+  <ul>
+    <li><b>Now.</b> Keep the weekly check running. Fix the sample digest labels and the countdown logic. Add one region (the one you will cover first) to the master list.</li>
+    <li><b>Next.</b> Put the master list in a sheet with the fields above. Add page watching for each official URL.</li>
+    <li><b>Then.</b> Add extraction with quotes, and a verification queue for the person doing the checks.</li>
+    <li><b>Before charging.</b> Run two or three full verified issues and keep the evidence log.</li>
+  </ul>
+  <p style="margin-top:8px">The effort is mostly the verification step. As a rough guide, five minutes per listing means a twice-monthly issue of eight verified items takes about an hour of checking, plus rechecks. That is an estimate, not a measurement.</p>
+</section>
+
+<footer>Built from searches and page reads on 13–16 October 2026. Funder dates change often; confirm every date on the funder's own page.</footer>
+</div>

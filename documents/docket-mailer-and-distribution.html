@@ -1,0 +1,232 @@
+<title>Docket Mailer and Distribution</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+/* Layout: the mailer preview comes first, since it is what readers see; then the send process, platform choice, rules and checklist. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#161b26; --muted:#5a6272; --line:#d9dde5; --accent:#1f3a8a; --accent-soft:#e6ebf8;
+  --ok:#17663a; --ok-bg:#e1f3e8; --warn:#8a5a00; --warn-bg:#fbefd2; --bad:#9b1c1c; --bad-bg:#f9e0e0; --info:#3b4a6b; --info-bg:#e8ecf3;
+  --mail-bg:#ffffff; --mail-fg:#1a1f2b; --mail-muted:#5d6577; --mail-line:#dfe3ea; --mail-accent:#1f3a8a; --mail-tint:#eef1f8; --mail-warn:#8a5a00; --mail-warn-bg:#fbefd2;
+  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838;
+  --mail-bg:#ffffff; --mail-fg:#1a1f2b; --mail-muted:#5d6577; --mail-line:#dfe3ea; --mail-accent:#1f3a8a; --mail-tint:#eef1f8; --mail-warn:#8a5a00; --mail-warn-bg:#fbefd2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838;
+  --mail-bg:#ffffff; --mail-fg:#1a1f2b; --mail-muted:#5d6577; --mail-line:#dfe3ea; --mail-accent:#1f3a8a; --mail-tint:#eef1f8; --mail-warn:#8a5a00; --mail-warn-bg:#fbefd2; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:880px;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:12px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,38px);line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;line-height:1.25;margin:0 0 12px;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:16px 0 6px}
+p{margin:0 0 12px;max-width:68ch} .lede{font-size:18px;max-width:62ch}
+section{display:flex;flex-direction:column}
+ul,ol{margin:0 0 12px;padding-left:22px;max-width:68ch} li{margin-bottom:6px}
+.callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 16px;border-radius:4px;max-width:68ch}
+.callout p:last-child{margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ok{background:var(--ok-bg);color:var(--ok)} .warn{background:var(--warn-bg);color:var(--warn)} .bad{background:var(--bad-bg);color:var(--bad)} .info{background:var(--info-bg);color:var(--info)}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.stage{background:var(--info-bg);border-radius:8px;padding:20px 12px;display:flex;justify-content:center}
+.mail{background:var(--mail-bg);color:var(--mail-fg);width:100%;max-width:600px;border:1px solid var(--mail-line);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55}
+.mail .bar{background:var(--mail-warn-bg);color:var(--mail-warn);font-size:12px;padding:8px 20px;text-align:center}
+.mail .head{padding:22px 20px 14px;border-bottom:3px solid var(--mail-accent)}
+.mail .head b{display:block;font-family:Georgia,serif;font-size:24px}
+.mail .head span{font-size:12px;color:var(--mail-muted)}
+.mail .intro{padding:16px 20px;color:var(--mail-fg)}
+.mail .intro p{margin:0 0 8px;max-width:none}
+.mail .sec{padding:6px 20px 2px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mail-muted);font-weight:bold}
+.mail .item{padding:12px 20px;border-top:1px solid var(--mail-line)}
+.mail .item .t{font-weight:bold;font-size:16px}
+.mail .item .tag{display:inline-block;font-size:11px;background:var(--mail-tint);color:var(--mail-accent);padding:1px 7px;border-radius:3px;margin-right:6px;font-weight:bold}
+.mail .item .d{margin:4px 0}
+.mail .item dl{margin:6px 0;display:grid;grid-template-columns:90px 1fr;gap:2px 8px;font-size:13.5px}
+.mail .item dt{color:var(--mail-muted)} .mail .item dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.mail .item a{color:var(--mail-accent)}
+.mail .chk{font-size:12px;color:var(--mail-muted);margin-top:6px}
+.mail .closed{padding:12px 20px;border-top:1px solid var(--mail-line);font-size:13.5px;color:var(--mail-muted)}
+.mail .foot{padding:16px 20px;border-top:1px solid var(--mail-line);background:var(--mail-tint);font-size:12px;color:var(--mail-muted)}
+.mail .foot p{margin:0 0 6px;max-width:none}
+.steps{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.steps div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;min-width:0;font-size:14px}
+.steps b{display:block;font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:4px}
+footer{font-size:13px;color:var(--muted)}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Docket · Mailer and distribution · 16 Oct 2026</div>
+  <h1>What a Docket email looks like, and how it gets to readers</h1>
+  <p class="lede">A sample issue built only from pages read on 16 Oct, then the monthly send process, the platform choice and the rules to follow.</p>
+</header>
+
+<section>
+  <h2>1. The monthly issue</h2>
+  <p>This is a preview of Issue 001, built from the real facts in your funder list. It is a sample and has not been sent. Nothing in it is confirmed by a person yet, and the preview says so, which is how a real issue would look before sign-off.</p>
+  <div class="stage">
+  <div class="mail">
+    <div class="bar">SAMPLE. NOT SENT. Awaiting confirmation by hand.</div>
+    <div class="head"><b>Docket Dispatch</b><span>Issue 001 · Funding calls for documentary makers · Dates read 16 Oct 2026</span></div>
+    <div class="intro">
+      <p>Six calls to watch over the next four months. Each one shows who can apply and the exact sentence the date came from. If a page does not say, we say "not stated".</p>
+      <p><b>Closing first:</b> Screen Australia First Nations Documentary Development closes in 6 days.</p>
+    </div>
+
+    <div class="sec">Closing soon</div>
+    <div class="item">
+      <div class="t"><span class="tag">AUSTRALIA</span>Screen Australia: First Nations Documentary Development</div>
+      <dl><dt>Deadline</dt><dd>5pm Thursday 22 October 2026 (time zone not stated)</dd>
+          <dt>Who can apply</dt><dd>Not stated on the deadlines page. Read the guidelines.</dd>
+          <dt>Apply</dt><dd><a href="https://screenaustraliafunding.smartygrants.com.au/" target="_blank" rel="noopener">Funding portal</a> · <a href="https://www.screenaustralia.gov.au/fund/first-nations-documentary-development/" target="_blank" rel="noopener">Program page</a></dd></dl>
+      <div class="chk">Page read 16 Oct · Confirmed by hand: not yet</div>
+    </div>
+
+    <div class="sec">Opening soon</div>
+    <div class="item">
+      <div class="t"><span class="tag">UK</span>BFI Doc Society Development Fund, Round 2</div>
+      <dl><dt>Window</dt><dd>Opens 1pm Mon 9 Nov 2026. Closes 1pm Mon 21 Dec 2026.</dd>
+          <dt>Amount</dt><dd>£25,000 to £40,000, non-recoupable</dd>
+          <dt>Who can apply</dt><dd>UK filmmakers; early to late development</dd>
+          <dt>Apply</dt><dd><a href="https://bfi.docsociety.org/funds/features-development/" target="_blank" rel="noopener">Fund page</a>. Complete the <a href="https://ds.bfi.org.uk/entrant/dashboard.php" target="_blank" rel="noopener">Diversity Standards</a> form first.</dd></dl>
+      <div class="chk">Page read 16 Oct · Confirmed by hand: not yet</div>
+    </div>
+    <div class="item">
+      <div class="t"><span class="tag">NEW ZEALAND</span>NZ Film Commission: Feature Film Production Investment</div>
+      <dl><dt>Deadline</dt><dd>1pm Monday 9 November 2026</dd>
+          <dt>Amount</dt><dd>Up to $2.5 million equity; grants up to $500,000</dd>
+          <dt>Who can apply</dt><dd>NZ lead producer (citizen or permanent resident). Documentary eligibility: not stated.</dd>
+          <dt>Apply</dt><dd><a href="https://funding.nzfilm.co.nz/" target="_blank" rel="noopener">NZFC portal</a> · <a href="https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment" target="_blank" rel="noopener">Program page</a></dd></dl>
+      <div class="chk">Page read 16 Oct · Confirmed by hand: not yet</div>
+    </div>
+    <div class="item">
+      <div class="t"><span class="tag">US</span>Sundance 2027 Producers Track</div>
+      <dl><dt>Opens</dt><dd>"Application opens November 17" (year not stated on the page)</dd>
+          <dt>Programs</dt><dd>Documentary Film Program and Feature Film Program</dd>
+          <dt>Apply</dt><dd><a href="https://www.sundance.org/initiatives/producers-program/" target="_blank" rel="noopener">Producers program page</a></dd></dl>
+      <div class="chk">Page read 16 Oct · Confirmed by hand: not yet</div>
+    </div>
+
+    <div class="sec">Later</div>
+    <div class="item">
+      <div class="t"><span class="tag">US</span>IDA Pare Lorentz Documentary Fund</div>
+      <dl><dt>Status</dt><dd>"Expected to reopen in late 2026 with a new theme." No dates yet.</dd>
+          <dt>Amount</dt><dd>$95,000 in annual grants in total</dd>
+          <dt>Page</dt><dd><a href="https://documentary.org/parelorentz" target="_blank" rel="noopener">documentary.org/parelorentz</a></dd></dl>
+      <div class="chk">Page read 16 Oct · Confirmed by hand: not yet</div>
+    </div>
+    <div class="item">
+      <div class="t"><span class="tag">AUSTRALIA</span>Screen Australia: Documentary Production</div>
+      <dl><dt>Deadline</dt><dd>5pm Thursday 4 February 2027 (time zone not stated)</dd>
+          <dt>Apply</dt><dd><a href="https://www.screenaustralia.gov.au/fund/documentary-production-program/" target="_blank" rel="noopener">Program page</a></dd></dl>
+      <div class="chk">Page read 16 Oct · Confirmed by hand: not yet</div>
+    </div>
+
+    <div class="sec">Recently closed, so you don't chase them</div>
+    <div class="closed">Sundance Documentary Fund (closed 15 Jun) · ITVS Open Call (not accepting) · Telefilm Theatrical Documentary (closed 2 Apr) · Berkeley Film Foundation (closed 13 Apr)</div>
+
+    <div class="foot">
+      <p><b>Corrections:</b> none this issue.</p>
+      <p>Dates change. Always confirm on the funder's own page before applying. Reply to this email if something is wrong and we will fix it.</p>
+      <p>Docket Dispatch · [your postal address] · <u>Unsubscribe</u> · <u>Manage subscription</u></p>
+    </div>
+  </div>
+  </div>
+  <p class="note">The "Closing soon" order, region tags and "Who can apply" line exist so readers outside a funder's country can skip it fast. Items whose eligibility the page does not state say so, not guess.</p>
+</section>
+
+<section>
+  <h2>2. Other emails</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Email</th><th>When</th><th>What it holds</th></tr>
+    <tr><td>Welcome</td><td>Right after confirming the address</td><td>What to expect and when, how items are checked, a link to the last issue, a reply-to address that is read</td></tr>
+    <tr><td>Monthly issue</td><td>Once a month</td><td>The layout above</td></tr>
+    <tr><td>Closing-soon alert</td><td>Only when a checked item closes within 14 days</td><td>Three lines and a link. Skipped in months with nothing to flag</td></tr>
+    <tr><td>Correction notice</td><td>Same day a mistake is found</td><td>What was wrong, what is right, link to the funder page</td></tr>
+    <tr><td>Upgrade prompt</td><td>In issues 2 to 4, not in every issue</td><td>What paid readers get; the founding price</td></tr>
+  </table></div>
+  <h3>Free and paid</h3>
+  <p>A simple split: free readers get the monthly issue with a short list. Paid readers get the full list, closing-soon alerts and a calendar they can add to their own. I haven't tested whether readers will pay for this.</p>
+</section>
+
+<section>
+  <h2>3. How an issue gets made and sent</h2>
+  <p>Day counts are before the send day. Claude does the drafting and checking; you decide and send.</p>
+  <div class="steps">
+    <div><b>10 DAYS BEFORE</b>Claude rereads every official page in the list and flags changes and failed pages</div>
+    <div><b>7 DAYS</b>Claude drafts each item with its quoted sentence and who-can-apply line. Items it cannot support are left out</div>
+    <div><b>5 DAYS</b>You check each item against the funder's page. Only checked items stay marked as checked</div>
+    <div><b>3 DAYS</b>Claude assembles the email; you read it and send a test to yourself</div>
+    <div><b>2 DAYS</b>Every link is clicked. Mail previews checked on phone and desktop</div>
+    <div><b>1 DAY</b>Items closing within 14 days are read again</div>
+    <div><b>SEND DAY</b>You press send. Nothing sends automatically</div>
+    <div><b>AFTER</b>Fix errors the same day. Review replies, unsubscribes and clicks after a week</div>
+  </div>
+  <p class="note" style="margin-top:12px">Today the pieces exist as files and scheduled checks. No newsletter platform is connected to Claude, so drafts live in the project folder until you paste or import them.</p>
+</section>
+
+<section>
+  <h2>4. Choosing where to send from</h2>
+  <p>General guidance from what I know of these tools. I haven't checked current prices or limits, so confirm them before you choose.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Platform type</th><th>Good for</th><th>Watch for</th></tr>
+    <tr><td>Substack</td><td>Fastest start, built-in paid subscriptions, readers can discover you</td><td>Takes a percentage of paid revenue; less control over design and automation</td></tr>
+    <tr><td>Beehiiv</td><td>Growth tools, referral program, paid tiers</td><td>Some features sit on higher plans</td></tr>
+    <tr><td>Buttondown</td><td>Plain, markdown-based, has an interface for automation, so drafts could be created by script</td><td>Smaller audience tools; you bring your own readers</td></tr>
+    <tr><td>Ghost</td><td>Your own site and list; low revenue cut</td><td>More setup, and you manage deliverability settings</td></tr>
+  </table></div>
+  <h3>What to check before choosing</h3>
+  <ul>
+    <li>You can export your full reader list at any time. You own the list.</li>
+    <li>It supports paid tiers and a free tier, and a custom sending domain.</li>
+    <li>It has an interface for automation, if you want Claude to prepare drafts.</li>
+    <li>What it charges per reader and per paid transaction.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>5. Rules for sending</h2>
+  <p>This is a checklist, not legal advice. Readers will be in several countries, so ask an adviser about your own situation.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Area</th><th>What to do</th></tr>
+    <tr><td>Permission</td><td>Use double opt-in: a reader confirms by clicking a link. Only email people who signed up. Never add scraped addresses.</td></tr>
+    <tr><td>Unsubscribe</td><td>One-click link in every email, honored promptly (US law gives 10 business days at most)</td></tr>
+    <tr><td>Sender details</td><td>True sender name and subject line. A real postal address in the footer (US rule)</td></tr>
+    <tr><td>EU, UK, India readers</td><td>Clear consent, a privacy notice saying what you keep and why, and a way to delete data on request. India's data law and Europe's GDPR both apply to their residents</td></tr>
+    <tr><td>Domain setup</td><td>Send from your own domain. Set SPF, DKIM and DMARC records so mail is not marked as spam</td></tr>
+    <tr><td>Content</td><td>Plain text version included; no link shorteners; few images; no all-caps subjects</td></tr>
+    <tr><td>Payments and tax</td><td>Paid subscriptions may carry sales tax or VAT/GST in some places. Check how your platform handles it</td></tr>
+    <tr><td>Your landing page</td><td>I did not check where today's waitlist sign-ups go, or what the page tells people about how their email is used. Confirm both before sending anything.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>6. Before every send</h2>
+  <ul>
+    <li>Every item has a funder-page link and a quoted date. Nothing is blank-filled.</li>
+    <li>"Confirmed by hand" says yes only where you did check it.</li>
+    <li>Region and who-can-apply are on every item. Year and time zone appear where the page gives them.</li>
+    <li>All links were clicked within the last day and stay on the funder's domain.</li>
+    <li>The corrections line is filled in.</li>
+    <li>Test email read on phone and desktop. Unsubscribe link works.</li>
+  </ul>
+  <h3>What to watch after sending</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Measure</th><th>Why</th></tr>
+    <tr><td>Wrong listings (target 0)</td><td>The product's promise</td></tr>
+    <tr><td>Replies</td><td>Best sign readers find it useful, and where errors surface</td></tr>
+    <tr><td>Clicks to funder pages</td><td>Shows which items matter. Open rates are unreliable because of mail privacy features</td></tr>
+    <tr><td>Unsubscribes and spam complaints</td><td>Cadence or relevance problems</td></tr>
+    <tr><td>Free to paid conversion</td><td>The business test</td></tr>
+  </table></div>
+</section>
+
+<footer>Sample built from pages read 16 Oct 2026. Platform notes are general knowledge, not checked. Confirm every funder date on the funder's own page.</footer>
+</div>

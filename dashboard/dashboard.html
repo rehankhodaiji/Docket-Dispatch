@@ -1,0 +1,247 @@
+﻿<title>Docket Project Dashboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+/* Layout: status strip on top, then Funders, Leads (filterable), Regions, Automation, Documents, Timeline, Risks. Scan top to bottom. */
+:root{
+  --bg:#f4f6f9; --surface:#ffffff; --fg:#151a24; --muted:#586072; --line:#d8dde6; --accent:#1f3a8a;
+  --ok:#17663a; --ok-bg:#e1f3e8; --warn:#8a5a00; --warn-bg:#fbefd2; --bad:#9b1c1c; --bad-bg:#f9e0e0; --info:#3b4a6b; --info-bg:#e8ecf3;
+  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1219; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1219; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55;padding-inline:16px;padding-block:24px 56px}
+.wrap{max-width:1040px;margin-inline:auto;display:flex;flex-direction:column;gap:32px}
+header{display:flex;flex-direction:column;gap:6px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(26px,4.5vw,34px);line-height:1.2;margin:0}
+h2{font-family:var(--display);font-size:20px;margin:0 0 10px}
+.asof{font-size:13px;color:var(--muted);max-width:75ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;min-width:0}
+.kpi .n{font-family:var(--mono);font-size:28px;font-weight:500;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:4px}
+.kpi.bad .n{color:var(--bad)} .kpi.warn .n{color:var(--warn)} .kpi.ok .n{color:var(--ok)}
+section{display:flex;flex-direction:column}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.mono{font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.p-ok{background:var(--ok-bg);color:var(--ok)} .p-warn{background:var(--warn-bg);color:var(--warn)} .p-bad{background:var(--bad-bg);color:var(--bad)} .p-info{background:var(--info-bg);color:var(--info)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{font:500 12px var(--mono);padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.cols>div{min-width:0}
+.bar{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px}
+.bar .lab{flex:0 0 130px;min-width:0}
+.bar .track{flex:1;height:10px;background:var(--info-bg);border-radius:3px;overflow:hidden;min-width:40px}
+.bar .fill{height:100%;background:var(--accent)}
+.bar .v{flex:0 0 28px;text-align:right;font-family:var(--mono);font-size:12px}
+.risk{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--surface)}
+.risks{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.risk:last-child{border-bottom:0}
+.risk b{font-weight:600}
+.note{font-size:13px;color:var(--muted);margin-top:8px;max-width:80ch}
+a{color:var(--accent)}
+footer{font-size:12.5px;color:var(--muted)}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Docket Â· Project dashboard</div>
+  <h1>Where the Docket project stands</h1>
+  <p class="asof" id="asof"></p>
+</header>
+
+<section aria-label="Key numbers"><div class="kpis" id="kpis"></div></section>
+
+<section>
+  <h2>Funders being tracked</h2>
+  <div class="tablewrap"><table id="funders"></table></div>
+  <p class="note">Docket's own sample shows 4 listings. None matches an official open call. The registry has 5 funders because the BBC and Channel 4 entries came from one combined Docket listing.</p>
+</section>
+
+<section>
+  <h2>Open and upcoming leads</h2>
+  <div class="chips" id="chips" role="group" aria-label="Filter leads by region"></div>
+  <div class="tablewrap"><table id="leads"></table></div>
+  <p class="note">"Machine-read" means the official page was read by Claude on 16 Oct. "Unconfirmed" means a search result only. None has been confirmed by a person, so none is eligible for the digest. Region rules matter: BFI is UK filmmakers only and NZFC needs a NZ producer.</p>
+</section>
+
+<section>
+  <h2>Regions scanned</h2>
+  <div class="cols">
+    <div><div id="regionbars"></div></div>
+    <div class="tablewrap"><table id="regions"></table></div>
+  </div>
+</section>
+
+<section>
+  <h2>Automation</h2>
+  <div class="tablewrap"><table id="tasks"></table></div>
+  <p class="note">Times are IST. Tasks run only while the Claude app is open; a missed run happens at the next launch.</p>
+</section>
+
+<section>
+  <h2>Verification pipeline</h2>
+  <div class="tablewrap"><table id="pipeline"></table></div>
+</section>
+
+<section>
+  <h2>Documents</h2>
+  <div class="tablewrap"><table id="docs"></table></div>
+  <p class="note">Folder: <span class="mono" style="font-family:var(--mono)">C:\Users\Dell\Documents\Claude\Code\Docket-Project</span></p>
+</section>
+
+<section>
+  <h2>History</h2>
+  <div class="tablewrap"><table id="timeline"></table></div>
+  <p class="note">Full log with results: <span style="font-family:var(--mono)">logs\PROJECT-LOG.md</span>. Entries before 16 Oct have dates but no clock times.</p>
+</section>
+
+<section>
+  <h2>Risks and open decisions</h2>
+  <div class="risks" id="risks"></div>
+</section>
+
+<footer>Snapshot built 16 Oct 2026. It does not refresh itself; ask Claude to rebuild it. Confirm every funder date on the funder's own page.</footer>
+</div>
+
+<script>
+const D = {
+  asof: "16 Oct 2026, 12:25 IST",
+  kpis: [
+    {n:0, l:"Verified listings", c:"bad"},
+    {n:0, l:"Confirmed by a person", c:"bad"},
+    {n:"0 of 4", l:"Docket sample listings matching an official open call", c:"bad"},
+    {n:22, l:"Sources in registry (13 read on official pages)", c:""},
+    {n:10, l:"Dated leads (none confirmed by a person)", c:"warn"},
+    {n:7, l:"Regions scanned", c:""},
+    {n:3, l:"Scheduled tasks", c:"ok"},
+    {n:11, l:"Documents and records", c:""}
+  ],
+  funders: [
+    ["Sundance DFP Production Grant","Oct 24, 2026","Last window 18 May â€“ 15 Jun 2026, closed. Next not announced.","Mismatch","bad","15 Oct"],
+    ["ITVS Open Call","Oct 9, 2026","\"Not currently accepting applications\"","Mismatch","bad","15 Oct"],
+    ["IDA Enterprise Documentary Fund","Nov 14, 2026","No status or deadline on the page. Pause is not confirmed.","Unconfirmed","warn","15 Oct"],
+    ["BBC Storyville","Oct 12, 2026","Takes pitches through PiCos. No dated call. No URL on file.","Unconfirmed","warn","13 Oct"],
+    ["Channel 4 documentaries","Oct 12, 2026","Rolling pitches. First Cut 2026 closed 20 Mar.","Unconfirmed","warn","15 Oct"]
+  ],
+  leads: [
+    ["UK","BFI Doc Society Development Fund, Round 2 (UK filmmakers)","Opens 9 Nov, closes 21 Dec 2026, 1pm","Official page, read 16 Oct","Machine-read","info"],
+    ["UK","BFI Doc Society Production Fund","31 Dec 2026","Aggregator only","Unconfirmed","warn"],
+    ["Europe","Visions du RÃ©el pitching","Early 2 Nov, final 15 Dec 2026","Search result","Unconfirmed","warn"],
+    ["Europe","IDFA Bertha Fund, Europe minority co-production","15 Jan 2027","Search result","Unconfirmed","warn"],
+    ["Australia/NZ","Screen Australia First Nations Documentary Development","5pm Thu 22 Oct 2026","Official page, read 16 Oct","Machine-read","info"],
+    ["Australia/NZ","Screen Australia Documentary Production","5pm Thu 4 Feb 2027","Official page, read 16 Oct","Machine-read","info"],
+    ["Australia/NZ","NZFC Feature Film Production Investment (documentary eligibility not stated)","1pm Mon 9 Nov 2026","Official page, read 16 Oct","Machine-read","info"],
+    ["US","IDA Pare Lorentz Fund","Expected to reopen late 2026, no date","Official page, read 16 Oct","Machine-read","info"],
+    ["US","Sundance 2027 Producers Track (separate program)","Applications open 17 Nov (year not stated)","Official page, read by the 15 Oct check","Machine-read","info"]
+  ],
+  regions: [
+    ["US",1,3,"No open grant found"],
+    ["Canada",0,4,"All 2026 deadlines passed"],
+    ["UK",2,1,"Best-structured rounds"],
+    ["Europe",2,4,"Several rounds, mostly closed"],
+    ["India / South Asia",0,4,"Nothing open"],
+    ["Australia / NZ",2,3,"Development funds open"],
+    ["Middle East, Africa, LatAm",0,3,"Nothing confirmed open"]
+  ],
+  tasks: [
+    ["docket-funder-date-check","Monthly, 1st at 09:00","15 Oct 13:42","1 Nov 09:04","Reads official pages in funder-links.md and writes a date-check report"],
+    ["docket-friday-digest-draft","Monthly, 1st at 11:00","not run yet","1 Nov 11:01","Drafts a digest from verified listings only. Never sent."],
+    ["docket-closing-soon-watch","Weekdays at 08:00","16 Oct 10:10","19 Oct 08:08","Rechecks verified listings closing within 30 days. Nothing to watch yet."]
+  ],
+  pipeline: [
+    ["1 Register","Master list of funders","Started (5 funders)","info"],
+    ["2 Discover","Find new funders","Done once, by hand (regional searches)","info"],
+    ["3 Monitor","Detect page changes","Monthly task only; no page watcher","warn"],
+    ["4 Extract","Fields plus evidence quote","Partly (date-check reports)","warn"],
+    ["5 Verify","Person confirms against the official page","Not started","bad"],
+    ["6 Publish","Status and last-verified on each item","Not started","bad"],
+    ["7 Maintain","Rechecks before each deadline","Daily watch exists; no verified rows to watch","warn"]
+  ],
+  docs: [
+    ["Docket Source Method","Document","How sources are found, read and verified","https://claude.ai/artifact/XUrwybecCJjRdTQ7gLM5JP"],
+    ["Docket Verification Options","Document","Option A human-verified vs Option B Claude-verified","https://claude.ai/artifact/UZV27wMfQsCY65frXRmA2F"],
+    ["Docket Mailer and Distribution","Document","Sample Issue 001, send process, platform and sending rules","https://claude.ai/artifact/TqgdQSYB7mqKciZSyf3CP2"],
+    ["Docket Viability and Automation","Document","Money, time, scraping answer, safeguards, funder links","https://claude.ai/artifact/E7K1YbFWDA2AQK4M2RjkPQ"],
+    ["sources.csv","Data","22 sources with official and application links, status and evidence phrase","data\\sources.csv"],
+    ["check_sources.py","Script","Page checker. Not run: Python is not installed on this PC","data\\check_sources.py"],
+    ["regional-research.md","Research","7 regions, open and closed calls","documents\\regional-research.md"],
+    ["docket-walkthrough.html","Page","Walkthrough page (created outside this conversation)","documents\\docket-walkthrough.html"],
+    ["funder-links.md","Data","Funder registry (live copy in the parent folder)","data\\funder-links_snapshot-2026-10-16.md"],
+    ["verified-listings.md","Data","Verified rows; currently empty","data\\verified-listings_snapshot-2026-10-16.md"],
+    ["date-check-2026-10-15.md","Report","First automated check report","data\\date-check-2026-10-15.md"]
+  ],
+  timeline: [
+    ["12 Oct","-","Checked folder access; helped install Claude Code and fix PATH"],
+    ["12 Oct","-","Opened the Docket site in Chrome"],
+    ["13 Oct","-","Read the full page: waitlist page, 4 sample listings, stale countdowns"],
+    ["13 Oct","-","Searched official pages for 5 funders; none of the sample listings match"],
+    ["13 Oct","-","Created funder-links.md and the weekly check task"],
+    ["13 Oct","-","Assessed newsletter feasibility and information volume"],
+    ["13 Oct","-","Searched 7 regions for open calls"],
+    ["15 Oct","13:42","Scheduled check ran (changes made outside this conversation)"],
+    ["16 Oct","-","Published the Source Method and Verification Options documents"],
+    ["16 Oct","12:11","Built this project folder, log and dashboard"],
+    ["16 Oct","12:20","Read 13 official funder pages, tested 21 URLs from this PC (18 loaded), wrote the viability document"],
+    ["16 Oct","12:34","Wrote the sample mailer and distribution plan"]
+  ],
+  risks: [
+    ["High","Docket's sample digest says \"Verified Oct 2026\" on listings that do not match an official open call."],
+    ["High","No listing has been confirmed by a person, so nothing can be called human-verified."],
+    ["Med","Countdowns on the site are about two weeks out of date. They should be calculated from the stored date."],
+    ["Med","Tasks and files changed outside this conversation (schedule is monthly, two tasks added). Check this is what you want."],
+    ["Med","IDA status conflicts: earlier search said paused, the official page is silent, and contact emails differ between sources."],
+    ["Med","Python is not installed on this PC, so the page checker script has not been run or tested."],
+    ["Low","BBC PiCos portal URL is missing."],
+    ["Decision","Which region first? Docket is US-only, and the UK, Europe and Australia/NZ have the most structured rounds."],
+    ["Decision","Option A or Option B for verification, and who does the checking?"],
+    ["Decision","Keep the monthly schedule or return to weekly?"],
+    ["Med","No newsletter platform is chosen or connected. Where today's waitlist sign-ups are stored has not been checked."]
+  ]
+};
+
+const el = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pill = (t,k) => `<span class="pill p-${k}">${esc(t)}</span>`;
+const table = (head, rows) => `<tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>` + rows.map(r=>`<tr>${r.join('')}</tr>`).join('');
+const td = (v,c) => `<td${c?` class="${c}"`:''}>${v}</td>`;
+
+el('asof').textContent = `Data as of ${D.asof}. Nothing on this page has been confirmed by a person.`;
+el('kpis').innerHTML = D.kpis.map(k=>`<div class="kpi ${k.c}"><div class="n">${esc(k.n)}</div><div class="l">${esc(k.l)}</div></div>`).join('');
+
+el('funders').innerHTML = table(["Funder","Docket shows","Official source says","State","Checked"],
+  D.funders.map(f=>[td(esc(f[0])),td(esc(f[1]),'mono'),td(esc(f[2])),td(pill(f[3],f[4])),td(esc(f[5]),'mono')]));
+
+const regions = ["All", ...new Set(D.leads.map(l=>l[0]))];
+let sel = "All";
+function drawLeads(){
+  el('leads').innerHTML = table(["Region","Program","Date","Source","State"],
+    D.leads.filter(l=>sel==="All"||l[0]===sel).map(l=>[td(esc(l[0])),td(esc(l[1])),td(esc(l[2]),'mono'),td(esc(l[3])),td(pill(l[4],l[5]))]));
+  el('chips').innerHTML = regions.map(r=>`<button class="chip" type="button" aria-pressed="${r===sel}" data-r="${esc(r)}">${esc(r)}</button>`).join('');
+}
+el('chips').addEventListener('click', e=>{ const b=e.target.closest('button'); if(!b) return; sel=b.dataset.r; drawLeads(); });
+drawLeads();
+
+const maxLead = Math.max(...D.regions.map(r=>r[1]),1);
+el('regionbars').innerHTML = `<div style="font-size:12px;color:var(--muted);margin-bottom:8px">Open or upcoming leads per region</div>` +
+  D.regions.map(r=>`<div class="bar"><span class="lab">${esc(r[0])}</span><span class="track"><span class="fill" style="display:block;width:${(r[1]/maxLead)*100}%"></span></span><span class="v">${r[1]}</span></div>`).join('');
+el('regions').innerHTML = table(["Region","Leads","Closed seen (approx.)","Note"], D.regions.map(r=>[td(esc(r[0])),td(r[1],'mono'),td(r[2],'mono'),td(esc(r[3]))]));
+
+el('tasks').innerHTML = table(["Task","Schedule","Last run","Next run","What it does"], D.tasks.map(t=>[td(`<span style="font-family:var(--mono);font-size:12.5px">${esc(t[0])}</span>`),td(esc(t[1])),td(esc(t[2]),'mono'),td(esc(t[3]),'mono'),td(esc(t[4]))]));
+el('pipeline').innerHTML = table(["Stage","Purpose","Status"], D.pipeline.map(p=>[td(`<b>${esc(p[0])}</b>`),td(esc(p[1])),td(pill(p[2],p[3]))]));
+el('docs').innerHTML = table(["Name","Type","What it is","Where"], D.docs.map(d=>[td(esc(d[0])),td(esc(d[1])),td(esc(d[2])),td(d[3].startsWith('http')?`<a href="${esc(d[3])}" target="_blank" rel="noopener">Open</a>`:`<span style="font-family:var(--mono);font-size:12px">${esc(d[3])}</span>`)]));
+el('timeline').innerHTML = table(["Date","Time","What happened"], D.timeline.map(t=>[td(esc(t[0]),'mono'),td(esc(t[1]),'mono'),td(esc(t[2]))]));
+el('risks').innerHTML = D.risks.map(r=>{const k={High:'bad',Med:'warn',Low:'info',Decision:'ok'}[r[0]];return `<div class="risk">${pill(r[0],k)}<div>${esc(r[1])}</div></div>`}).join('');
+</script>
+
+

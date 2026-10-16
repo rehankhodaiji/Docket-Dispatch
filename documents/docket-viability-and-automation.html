@@ -1,0 +1,160 @@
+<title>Docket Viability and Automation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+/* Layout: one column. Verdict first, then money, time, how data is gathered, safeguards, link directory. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#161b26; --muted:#5a6272; --line:#d9dde5; --accent:#1f3a8a; --accent-soft:#e6ebf8;
+  --ok:#17663a; --ok-bg:#e1f3e8; --warn:#8a5a00; --warn-bg:#fbefd2; --bad:#9b1c1c; --bad-bg:#f9e0e0; --info:#3b4a6b; --info-bg:#e8ecf3;
+  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:880px;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:12px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,38px);line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;line-height:1.25;margin:0 0 12px;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:16px 0 6px}
+p{margin:0 0 12px;max-width:68ch} .lede{font-size:18px;max-width:62ch}
+section{display:flex;flex-direction:column}
+ul{margin:0 0 12px;padding-left:20px;max-width:68ch} li{margin-bottom:6px}
+.callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 16px;border-radius:4px;max-width:68ch}
+.callout p:last-child{margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.ok{background:var(--ok-bg);color:var(--ok)} .warn{background:var(--warn-bg);color:var(--warn)} .bad{background:var(--bad-bg);color:var(--bad)} .info{background:var(--info-bg);color:var(--info)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.two>div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px;min-width:0}
+a{color:var(--accent);word-break:break-word}
+footer{font-size:13px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+</style>
+<div class="wrap">
+<header>
+  <div class="kicker">Docket · Viability and automation · 16 Oct 2026</div>
+  <h1>Can Docket run as a monthly paid newsletter, and how to research it without mistakes</h1>
+  <p class="lede">Short answer: yes as a low-cost side project, not yet as an income. Your hours and your audience size limit it, not tools or cost.</p>
+</header>
+
+<section>
+  <h2>Verdict</h2>
+  <div class="callout">
+    <p><b>Viable</b> as a modest, honest niche newsletter if you cover more than one region or pick one with regular funding rounds. <b>Weak</b> as a US-only product this month: I found almost no US call that is open now. <b>Sustainable</b> for as long as you can give about 8 to 10 hours a month, because cash costs are small. The hard part is reaching enough readers, which is untested.</p>
+  </div>
+</section>
+
+<section>
+  <h2>1. The money</h2>
+  <p>Assumptions: founding price $79 a year, public price $180 a year, and about 13% lost to platform and card fees (check your platform's current fees). These are planning numbers, not forecasts.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Paying readers</th><th>Per year at $79</th><th>Per year at $180</th><th>Free readers needed at 3% paying</th><th>At 5%</th></tr>
+    <tr><td class="n">50</td><td class="n">$3,437</td><td class="n">$7,830</td><td class="n">about 1,700</td><td class="n">1,000</td></tr>
+    <tr><td class="n">100</td><td class="n">$6,873</td><td class="n">$15,660</td><td class="n">about 3,300</td><td class="n">2,000</td></tr>
+    <tr><td class="n">250</td><td class="n">$17,183</td><td class="n">$39,150</td><td class="n">about 8,300</td><td class="n">5,000</td></tr>
+    <tr><td class="n">500</td><td class="n">$34,365</td><td class="n">$78,300</td><td class="n">about 16,700</td><td class="n">10,000</td></tr>
+  </table></div>
+  <p class="note">Amounts are after fees. The 3% to 5% free-to-paid rate is a common rule of thumb for newsletters, not a measured rate for documentary filmmakers. The size of the US documentary audience is not known to me.</p>
+  <h3>Costs</h3>
+  <p>Domain, newsletter platform and any automation tool are likely well under $100 a month at the start. Check your current Claude plan limits, since automated runs use them. The real cost is your time.</p>
+</section>
+
+<section>
+  <h2>2. Your time and how long it lasts</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Phase</th><th>Hours a month (my estimate)</th><th>What fills them</th></tr>
+    <tr><td>Build, months 1 to 3</td><td class="n">20 to 30</td><td>Funder list, checks, first issues, first readers</td></tr>
+    <tr><td>Steady state</td><td class="n">8 to 10</td><td>About 2 hours verifying, 2 writing, 1 sending and replies, 3 to 5 finding readers</td></tr>
+  </table></div>
+  <h3>A six-month trial with stop or go points</h3>
+  <p>These thresholds are my proposals. Change them to suit you.</p>
+  <div class="tablewrap"><table>
+    <tr><th>When</th><th>Do</th><th>Continue if</th></tr>
+    <tr><td>Months 1 to 2</td><td>Build the list and send two free issues</td><td>300 or more free readers</td></tr>
+    <tr><td>Month 3</td><td>Send a third issue; open the paid founding tier</td><td>No listing was wrong in any issue</td></tr>
+    <tr><td>Month 6</td><td>Decide</td><td>25 to 40 or more paying readers, and 0 wrong-open listings</td></tr>
+    <tr><td>If not met</td><td>Keep it as a free newsletter or portfolio, or offer paid application help</td><td>-</td></tr>
+  </table></div>
+  <p style="margin-top:12px">At 100 paying readers on the $79 plan, you would earn about $573 a month after fees, which is roughly $64 an hour at 9 hours. At 50 readers it is about $32 an hour. Both depend on reaching a large enough free audience first.</p>
+</section>
+
+<section>
+  <h2>3. Do you need to scrape, and from where?</h2>
+  <p>Not in the usual sense. Docket does not need to crawl the web. It needs to read a fixed list of about 25 to 60 official funder pages a month. I tested three places today.</p>
+  <div class="two">
+    <div><h3>Claude's page reader</h3><p>Worked for 13 of 22 listed sources. It failed on some with connection resets and a 403 block. Good for a monthly check, but not enough alone.</p></div>
+    <div><h3>Plain web requests from your PC</h3><p>I ran a test from your computer: 18 of 21 pages loaded. This included the Doha Film Institute page that Claude's reader could not open. Three failed: Catapult, Chicken &amp; Egg (it redirects to a new address) and the Hubert Bals Fund (403 block).</p></div>
+    <div><h3>A real browser (Claude in Chrome)</h3><p>The fallback for pages that load dates with scripts, block automatic requests, or sit behind a login. Slower, so use it only for the few that need it.</p></div>
+  </div>
+  <p style="margin-top:12px">Recommended setup: Claude's scheduled check does the first pass, your PC's checker covers its failures, and the browser handles the rest. Aggregator sites are never read as a source for dates. Before relying on any site, read its terms and robots rules, which I have not done yet. Python is not installed on your PC, so the Python checker I wrote (<code>data\check_sources.py</code>) needs Python first. Scripts are also disabled in your PowerShell, so I ran the PC test inline instead.</p>
+</section>
+
+<section>
+  <h2>4. Safeguards against silly mistakes</h2>
+  <p>Each rule stops a specific kind of error. The right column says where it stands.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Rule</th><th>Stops</th><th>Status</th></tr>
+    <tr><td>Only registered official pages can be sources; a person adds each one</td><td>Wrong or spoofed sites</td><td><span class="pill ok">In place</span></td></tr>
+    <tr><td>Every date needs a quoted sentence from the page</td><td>Made-up or misread dates</td><td><span class="pill ok">In place</span></td></tr>
+    <tr><td>Links must stay on the funder's registered domain</td><td>Bad or redirected links</td><td><span class="pill ok">In test script</span></td></tr>
+    <tr><td>Saved phrase must still be on the page</td><td>Page changed since the last read</td><td><span class="pill warn">Needs loosening</span> flagged a false alarm on BFI</td></tr>
+    <tr><td>Anything "not stated" stays blank, never guessed</td><td>Invented eligibility or times</td><td><span class="pill ok">In place</span></td></tr>
+    <tr><td>Year must be on the page; weekday must match the date</td><td>Typos and wrong years (Sundance shows "opens November 17" with no year)</td><td><span class="pill info">Planned</span></td></tr>
+    <tr><td>Region and residency rules copied exactly</td><td>Telling US readers about UK-only or NZ-only funds</td><td><span class="pill info">Planned</span></td></tr>
+    <tr><td>Change check against last month's read</td><td>Silent date moves</td><td><span class="pill info">Planned</span></td></tr>
+    <tr><td>Two independent reads must agree (page reader plus browser)</td><td>Misreads</td><td><span class="pill info">Planned</span></td></tr>
+    <tr><td>Links retested the day before sending</td><td>Dead links</td><td><span class="pill info">Planned</span></td></tr>
+    <tr><td>Known-answer test before each issue (for example ITVS must read "closed")</td><td>A broken process going unnoticed</td><td><span class="pill info">Planned</span></td></tr>
+    <tr><td>A person signs off; nothing sends or publishes by itself</td><td>Unreviewed errors going out</td><td><span class="pill ok">In place</span></td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>5. Links to funders and applications</h2>
+  <p>Read on 16 Oct 2026 unless marked. "Not stated" means the page gave no date or link. Confirm every date on the funder's own page.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Funder and program</th><th>Page says</th><th>Official page</th><th>Application</th></tr>
+    <tr><td>Sundance Documentary Fund</td><td>Closed. Window 18 May to 15 Jun 2026. Global, no fiscal sponsor needed.</td><td><a href="https://apply.sundance.org/prog/2027_documentary_fund_grant/" target="_blank" rel="noopener">apply.sundance.org</a></td><td>Same page (SurveyMonkey Apply)</td></tr>
+    <tr><td>Sundance 2027 Producers Track</td><td>"Application opens November 17" (no year)</td><td><a href="https://www.sundance.org/deadlines" target="_blank" rel="noopener">sundance.org/deadlines</a></td><td><a href="https://www.sundance.org/initiatives/producers-program/" target="_blank" rel="noopener">Producers program</a></td></tr>
+    <tr><td>ITVS Open Call</td><td>"Not currently accepting applications"</td><td><a href="https://itvs.org/funds/open-call/" target="_blank" rel="noopener">itvs.org</a></td><td>Not stated</td></tr>
+    <tr><td>IDA Pare Lorentz Fund</td><td>Expected to reopen late 2026, no date</td><td><a href="https://documentary.org/parelorentz" target="_blank" rel="noopener">documentary.org/parelorentz</a></td><td>Not stated</td></tr>
+    <tr><td>IDA Enterprise Documentary Fund</td><td>Status not stated</td><td><a href="https://www.documentary.org/enterprise/about" target="_blank" rel="noopener">documentary.org/enterprise</a></td><td>Not stated</td></tr>
+    <tr><td>IDA Logan Elevate Grant</td><td>$30,000 x3, nomination-based</td><td><a href="https://www.documentary.org/creators/funding/logan-elevate-grant" target="_blank" rel="noopener">documentary.org</a></td><td>Nomination</td></tr>
+    <tr><td>BFI Doc Society Development Fund (UK)</td><td>Round 2: 9 Nov to 21 Dec 2026, 1pm. £25,000 to £40,000. UK filmmakers.</td><td><a href="https://bfi.docsociety.org/funds/features-development/" target="_blank" rel="noopener">bfi.docsociety.org</a></td><td><a href="https://ds.bfi.org.uk/entrant/dashboard.php" target="_blank" rel="noopener">Diversity Standards first</a></td></tr>
+    <tr><td>Screen Australia First Nations Doc Development</td><td>Next deadline 5pm Thu 22 Oct 2026</td><td><a href="https://www.screenaustralia.gov.au/fund/first-nations-documentary-development/" target="_blank" rel="noopener">screenaustralia.gov.au</a></td><td><a href="https://screenaustraliafunding.smartygrants.com.au/" target="_blank" rel="noopener">Funding portal</a></td></tr>
+    <tr><td>Screen Australia Documentary Production</td><td>Next deadline 5pm Thu 4 Feb 2027</td><td><a href="https://www.screenaustralia.gov.au/fund/documentary-production-program/" target="_blank" rel="noopener">screenaustralia.gov.au</a></td><td><a href="https://screenaustraliafunding.smartygrants.com.au/" target="_blank" rel="noopener">Funding portal</a></td></tr>
+    <tr><td>NZ Film Commission, Feature Production Investment</td><td>Deadline 1pm Mon 9 Nov 2026. NZ producers. Documentary eligibility not stated.</td><td><a href="https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment" target="_blank" rel="noopener">nzfilm.co.nz</a></td><td><a href="https://funding.nzfilm.co.nz/" target="_blank" rel="noopener">NZFC portal</a></td></tr>
+    <tr><td>Telefilm Canada Theatrical Documentary</td><td>Closed 2 Apr 2026. Canadian companies.</td><td><a href="https://telefilm.ca/programmes/theatrical-documentary" target="_blank" rel="noopener">telefilm.ca</a></td><td><a href="https://telefilm.ca/en/log-in" target="_blank" rel="noopener">Dialogue portal</a></td></tr>
+    <tr><td>Berkeley Film Foundation</td><td>Closed 13 Apr 2026. East Bay residents only.</td><td><a href="https://berkeleyfilmfoundation.org/documentary-grant-program" target="_blank" rel="noopener">berkeleyfilmfoundation.org</a></td><td><a href="https://berkeleyfilmfoundation.submittable.com/submit/f9d13a6e-3555-45a0-95db-14c2253a3bf7/2026-documentary-grant-application" target="_blank" rel="noopener">Submittable</a></td></tr>
+    <tr><td>Channel 4 Documentaries</td><td>Rolling pitches, no deadline</td><td><a href="https://www.channel4.com/4producers/all-current-briefs" target="_blank" rel="noopener">channel4.com</a></td><td><a href="https://www.channel4.com/4producers/briefs/documentaries-and-factual-entertainment" target="_blank" rel="noopener">Genre brief</a></td></tr>
+  </table></div>
+  <h3>Leads not yet read on their own pages</h3>
+  <p>Film Independent (<a href="https://www.filmindependent.org/programs/applications/" target="_blank" rel="noopener">applications</a>), Hot Docs (<a href="https://hotdocs.ca/industry/submit-a-film" target="_blank" rel="noopener">film submissions, early deadline 29 Oct per a search result; a festival, not a fund</a>), <a href="https://www.catapultfilmfund.org/how-to-apply/development/" target="_blank" rel="noopener">Catapult</a>, <a href="https://chickeneggpics.org" target="_blank" rel="noopener">Chicken &amp; Egg</a>, <a href="https://www.dohafilm.com/funding-industry/funding/grants" target="_blank" rel="noopener">Doha Film Institute</a>, <a href="https://iffr.com/en/hbf-practical-info-deadlines" target="_blank" rel="noopener">Hubert Bals Fund</a>, <a href="https://www.idfa.nl" target="_blank" rel="noopener">IDFA Bertha Fund</a>, <a href="https://www.visionsdureel.ch" target="_blank" rel="noopener">Visions du Réel</a>. The BBC Storyville PiCos portal address is still missing.</p>
+</section>
+
+<section>
+  <h2>6. What a monthly issue would hold right now</h2>
+  <p>From the pages I read, the dated, open or upcoming items are few and spread across countries.</p>
+  <ul>
+    <li><b>22 Oct:</b> Screen Australia First Nations Documentary Development (Australia)</li>
+    <li><b>9 Nov:</b> NZFC production round (New Zealand; documentary eligibility not stated)</li>
+    <li><b>9 Nov to 21 Dec:</b> BFI Doc Society Development Fund, Round 2 (UK)</li>
+    <li><b>17 Nov:</b> Sundance 2027 Producers Track opens (US; year not stated on the page)</li>
+    <li><b>Late 2026, no date:</b> IDA Pare Lorentz Fund expected to reopen (US)</li>
+    <li><b>4 Feb 2027:</b> Screen Australia Documentary Production</li>
+  </ul>
+  <p>That is about six items, and only two are US. A twice-a-month or monthly US-only issue would often be this thin. Covering several regions, or adding "closing soon" alerts and an always-updated calendar, fills the gap.</p>
+  <div class="callout"><p><b>Recommendation:</b> run the six-month trial with the UK, Australia/NZ and US together, label every item with who can apply, and have a person confirm each date before it goes out. Do not claim "human-verified" until that is true.</p></div>
+</section>
+
+<footer>Pages read 16 Oct 2026. Fees, rates and hours are planning estimates. Funder dates change often; confirm every date with the funder.</footer>
+</div>
