@@ -206,10 +206,7 @@ export function SampleDigest() {
           </div>
 
           {/* Digest Bottom Banner */}
-          <div className="p-4 sm:p-5 bg-[#FAF8F3] border-t border-[#E2DBCE] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
-            <span className="text-[#5D564C]">
-              ✦ Subscribers receive 15–25 curated listings once a month.
-            </span>
+          <div className="p-4 sm:p-5 bg-[#FAF8F3] border-t border-[#E2DBCE] flex flex-col sm:flex-row sm:items-center sm:justify-end gap-3 text-xs font-mono">
             <a
               href="#signup-card"
               className="text-[#0D4952] font-semibold hover:underline flex items-center gap-1 shrink-0"
