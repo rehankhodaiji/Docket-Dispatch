@@ -72,8 +72,9 @@ export function Footer() {
 
         {/* Bottom Bar: Copyright & Quiet Disclaimers */}
         <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[11px] font-mono text-[#8C8476]">
-          <div>
-            © {new Date().getFullYear()} Docket Dispatch. All rights reserved.
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>© {new Date().getFullYear()} Docket Dispatch. All rights reserved.</span>
+            <a href="/privacy/" className="hover:text-white underline underline-offset-2">Privacy</a>
           </div>
           <div className="text-[#736B5E] max-w-xl text-left sm:text-right">
             Independent publication. Funder names, broadcaster trademarks, and program logos are the property of their respective entities and are referenced strictly for editorial identification and descriptive reporting purposes.

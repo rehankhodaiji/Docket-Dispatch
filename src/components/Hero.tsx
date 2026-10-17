@@ -73,12 +73,12 @@ export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: 
 
             {/* Subheadline with journalistic clarity */}
             <p className="text-lg sm:text-xl text-[#4A443B] font-sans leading-relaxed mb-8 max-w-2xl">
-              A monthly digest of open grants, fellowships, and broadcaster commissioning calls. Monitored automatically across 70+ film institutes, broadcast desks, and funds.
+              A monthly digest of open grants, fellowships, and broadcaster commissioning calls. Tracked across 20+ film institutes, broadcast desks, and funds.
             </p>
 
             {/* Signup Form Card (Sharp minimal corners, paper styling) */}
             <div id="signup-card" className="border-2 border-[#1A1714] bg-white p-5 sm:p-7 sharp-card shadow-[4px_4px_0px_#1A1714]">
-              {submittedThisSession || latestSubmission ? (
+              {submittedThisSession ? (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#0D4952]">
                     <span className="w-2.5 h-2.5 bg-[#0D4952] inline-block"></span>
@@ -110,7 +110,7 @@ export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: 
                       Sign up for Docket
                     </span>
                     <span className="text-xs font-mono text-[#C86A14] font-medium">
-                      From $6.58/month, billed yearly
+                      {plan === 'annual' ? 'From $6.58/month, billed yearly' : '$15/month, billed monthly'}
                     </span>
                   </div>
 
@@ -227,8 +227,8 @@ export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: 
             {/* Trade Index Box: Sources Actively Monitored */}
             <div className="border border-[#E2DBCE] bg-[#FAF8F3] p-4 sharp-card">
               <div className="flex items-center justify-between text-[11px] font-mono text-[#736B5E] border-b border-[#E8E2D5] pb-2 mb-3">
-                <span className="font-semibold uppercase text-[#1A1714]">MONITORED FUNDERS & BROADCASTERS</span>
-                <span className="text-[#0D4952]">70+ ACTIVE SOURCES</span>
+                <span className="font-semibold uppercase text-[#1A1714]">TRACKED FUNDERS & BROADCASTERS</span>
+                <span className="text-[#0D4952]">20+ SOURCES</span>
               </div>
               <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-xs font-medium text-[#2E2822]">
                 <div className="flex items-center gap-1.5">
@@ -249,19 +249,19 @@ export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: 
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-[#C86A14]"></span>
-                  <span>Netflix Non-Fiction Call</span>
+                  <span>Catapult Film Fund</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-[#C86A14]"></span>
-                  <span>National Geographic Doc</span>
+                  <span>Film Independent</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-[#C86A14]"></span>
-                  <span>CNN Films Open Submission</span>
+                  <span>Berkeley Film Foundation</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 bg-[#C86A14]"></span>
-                  <span>Channel 4 First Cut</span>
+                  <span>Channel 4 Documentaries</span>
                 </div>
               </div>
             </div>

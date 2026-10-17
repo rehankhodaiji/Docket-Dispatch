@@ -3,11 +3,11 @@ export function HowItWorks() {
     {
       num: '01',
       title: 'Automated checks watch the sources',
-      subtitle: '70+ grant portals, broadcaster commissioning portals, and guild boards',
-      body: 'Most documentary grants aren’t announced with fanfare. They appear quietly on institutional subpages, festival foundation newsletters, and obscure regional arts council PDFs. We continuously monitor every major funding window — from Sundance, IDA, and ITVS to Netflix, BBC Storyville, Catapult, and MacArthur — so nothing slips past unnoticed.',
+      subtitle: '20+ grant portals, broadcaster commissioning portals, and guild boards',
+      body: 'Most documentary grants aren’t announced with fanfare. They appear quietly on institutional subpages, festival foundation newsletters, and obscure regional arts council PDFs. We track the major funding windows — from Sundance, IDA, and ITVS to BBC Storyville, Channel 4, and Catapult — and link each one to its official page.',
       points: [
-        'Broadcaster commissioning portals (BBC, Netflix, Channel 4, CNN, NatGeo)',
-        'Major philanthropic & investigative funds (Ford JustFilms, IDA, ITVS, MacArthur)',
+        'Broadcaster commissioning portals (BBC Storyville, Channel 4)',
+        'Major philanthropic & industry funds (Sundance, IDA, ITVS, Catapult)',
         'Emerging labs, finishing funds, and international co-production treaties'
       ]
     },
@@ -30,7 +30,7 @@ export function HowItWorks() {
       points: [
         'Segmented by stage: Development, Production, Post-Production, Commissioning',
         'Direct links directly to application portals and submission guidelines',
-        'One-click add to Google Calendar or iCal so deadlines never sneak up on you'
+        'Deadlines shown with every listing so they never sneak up on you'
       ]
     }
   ];

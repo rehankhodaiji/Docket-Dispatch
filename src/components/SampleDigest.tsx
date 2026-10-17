@@ -2,6 +2,16 @@ import { useState } from 'react';
 import { SAMPLE_LISTINGS } from '../data/sampleListings';
 import { FundingListing } from '../types';
 
+// Days from today to the deadline date (e.g. 'OCT 24, 2026'). Negative once the date has passed.
+function daysUntil(deadlineDate: string): number | null {
+  const deadline = new Date(deadlineDate);
+  if (Number.isNaN(deadline.getTime())) return null;
+  deadline.setHours(0, 0, 0, 0);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.round((deadline.getTime() - today.getTime()) / 86400000);
+}
+
 export function SampleDigest() {
   const [selectedStage, setSelectedStage] = useState<string>('All');
   const [expandedId, setExpandedId] = useState<string | null>(SAMPLE_LISTINGS[0].id);
@@ -76,7 +86,16 @@ export function SampleDigest() {
           <div className="divide-y divide-[#E8E2D5]">
             {filteredListings.map((listing: FundingListing, index: number) => {
               const isExpanded = expandedId === listing.id;
-              const isClosesSoon = listing.status === 'Closes Soon';
+              const days = daysUntil(listing.deadlineDate);
+              const isClosed = days !== null && days < 0;
+              const isClosesSoon = days !== null ? !isClosed && days <= 14 : listing.status === 'Closes Soon';
+              const relative = days === null
+                ? listing.deadlineRelative
+                : isClosed
+                  ? 'Closed'
+                  : days === 0
+                    ? 'Closes today'
+                    : `Closes in ${days} day${days === 1 ? '' : 's'}`;
 
               return (
                 <article
@@ -111,7 +130,12 @@ export function SampleDigest() {
                         </span>
                         
                         {/* Status label: unboxed text with color cue */}
-                        {isClosesSoon ? (
+                        {isClosed ? (
+                          <span className="text-[#8C8476] font-semibold flex items-center gap-1.5">
+                            <span className="w-2 h-2 bg-[#8C8476] inline-block"></span>
+                            <span>CLOSED</span>
+                          </span>
+                        ) : isClosesSoon ? (
                           <span className="text-[#C86A14] font-semibold flex items-center gap-1.5">
                             <span className="w-2 h-2 bg-[#C86A14] inline-block"></span>
                             <span>CLOSES SOON</span>
@@ -139,7 +163,7 @@ export function SampleDigest() {
                       <span>STAGE: {listing.stage.toUpperCase()}</span>
                       <span aria-hidden="true" className="text-[#D8D0C2]">/</span>
                       <span className={isClosesSoon ? 'text-[#C86A14] font-medium' : 'text-[#1A1714]'}>
-                        DEADLINE: {listing.deadlineDate} ({listing.deadlineRelative})
+                        DEADLINE: {listing.deadlineDate} ({relative})
                       </span>
                       <span aria-hidden="true" className="text-[#D8D0C2]">/</span>
                       <span>DECISION: {listing.decisionTimeline}</span>

@@ -10,7 +10,7 @@ export function FAQ() {
     },
     {
       q: 'What if a listing is wrong?',
-      a: 'Every single listing links directly to the official funder page so you can inspect the guidelines at the source. However, funding bodies occasionally modify guidelines unexpectedly, experience technical outages, or close calls early when submission volume caps are met. If you ever notice a discrepancy on a funder page, one click alerts our desk. We investigate within 24 hours and publish an immediate update.'
+      a: 'Every single listing links directly to the official funder page so you can inspect the guidelines at the source. However, funding bodies occasionally modify guidelines unexpectedly, experience technical outages, or close calls early when submission volume caps are met. If you ever notice a discrepancy on a funder page, email the editor at rehan.khodaiji@gmail.com. We investigate within 24 hours and publish an immediate update.'
     },
     {
       q: 'Is this only for US filmmakers?',
