@@ -12,12 +12,13 @@ import { FounderCredibility } from './components/FounderCredibility';
 import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
-import { WaitlistSubmission } from './types';
+import { SignupSubmission, PlanId } from './types';
 
-const STORAGE_KEY = 'docket_waitlist_submissions';
+const STORAGE_KEY = 'docket_signup_submissions';
 
 export default function App() {
-  const [submissions, setSubmissions] = useState<WaitlistSubmission[]>(() => {
+  const [plan, setPlan] = useState<PlanId>('annual');
+  const [submissions, setSubmissions] = useState<SignupSubmission[]>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       return stored ? JSON.parse(stored) : [];
@@ -26,7 +27,7 @@ export default function App() {
     }
   });
 
-  const [latestSubmission, setLatestSubmission] = useState<WaitlistSubmission | null>(() => {
+  const [latestSubmission, setLatestSubmission] = useState<SignupSubmission | null>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
@@ -47,13 +48,13 @@ export default function App() {
     }
   }, [submissions]);
 
-  const handleAddSubmission = (newSub: WaitlistSubmission) => {
+  const handleAddSubmission = (newSub: SignupSubmission) => {
     setSubmissions((prev) => [...prev, newSub]);
     setLatestSubmission(newSub);
   };
 
-  const scrollToWaitlist = () => {
-    const el = document.getElementById('waitlist-card');
+  const scrollToSignup = () => {
+    const el = document.getElementById('signup-card');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       // highlight effect
@@ -69,15 +70,16 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F8F5EE] text-[#1A1714] flex flex-col font-sans selection:bg-[#E8A54E]/25 selection:text-[#1A1714]">
       {/* Masthead Navigation */}
-      <Header onJoinClick={scrollToWaitlist} />
+      <Header onJoinClick={scrollToSignup} />
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* Section 2: Hero with prominent waitlist submission */}
+        {/* Section 2: Hero with prominent signup form */}
         <Hero
           onAddSubmission={handleAddSubmission}
           latestSubmission={latestSubmission}
-          totalSubmissionsCount={submissions.length}
+          plan={plan}
+          onPlanChange={setPlan}
         />
 
         {/* Section 3: Sample Digest preview card with 4 illustrative listings */}
@@ -89,10 +91,12 @@ export default function App() {
         {/* Section 5: Founder credibility (12+ years experience BBC, NatGeo, Netflix, CNN, Channel 4) */}
         <FounderCredibility />
 
-        {/* Section 6: Pricing comparison ($15/mo public vs $79/yr founding member) */}
+        {/* Section 6: Pricing comparison ($15/mo monthly vs $79/yr annual) */}
         <Pricing
-          onSelectPlan={scrollToWaitlist}
-          totalSubmissionsCount={submissions.length}
+          onSelectPlan={(chosen) => {
+            setPlan(chosen);
+            scrollToSignup();
+          }}
         />
 
         {/* Section 7: Short FAQ (3 questions) */}

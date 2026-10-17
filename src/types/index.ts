@@ -14,11 +14,12 @@ export interface FundingListing {
   notes: string;
 }
 
-export interface WaitlistSubmission {
+export type PlanId = 'annual' | 'monthly';
+
+export interface SignupSubmission {
   email: string;
   filmmakerRole?: string;
   projectStage?: string;
+  plan: PlanId;
   submittedAt: string;
-  confirmationCode: string;
-  queuePosition: number;
 }

@@ -6,7 +6,7 @@ export function FAQ() {
   const faqs = [
     {
       q: 'Is this live yet?',
-      a: 'Docket is currently in the private early-access / waitlist stage. We are currently calibrating our source monitoring pipeline alongside an initial cohort of independent directors and line producers. Filmmakers who join the waitlist today will receive our first private beta dispatches before public launch, and their early-access pricing ($79/year) will be locked in for the lifetime of their continuous subscription.'
+      a: 'Docket is new, and you can sign up now. Choose the Annual plan ($79/year) or the Monthly plan ($15/month, $180/year) and you will receive Docket once a month. The source list and the first issues are being put together now, alongside an initial group of independent directors and line producers. The $79/year Annual rate stays the same for as long as your subscription continues.'
     },
     {
       q: 'What if a listing is wrong?',

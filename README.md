@@ -22,7 +22,7 @@ npm run build    # output in dist/
 Import this repo, Framework Preset **Vite**, build command `npm run build`, output `dist`.
 
 ## Known gaps
-- The waitlist form saves the email only in the visitor's own browser. It sends nothing to you. The confirmation code and queue position it shows are generated on the page.
+- The signup form asks for an email and a plan ($79/year or $15/month) but takes no payment and saves the email only in the visitor's own browser. It sends nothing to you. It needs a payment link and a place to store emails before it is published.
 - The page says "70+ active sources". The registry has 22, and 13 have been read on their official pages.
 - No listing has been confirmed by a person.
 

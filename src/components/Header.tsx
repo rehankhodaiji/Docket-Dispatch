@@ -15,8 +15,8 @@ export function Header({ onJoinClick }: HeaderProps) {
           <span className="hidden sm:inline">FOR US DOCUMENTARY FILMMAKERS</span>
         </div>
         <div className="flex items-center gap-3 shrink-0 tabular-nums">
-          <span className="hidden md:inline">EDITION: EARLY ACCESS VOL. I</span>
-          <span className="text-[#C86A14] font-medium">● 32 FOUNDING SPOTS REMAIN</span>
+          <span className="hidden md:inline">EDITION: VOL. I</span>
+          <span className="text-[#C86A14] font-medium">● $79/YR OR $15/MO</span>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ export function Header({ onJoinClick }: HeaderProps) {
             onClick={onJoinClick}
             className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#0D4952] hover:bg-[#08353C] transition-colors sharp-card shadow-xs whitespace-nowrap shrink-0 cursor-pointer"
           >
-            Join Waitlist
+            Sign Up
           </button>
         </div>
       </div>

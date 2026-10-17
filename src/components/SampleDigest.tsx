@@ -211,10 +211,10 @@ export function SampleDigest() {
               ✦ Subscribers receive 15–25 curated listings once a month.
             </span>
             <a
-              href="#waitlist-card"
+              href="#signup-card"
               className="text-[#0D4952] font-semibold hover:underline flex items-center gap-1 shrink-0"
             >
-              Reserve founding access to full monthly edition →
+              Sign up for the full monthly edition →
             </a>
           </div>
 

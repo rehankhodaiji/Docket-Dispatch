@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { WaitlistSubmission } from '../types';
+import { SignupSubmission, PlanId } from '../types';
 import fieldImg from '../assets/images/doc_editorial_field_1790590177027.jpg';
 
 interface HeroProps {
-  onAddSubmission: (submission: WaitlistSubmission) => void;
-  latestSubmission: WaitlistSubmission | null;
-  totalSubmissionsCount: number;
+  onAddSubmission: (submission: SignupSubmission) => void;
+  latestSubmission: SignupSubmission | null;
+  plan: PlanId;
+  onPlanChange: (plan: PlanId) => void;
 }
 
-export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount }: HeroProps) {
+const PLAN_LABEL: Record<PlanId, string> = {
+  annual: 'Annual, $79/year',
+  monthly: 'Monthly, $15/month ($180/year)',
+};
+const PLAN_PRICE: Record<PlanId, string> = { annual: '$79/yr', monthly: '$15/mo' };
+
+export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: HeroProps) {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('Director');
   const [submittedThisSession, setSubmittedThisSession] = useState(false);
@@ -31,20 +38,16 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
       return;
     }
 
-    const newCode = `DKT-${String(totalSubmissionsCount + 69).padStart(3, '0')}`;
-    const newSubmission: WaitlistSubmission = {
+    const newSubmission: SignupSubmission = {
       email: cleanEmail,
       filmmakerRole: role,
+      plan,
       submittedAt: new Date().toISOString(),
-      confirmationCode: newCode,
-      queuePosition: totalSubmissionsCount + 69,
     };
 
     onAddSubmission(newSubmission);
     setSubmittedThisSession(true);
   };
-
-  const remainingSpots = Math.max(0, 100 - (totalSubmissionsCount + 68));
 
   return (
     <section className="relative pt-8 pb-14 sm:pt-14 sm:pb-20 border-b border-[#E2DBCE] bg-[#F8F5EE]">
@@ -73,23 +76,22 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
               A monthly digest of open grants, fellowships, and broadcaster commissioning calls. Monitored automatically across 70+ film institutes, broadcast desks, and funds.
             </p>
 
-            {/* Waitlist Form Card (Sharp minimal corners, paper styling) */}
-            <div id="waitlist-card" className="border-2 border-[#1A1714] bg-white p-5 sm:p-7 sharp-card shadow-[4px_4px_0px_#1A1714]">
+            {/* Signup Form Card (Sharp minimal corners, paper styling) */}
+            <div id="signup-card" className="border-2 border-[#1A1714] bg-white p-5 sm:p-7 sharp-card shadow-[4px_4px_0px_#1A1714]">
               {submittedThisSession || latestSubmission ? (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#0D4952]">
                     <span className="w-2.5 h-2.5 bg-[#0D4952] inline-block"></span>
-                    <span>WAITLIST ENROLLMENT CONFIRMED</span>
+                    <span>SIGNUP RECEIVED</span>
                   </div>
                   <h3 className="text-xl font-serif font-bold text-[#1A1714]">
-                    You’re on the priority docket.
+                    You’re signed up.
                   </h3>
                   <p className="text-sm text-[#4A443B] leading-relaxed">
-                    We reserved your spot for <span className="font-semibold text-[#1A1714]">{latestSubmission?.email || email}</span> as Founding Member #{latestSubmission?.queuePosition || (totalSubmissionsCount + 68)}. 
-                    Your locked-in $79/year early-access rate is recorded.
+                    Thanks, <span className="font-semibold text-[#1A1714]">{latestSubmission?.email || email}</span>.
+                    Plan: {PLAN_LABEL[latestSubmission?.plan || plan]}.
                   </p>
-                  <div className="pt-2 text-xs font-mono text-[#736B5E] border-t border-[#E8E2D5] flex items-center justify-between">
-                    <span>RECORD ID: {latestSubmission?.confirmationCode || 'DKT-069'}</span>
+                  <div className="pt-2 text-xs font-mono text-[#736B5E] border-t border-[#E8E2D5] flex items-center justify-end">
                     <button
                       onClick={() => {
                         setSubmittedThisSession(false);
@@ -97,7 +99,7 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
                       }}
                       className="text-[#C86A14] hover:underline font-semibold cursor-pointer"
                     >
-                      Enroll another email
+                      Sign up another email
                     </button>
                   </div>
                 </div>
@@ -105,10 +107,10 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-[#E8E2D5] pb-3">
                     <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#1A1714]">
-                      Join Early Access Waitlist
+                      Sign up for Docket
                     </span>
                     <span className="text-xs font-mono text-[#C86A14] font-medium">
-                      {remainingSpots} of 100 Founding Member spots remaining
+                      From $6.58/month, billed yearly
                     </span>
                   </div>
 
@@ -148,6 +150,21 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
                     </div>
                   </div>
 
+                  <div>
+                    <label htmlFor="plan" className="block text-xs font-mono uppercase text-[#736B5E] mb-1">
+                      Plan
+                    </label>
+                    <select
+                      id="plan"
+                      value={plan}
+                      onChange={(e) => onPlanChange(e.target.value as PlanId)}
+                      className="w-full px-3 py-2.5 text-sm bg-[#FAF8F3] border border-[#CEC3B0] text-[#1A1714] focus:outline-none focus:border-[#0D4952] focus:bg-white sharp-card"
+                    >
+                      <option value="annual">{PLAN_LABEL.annual}</option>
+                      <option value="monthly">{PLAN_LABEL.monthly}</option>
+                    </select>
+                  </div>
+
                   {validationError && (
                     <p className="text-xs font-mono text-[#B91C1C]">{validationError}</p>
                   )}
@@ -157,10 +174,10 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
                       type="submit"
                       className="w-full sm:w-auto px-6 py-3 text-xs font-mono uppercase tracking-wider font-semibold text-white bg-[#0D4952] hover:bg-[#073339] transition-colors sharp-card shadow-xs cursor-pointer text-center"
                     >
-                      Join the Waitlist & Secure $79/yr Rate
+                      Sign up · {PLAN_PRICE[plan]}
                     </button>
                     <span className="text-[11px] font-mono text-[#736B5E]">
-                      Zero spam · No card required today · Delivered monthly
+                      Zero spam · Billed {plan === 'annual' ? 'yearly' : 'monthly'} · Delivered once a month
                     </span>
                   </div>
                 </form>
@@ -175,7 +192,7 @@ export function Hero({ onAddSubmission, latestSubmission, totalSubmissionsCount 
               <span aria-hidden="true" className="text-[#CEC3B0]">·</span>
               <span>US-eligible funds only</span>
               <span aria-hidden="true" className="text-[#CEC3B0]">·</span>
-              <span className="text-[#C86A14]">First 100 save 56% for life</span>
+              <span className="text-[#C86A14]">Annual plan saves 56%</span>
             </div>
           </div>
 

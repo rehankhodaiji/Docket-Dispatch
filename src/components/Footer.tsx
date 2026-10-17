@@ -40,7 +40,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="#pricing" className="hover:text-white transition-colors">
-                  Founding Member Tier
+                  Plans & Pricing
                 </a>
               </li>
               <li>
