@@ -1,4 +1,4 @@
-﻿# Docket Dispatch
+# Docket Dispatch
 
 The Docket landing page (built in Google AI Studio) plus the project notes, in one repository. Last updated 2026-10-16.
 
@@ -23,7 +23,7 @@ Import this repo, Framework Preset **Vite**, build command `npm run build`, outp
 
 ## Known gaps
 - The signup form asks for an email and a plan ($79/year or $15/month) but takes no payment and saves the email only in the visitor's own browser. It sends nothing to you. It needs a payment link and a place to store emails before it is published.
-- The page says "70+ active sources". The registry has 22, and 13 have been read on their official pages.
+- The page says "20+ sources". The registry has 22, and 15 have been read on their official pages.
 - No listing has been confirmed by a person.
 
 ## Rules

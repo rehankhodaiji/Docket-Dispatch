@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docket Six-Month Roadmap and Standard Issue</title>
+<link rel="stylesheet" href="../theme.css">
+<style>
+/* Order: the answer on issue size, the standard mail with a live preview, the funder repository, then the month-by-month roadmap and the decision points. */
+.wrap{max-width:900px;margin-inline:auto;padding:36px 16px 80px;display:flex;flex-direction:column;gap:38px}
+h1{font-size:clamp(30px,5.4vw,42px);line-height:1.12;margin:6px 0 10px;text-wrap:balance}
+h2{font-size:26px;margin:0 0 8px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{font-size:16px;line-height:1.65;color:#2E2822;max-width:70ch}
+p{margin:0 0 12px} ul,ol{margin:0 0 12px;padding-left:22px} li{margin-bottom:5px}
+.kicker{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#C86A14}
+.lede{font-size:18px;color:#4A443B}
+.answer{background:#E8F2F3;border-left:4px solid #0D4952;padding:16px 18px;max-width:70ch}
+.answer b.big{display:block;font:600 34px/1.1 var(--display);color:#0D4952;margin-bottom:4px}
+.warn{background:#FBF2E5;border:1px solid #EBD9BC;color:#6F4108;padding:12px 14px;font-size:14.5px;max-width:70ch}
+.tablewrap{overflow-x:auto;border:1px solid #E2DBCE;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #E2DBCE;vertical-align:top}
+th{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#736B5E;background:#F8F5EE;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hl td{background:#E8F2F3;font-weight:600}
+.preview{border:1px solid #CEC3B0;background:#fff}
+.preview iframe{width:100%;height:760px;border:0;display:block}
+.cap{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#736B5E;padding:8px 12px;border-bottom:1px solid #E2DBCE;background:#F8F5EE}
+pre{margin:0;padding:14px;background:#fff;border:1px solid #E2DBCE;overflow-x:auto;font-size:13px;line-height:1.55;white-space:pre-wrap}
+.who{font:500 10.5px var(--mono);padding:1px 6px;border:1px solid #CEC3B0;color:#4A443B;border-radius:2px}
+footer{font-size:13px;color:#736B5E}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="Site"><span><a href="/">The Docket Dispatch</a><span class="sep">/</span><a href="/project/">Project workspace</a></span><span class="right"><a href="/">Back to Docket</a></span></nav>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Docket · Plan · 17 Oct 2026</div>
+  <h1>Six-month roadmap, the funder repository, and one standard monthly mail</h1>
+  <p class="lede">Covers November 2026 to April 2027. Built so one person can run it in about 9 to 10 hours a month.</p>
+</header>
+
+<section>
+  <h2>1. How many listings per issue</h2>
+  <div class="answer">
+    <b class="big">8 to 12, aim for 10</b>
+    Never fewer than 6 and never more than 12 dated calls, plus up to 3 on a watchlist and up to 5 recently closed names. The mail generator refuses to build anything outside those limits.
+  </div>
+  <h3>Why 10, and not more</h3>
+  <p>These figures are my planning estimates. Replace them with your own after two issues by timing yourself.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Calls in the issue</th><th>Time on the calls</th><th>Fixed monthly work</th><th>Total a month</th></tr>
+    <tr><td class="n">6</td><td class="n">1.3 h</td><td class="n">7 h</td><td class="n">8.3 h</td></tr>
+    <tr class="hl"><td class="n">10</td><td class="n">2.2 h</td><td class="n">7 h</td><td class="n">9.2 h</td></tr>
+    <tr><td class="n">12</td><td class="n">2.6 h</td><td class="n">7 h</td><td class="n">9.6 h</td></tr>
+    <tr><td class="n">20</td><td class="n">4.3 h</td><td class="n">7 h</td><td class="n">11.3 h</td></tr>
+  </table></div>
+  <p class="warn" style="margin-top:10px">Assumptions: 13 minutes per call (6 to find and read the funder's page, 4 to write the card, 3 to recheck before sending). Fixed work: about 1.5 h assembling and testing, 1 h sending and replying, 1.5 h keeping the funder list current, and 3 h finding readers.</p>
+  <h3>What this tells you</h3>
+  <ul>
+    <li><b>The fixed work is most of your time.</b> Going from 10 to 20 calls costs about 2 extra hours. So the issue size is not set by your hours.</li>
+    <li><b>It is set by supply and by the reader.</b> Real dated calls are limited (see section 4), and 10 is about what can be read in five minutes, which the site promises.</li>
+    <li><b>Padding hurts more than a short issue.</b> A reader who sees closed or vague entries stops trusting the dates. Better a clean 6 than a stretched 12.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>2. The standard mail</h2>
+  <p>Every issue is generated from one template and one data file, so it always looks and behaves the same. To make issue 2, copy <code>emails/issues/issue-001.json</code> to <code>issue-002.json</code>, replace the listings, and run <code>node emails/build_issue.cjs issues/issue-002.json</code>.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Part</th><th>Fixed rule</th></tr>
+    <tr><td>Subject</td><td>Docket · {Month Year}: {N} calls to watch</td></tr>
+    <tr><td>Opening</td><td>Two sentences and a count for each section</td></tr>
+    <tr><td>Section order</td><td>Closing soon (deadline within 21 days of sending), Open now (open or rolling), Opening soon (within 60 days), On the calendar (dated, further away), Watchlist (no date yet, max 3)</td></tr>
+    <tr><td>Call cap</td><td>Up to 12 across the first four sections. A section with none is left out, never padded.</td></tr>
+    <tr><td>The card</td><td>Same six fields in the same order for every call: amount, deadline, who can apply, apply link, plus the funder, program, region and stage</td></tr>
+    <tr><td>Dates</td><td>Weekday, date, time and time zone exactly as the funder gives them. "Not stated" when the page does not say. Never guessed.</td></tr>
+    <tr><td>Proof line</td><td>"Page read {date}" and whether a person has confirmed it. The generator warns if the read date is more than 7 days before sending.</td></tr>
+    <tr><td>Closing section</td><td>"Recently closed", names only, max 5</td></tr>
+    <tr><td>Footer</td><td>Corrections line, "dates change" note, privacy, unsubscribe, postal address</td></tr>
+  </table></div>
+  <h3>Five standard emails</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Email</th><th>When</th><th>Built how</th></tr>
+    <tr><td>Welcome</td><td>On signup</td><td><a href="../emails/welcome-email.html">Template</a>. Placeholders filled by your email tool.</td></tr>
+    <tr><td>Monthly issue</td><td>First Tuesday, 9:00 US Eastern</td><td>Generated from the data file</td></tr>
+    <tr><td>Correction notice</td><td>Same day a mistake is found</td><td>Three lines: what was wrong, what is right, the link</td></tr>
+    <tr><td>Payment receipt</td><td>On each payment</td><td>Sent by the payment provider, not by you</td></tr>
+    <tr><td>Closing-soon alert</td><td>From month 4, only if worth it</td><td>Three lines and a link. At most one a week.</td></tr>
+  </table></div>
+  <h3>What the mail looks like</h3>
+  <p>This is Issue 001 built from your real funder list. It is a sample: the pages were read on 16 Oct 2026 and each date must be rechecked and confirmed by hand before sending. <a href="../emails/issue-001.html">Open it full size</a>.</p>
+  <div class="preview"><div class="cap">Issue 001 · sample · scroll inside the frame</div><iframe src="../emails/issue-001.html" title="Sample Issue 001"></iframe></div>
+  <p style="margin-top:12px">The welcome email is here: <a href="../emails/welcome-email.html">welcome-email.html</a> and a plain-text version, <a href="../emails/welcome-email.txt">welcome-email.txt</a>. Fill in six placeholders before sending (first name, plan, first issue date, manage-subscription link, unsubscribe link, postal address). The "Tell us what to track" block is for Annual readers only.</p>
+</section>
+
+<section>
+  <h2>3. The funder repository</h2>
+  <p>The list behind the mail is <code>data/sources.csv</code>: 22 entries today, 15 of them read on the funder\'s own page on the funder's own page. Every entry carries the official page, the application link, the status and date text copied from the page, a phrase to detect changes, and the date it was read.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Tier</th><th>What goes in it</th><th>How often to recheck</th></tr>
+    <tr><td>A</td><td>Funders with a round opening or closing in the next 90 days (about 20 to 25)</td><td>Monthly, plus once more in the week before sending</td></tr>
+    <tr><td>B</td><td>Funders with a round expected later in the year</td><td>Every quarter, and when the funder announces</td></tr>
+    <tr><td>C</td><td>Rolling or paused programs, kept on the watchlist</td><td>Every two months</td></tr>
+  </table></div>
+  <h3>Growth targets</h3>
+  <div class="tablewrap"><table>
+    <tr><th>By end of</th><th>Funders in the list</th><th>All read on their own page</th></tr>
+    <tr><td>Oct 2026 (now)</td><td class="n">22</td><td class="n">15</td></tr>
+    <tr><td>Nov</td><td class="n">30</td><td class="n">30</td></tr>
+    <tr><td>Dec</td><td class="n">40</td><td class="n">40</td></tr>
+    <tr><td>Jan</td><td class="n">50</td><td class="n">50</td></tr>
+    <tr><td>Feb</td><td class="n">60</td><td class="n">60</td></tr>
+    <tr><td>Mar</td><td class="n">70</td><td class="n">70</td></tr>
+    <tr><td>Apr 2027</td><td class="n">80</td><td class="n">80</td></tr>
+  </table></div>
+  <p class="warn" style="margin-top:10px">My reasoning, an estimate: a funder opens about 1.5 rounds a year, so 80 funders give roughly 10 dated calls a month. That is what 10 per issue needs. With today's 22, you can expect only 3 to 5 dated calls a month, so the first issues will be short.</p>
+  <h3>What the list says about the next six months</h3>
+  <p>Dates are from pages I read on 16 Oct 2026 unless marked "expected", which means it happened this time last year and is not announced.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Month</th><th>Known dates</th></tr>
+    <tr><td>Nov 2026</td><td>NZFC production round closes 9 Nov. BFI Doc Society Development Round 2 opens 9 Nov. Sundance Producers Track opens 17 Nov. Visions du R&eacute;el early deadline 2 Nov (not yet read).</td></tr>
+    <tr><td>Dec 2026</td><td>Visions du R&eacute;el final deadline 15 Dec (not yet read). BFI Round 2 closes 21 Dec. IDA Pare Lorentz Fund expected to reopen late 2026, no date.</td></tr>
+    <tr><td>Jan 2027</td><td>IDFA Bertha Fund Europe minority co-production 15 Jan (not yet read).</td></tr>
+    <tr><td>Feb 2027</td><td>Screen Australia Documentary Production closes 4 Feb.</td></tr>
+    <tr><td>Mar 2027</td><td>Expected: Telefilm Theatrical Documentary opens (closed 2 Apr in 2026).</td></tr>
+    <tr><td>Apr 2027</td><td>Expected: Berkeley Film Foundation deadline (13 Apr in 2026). Hot Docs festival 23 Apr to 2 May.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>4. The six-month roadmap</h2>
+  <p>Send day: the first Tuesday of the month. Each cycle runs backwards from it (section 5).</p>
+  <div class="tablewrap"><table>
+    <tr><th>When</th><th>Goal</th><th>What gets done</th><th>Check at the end</th></tr>
+    <tr><td>Now to 31 Oct</td><td>Ready to take a first payment</td><td>
+      <ul style="margin:0;padding-left:18px">
+        <li><span class="who">YOU</span> Choose a payment provider, set it up and take a test payment (see the Domain and Payments Guide)</li>
+        <li><span class="who">YOU</span> Pick an email tool, set the welcome email, add the postal address</li>
+        <li><span class="who">YOU</span> Decide the refund terms; <span class="who">CLAUDE</span> drafts the terms page</li>
+        <li><span class="who">CLAUDE</span> Wire the signup buttons to the payment provider</li>
+        <li><span class="who">CLAUDE</span> Read the remaining funder pages: list at 30</li>
+      </ul></td><td>A test payment works end to end. Signups reach you.</td></tr>
+    <tr><td>Nov 2026<br>Issue 001 on Tue 3 Nov</td><td>First real issue</td><td>Re-read every page, confirm each date by hand, build, send to yourself, then send. List at 30.</td><td>Zero wrong listings. Hours logged for each task.</td></tr>
+    <tr><td>Dec 2026<br>Issue 002 on Tue 1 Dec</td><td>Repeat cleanly</td><td>Timing from issue 1 replaces my estimates. List at 40. Write down every correction you had to make.</td><td>Total hours 10 or less. Still zero wrong listings.</td></tr>
+    <tr><td>Jan 2027<br>Issue 003 on Tue 5 Jan</td><td>Checkpoint 1</td><td>List at 50. Read your numbers: signups, cancellations, replies, hours. Decide continue, change or stop (section 7).</td><td>Decision written in the project log.</td></tr>
+    <tr><td>Feb 2027<br>Issue 004 on Tue 2 Feb</td><td>Cut the checking time</td><td>Only after three clean issues: have Claude do the first read of each page and you confirm a sample. List at 60. Start the optional closing-soon alert.</td><td>Hours drop. Errors stay at zero.</td></tr>
+    <tr><td>Mar 2027<br>Issue 005 on Tue 2 Mar</td><td>Grow readers</td><td>List at 70. Spend the saved hours finding readers: documentary groups, fiscal sponsors, film schools.</td><td>Signups per month rising.</td></tr>
+    <tr><td>Apr 2027<br>Issue 006 on Tue 6 Apr</td><td>Checkpoint 2</td><td>List at 80. Review six issues of data. Decide on a second region or another product (section 7).</td><td>Decision written in the project log.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>5. The monthly cycle</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Days before the Tuesday send</th><th>Task</th><th>Who</th></tr>
+    <tr><td>10</td><td>Run the page checks on every Tier A funder and list what changed</td><td><span class="who">CLAUDE</span></td></tr>
+    <tr><td>8</td><td>Draft the data file with a quoted line from each page</td><td><span class="who">CLAUDE</span></td></tr>
+    <tr><td>6 to 4</td><td>Open each funder's page and confirm the date, time zone and who can apply</td><td><span class="who">YOU</span></td></tr>
+    <tr><td>3</td><td>Build the mail, read it on phone and computer, send a test to yourself</td><td><span class="who">BOTH</span></td></tr>
+    <tr><td>2</td><td>Click every link</td><td><span class="who">YOU</span></td></tr>
+    <tr><td>1</td><td>Read again anything that closes within 14 days</td><td><span class="who">BOTH</span></td></tr>
+    <tr><td>0</td><td>Send</td><td><span class="who">YOU</span></td></tr>
+    <tr><td>+1 to +7</td><td>Fix errors the same day, answer replies, log hours, update the funder list</td><td><span class="who">BOTH</span></td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>6. Decision points</h2>
+  <p>These thresholds are my proposals. Change them if they do not suit you.</p>
+  <div class="tablewrap"><table>
+    <tr><th>At</th><th>Continue if</th><th>Change if</th><th>Stop or rethink if</th></tr>
+    <tr><td>Checkpoint 1<br>after Issue 003 (5 Jan)</td><td>Zero wrong listings, 10 hours or less, a first group of paying readers, replies are positive</td><td>Hours above 12: cut the issue to 8 calls. Few signups: change where you look for readers.</td><td>Any wrong listing sent without a quick public correction</td></tr>
+    <tr><td>Checkpoint 2<br>after Issue 006 (6 Apr)</td><td>25 to 40 paying readers or clear growth, hours near 8, errors still zero</td><td>Add a second region, or sell a one-off funder directory</td><td>Fewer than 10 paying readers and no growth after three months of finding readers</td></tr>
+  </table></div>
+</section>
+
+<footer>Time, fee and reader figures are planning estimates, not measurements. Dates were read from funder pages on 16 Oct 2026 and must be rechecked before every send.</footer>
+</div>
+</body>
+</html>
