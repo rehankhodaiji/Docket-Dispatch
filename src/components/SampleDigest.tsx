@@ -44,7 +44,7 @@ export function SampleDigest() {
               <span className="text-[#D8D2C5]">CURATED FOR US INDEPENDENT NON-FICTION</span>
             </div>
             <div className="flex items-center gap-3 text-[11px] text-[#BBB4A5]">
-              <span>4 OF 19 LISTINGS SHOWN</span>
+              <span>{SAMPLE_LISTINGS.length} SAMPLE LISTINGS</span>
             </div>
           </div>
 
@@ -52,7 +52,7 @@ export function SampleDigest() {
           <div className="border-b border-[#E2DBCE] bg-[#FAF8F3] px-5 py-3 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-1.5 overflow-x-auto text-xs font-mono">
               <span className="text-[#736B5E] mr-2 text-[11px] uppercase tracking-wider">Filter Stage:</span>
-              {(['All', 'Production', 'Commissioning'] as const).map((stage) => (
+              {['All', ...Array.from(new Set(SAMPLE_LISTINGS.map((item) => item.stage)))].map((stage) => (
                 <button
                   key={stage}
                   onClick={() => setSelectedStage(stage)}
