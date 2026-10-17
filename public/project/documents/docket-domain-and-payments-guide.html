@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docket Domain and Payments Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+/* One column of numbered steps. Each step: what to do, the link, how to check it worked. Three parts: domain, connect, payments. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#161b26; --muted:#5a6272; --line:#d9dde5; --accent:#1f3a8a; --accent-soft:#e6ebf8;
+  --ok:#17663a; --ok-bg:#e1f3e8; --warn:#8a5a00; --warn-bg:#fbefd2; --bad:#9b1c1c; --bad-bg:#f9e0e0; --info:#3b4a6b; --info-bg:#e8ecf3;
+  --display:'IBM Plex Serif',Georgia,serif; --body:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10131a; --surface:#171b25; --fg:#e8ebf2; --muted:#9aa3b5; --line:#2b3242; --accent:#9db4ff; --accent-soft:#1d2744;
+  --ok:#6fd49a; --ok-bg:#12301f; --warn:#f0c46a; --warn-bg:#352a0e; --bad:#ff9b9b; --bad-bg:#3a1717; --info:#a9b6d3; --info-bg:#212838; color-scheme:dark}}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:880px;margin-inline:auto;display:flex;flex-direction:column;gap:36px}
+header{display:flex;flex-direction:column;gap:12px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,38px);line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-size:24px;margin:0 0 4px;text-wrap:balance}
+h3{font-size:16px;font-weight:600;margin:0 0 6px}
+p{margin:0 0 10px;max-width:68ch} .lede{font-size:18px;max-width:62ch}
+section{display:flex;flex-direction:column;gap:12px}
+.partnote{color:var(--muted);font-size:14.5px;margin:0}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;grid-template-columns:44px 1fr;gap:6px 14px;min-width:0}
+.step .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;padding-top:2px}
+.step .b{min-width:0}
+.step ul{margin:6px 0 8px;padding-left:20px} .step li{margin-bottom:4px}
+.links{display:flex;flex-direction:column;gap:3px;margin:8px 0}
+.links a{overflow-wrap:anywhere;font-size:14.5px}
+.check{font-size:14px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;margin-top:8px}
+.check b{color:var(--ok)}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.you{background:var(--warn-bg);color:var(--warn)} .claude{background:var(--accent-soft);color:var(--accent)} .stop{background:var(--bad-bg);color:var(--bad)}
+.callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 16px;border-radius:4px;max-width:68ch}
+.callout p:last-child{margin:0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+a{color:var(--accent)}
+code{font-family:var(--mono);font-size:.88em;background:var(--info-bg);padding:1px 5px;border-radius:3px}
+footer{font-size:13px;color:var(--muted)}
+@media (max-width:520px){.step{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<nav class="topbar" aria-label="Site"><span><a href="/">The Docket Dispatch</a><span class="sep">/</span><a href="/project/">Project workspace</a></span><span class="right"><a href="/">Back to Docket</a></span></nav>
+<div class="wrap">
+<header>
+  <div class="kicker">Docket · Step by step · 17 Oct 2026</div>
+  <h1>Get docudocket.me, put the site on it, then take payments</h1>
+  <p class="lede">Three parts, in order. Each step says who does it, gives the link, and ends with a check that it worked.</p>
+  <p class="partnote"><span class="pill you">YOU</span> means only you can do it (accounts, logins, payment details). <span class="pill claude">CLAUDE</span> means I can do it or check it. <span class="pill stop">STOP</span> marks a point where you should not continue if the check fails.</p>
+  <div class="callout"><p>I am assuming you are an individual in India selling to US readers in US dollars. I based that on your time zone and the rupee prices Namecheap showed. If that is wrong, Part C changes.</p></div>
+</header>
+
+<section>
+  <h2>Part A. Get docudocket.me free</h2>
+  <p class="partnote">On 17 Oct 2026 the name looked unregistered, and Namecheap showed it as available at a paid price. The free first year comes from the GitHub Student offer.</p>
+
+  <div class="step"><div class="n">A1</div><div class="b">
+    <h3>Check your GitHub student benefits are active <span class="pill you">YOU</span></h3>
+    <div class="links">
+      <a href="https://github.com/settings/education/benefits" target="_blank" rel="noopener">github.com/settings/education/benefits</a>
+      <a href="https://education.github.com/pack" target="_blank" rel="noopener">education.github.com/pack (the offers list)</a>
+    </div>
+    <div class="check"><b>Check:</b> the page says your student benefits are approved. <span class="pill stop">STOP</span> if it is still pending, because the offer will not work until it is approved.</div>
+  </div></div>
+
+  <div class="step"><div class="n">A2</div><div class="b">
+    <h3>Open the Namecheap offer from the pack <span class="pill you">YOU</span></h3>
+    <p>On the offers page, find <b>Namecheap</b>: "1 year domain name registration on the .me TLD", plus a free SSL certificate for a year. The page I read did not show a claim link or conditions, so use whatever button the offer shows when you are signed in.</p>
+    <div class="links"><a href="https://education.github.com/pack" target="_blank" rel="noopener">education.github.com/pack</a><a href="https://www.namecheap.com/support.aspx" target="_blank" rel="noopener">Namecheap support, if the offer link fails</a></div>
+    <div class="check"><b>Check:</b> you land on Namecheap with the offer applied, or you have a code or instructions to use at checkout.</div>
+  </div></div>
+
+  <div class="step"><div class="n">A3</div><div class="b">
+    <h3>Sign in to or create a Namecheap account <span class="pill you">YOU</span></h3>
+    <div class="links"><a href="https://www.namecheap.com/" target="_blank" rel="noopener">namecheap.com (use Sign In or Sign Up at the top)</a></div>
+    <p>Use an email you control and turn on two-step sign-in. Keep the password to yourself.</p>
+    <div class="check"><b>Check:</b> you can see your Namecheap account page.</div>
+  </div></div>
+
+  <div class="step"><div class="n">A4</div><div class="b">
+    <h3>Search for the name and look at the price <span class="pill you">YOU</span> <span class="pill claude">CLAUDE can recheck</span></h3>
+    <div class="links"><a href="https://www.namecheap.com/domains/registration/results/?domain=docudocket.me" target="_blank" rel="noopener">Namecheap search: docudocket.me</a></div>
+    <ul><li>Add <code>docudocket.me</code> to the cart.</li><li>Go to the cart. With the offer applied, the first year should show as free.</li></ul>
+    <div class="check"><b>Check:</b> the cart total for the domain is 0. <span class="pill stop">STOP</span> if it shows a price. Do not pay. Go back to A2.</div>
+  </div></div>
+
+  <div class="step"><div class="n">A5</div><div class="b">
+    <h3>Complete the order <span class="pill you">YOU</span></h3>
+    <ul><li>Fill in the contact details yourself. Keep the free privacy option on if Namecheap offers it, so your address is not public.</li><li>Decline paid extras you do not need.</li><li>Turn off automatic renewal if you do not want to be charged after the free year, or note the renewal date.</li></ul>
+    <div class="check"><b>Check:</b> you get a confirmation email, and the domain shows in Namecheap under <b>Domain List</b>.</div>
+  </div></div>
+</section>
+
+<section>
+  <h2>Part B. Put the site on docudocket.me</h2>
+  <p class="partnote">The live site is the Vercel project <code>docket-dispatch</code>. The domain is added there, then pointed to it from Namecheap.</p>
+
+  <div class="step"><div class="n">B1</div><div class="b">
+    <h3>Add the domain in Vercel <span class="pill you">YOU</span></h3>
+    <div class="links">
+      <a href="https://vercel.com/rehankhodaiji2027-5812/docket-dispatch/settings/domains" target="_blank" rel="noopener">Vercel: docket-dispatch, Settings, Domains</a>
+      <a href="https://vercel.com/docs/domains/working-with-domains/add-a-domain" target="_blank" rel="noopener">Vercel guide: add a custom domain</a>
+    </div>
+    <ul><li>Click <b>Add Domain</b>, type <code>docudocket.me</code>, and accept the offer to add <code>www.docudocket.me</code> too.</li><li>Vercel then shows the exact DNS settings it wants. Keep that screen open.</li></ul>
+    <div class="check"><b>Check:</b> the domain is listed with a status such as "Invalid Configuration". That is expected until B2 is done.</div>
+  </div></div>
+
+  <div class="step"><div class="n">B2</div><div class="b">
+    <h3>Add the DNS records in Namecheap <span class="pill you">YOU</span></h3>
+    <p>In Namecheap go to <b>Domain List</b>, click <b>Manage</b> next to docudocket.me, then <b>Advanced DNS</b>. Add the records Vercel shows. For the main address, Vercel's documents give the A record value <code>76.76.21.21</code>. For <code>www</code> it is a CNAME to the unique value Vercel shows for your project. Always use what your Vercel screen says if it differs.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Type</th><th>Host</th><th>Value</th></tr>
+      <tr><td>A record</td><td>@</td><td>76.76.21.21 (or the value on your Vercel screen)</td></tr>
+      <tr><td>CNAME</td><td>www</td><td>the value on your Vercel screen</td></tr>
+    </table></div>
+    <div class="links" style="margin-top:8px"><a href="https://vercel.com/kb/guide/a-record-and-caa-with-vercel" target="_blank" rel="noopener">Vercel: using A records</a></div>
+    <p>Delete any default Namecheap parking record on the same host first, because two records for the same host will clash. Another route is to change the domain's nameservers to <code>ns1.vercel-dns.com</code> and <code>ns2.vercel-dns.com</code>. Vercel warns you to copy any existing records first, such as email.</p>
+    <div class="check"><b>Check:</b> after a few minutes to a few hours, Vercel shows the domain as valid.</div>
+  </div></div>
+
+  <div class="step"><div class="n">B3</div><div class="b">
+    <h3>Choose which address is the main one <span class="pill you">YOU</span></h3>
+    <p>In Vercel, set one of <code>docudocket.me</code> and <code>www.docudocket.me</code> to redirect to the other, so visitors always land on the same address.</p>
+    <div class="check"><b>Check:</b> both addresses open the Docket page, and the browser shows a padlock.</div>
+  </div></div>
+
+  <div class="step"><div class="n">B4</div><div class="b">
+    <h3>Ask me to verify it <span class="pill claude">CLAUDE</span></h3>
+    <p>I will load the new address, check the padlock, the landing page, <code>/project/</code>, and that the old <code>docket-dispatch.vercel.app</code> still works. Then I update the links document, the dashboard and the project log with the new address.</p>
+  </div></div>
+
+  <div class="step"><div class="n">B5</div><div class="b">
+    <h3>Remove the duplicate Vercel project <span class="pill you">YOU</span> (optional)</h3>
+    <div class="links"><a href="https://vercel.com/rehankhodaiji2027-5812/docket-dispatchv1/settings" target="_blank" rel="noopener">Vercel: docket-dispatchv1, Settings</a></div>
+    <p>At the bottom of General, choose Delete Project. Only do this once the domain works on <code>docket-dispatch</code>.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2>Part C. Take payments</h2>
+  <p class="partnote">Right now the signup form takes no payment and saves emails only in the visitor's own browser. This part fixes both. I have read official pages for Stripe and Razorpay. For Lemon Squeezy and Paddle I only found comparison articles, so treat their India details as unconfirmed.</p>
+
+  <div class="step"><div class="n">C1</div><div class="b">
+    <h3>Pick a payment option</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Option</th><th>What I found</th><th>Watch for</th></tr>
+      <tr><td><a href="https://docs.stripe.com/india-exports" target="_blank" rel="noopener">Stripe India</a></td><td>Official page: international USD payments are for registered Indian businesses. It lists sole proprietorships, LLPs and companies, and says the account cannot be an individual. For services, an import-export code is optional, except for American Express.</td><td>One Stripe page was labelled invite only. Check at sign-up that you qualify. Fee figures I saw (about 3% for international cards) came from third-party pages.</td></tr>
+      <tr><td><a href="https://razorpay.com/docs/payments/international-payments" target="_blank" rel="noopener">Razorpay</a></td><td>Official page: international payments are an on-request feature. You activate it in your dashboard and it may need extra documents.</td><td>Documents and fees were not listed. A third-party post said about 3% plus GST. Confirm with Razorpay.</td></tr>
+      <tr><td>Merchant of record: <a href="https://www.lemonsqueezy.com/" target="_blank" rel="noopener">Lemon Squeezy</a>, <a href="https://www.paddle.com/" target="_blank" rel="noopener">Paddle</a></td><td>They collect and handle sales tax for you. Comparison sites quote 5% plus 50 cents per sale.</td><td>I could not confirm whether they pay out to Indian bank accounts for a solo seller. Paddle may not accept small Indian sellers. Ask them first.</td></tr>
+    </table></div>
+    <p style="margin-top:10px">My suggestion: try Stripe first. If it will not accept you, use Razorpay. If handling sales tax worries you, ask a merchant-of-record service whether they accept you. If you choose a newsletter platform with built-in payments, it usually runs on Stripe, so the same India question applies.</p>
+  </div></div>
+
+  <div class="step"><div class="n">C2</div><div class="b">
+    <h3>Get your business details ready <span class="pill you">YOU</span></h3>
+    <ul><li>Business type and name (a sole proprietorship counts as a business here, a personal account does not).</li><li>Your identity and tax number, and a bank account in the business's name.</li><li>A short description of what you sell: a monthly digest of documentary funding calls.</li></ul>
+    <p>The exact documents are shown during sign-up and I have not seen the lists. Ask an accountant whether you need to register for goods and services tax, or anything else, before you start selling. That is outside what I can advise on.</p>
+  </div></div>
+
+  <div class="step"><div class="n">C3</div><div class="b">
+    <h3>Create the account and turn on international payments <span class="pill you">YOU</span></h3>
+    <div class="links">
+      <a href="https://stripe.com/in" target="_blank" rel="noopener">Stripe India</a>
+      <a href="https://razorpay.com/docs/payments/international-payments" target="_blank" rel="noopener">Razorpay: activate international payments</a>
+    </div>
+    <ul><li>In Stripe's application, tick the box that says you sell to customers outside India.</li><li>In Razorpay, go to Account and Settings, then International payments, then activate international cards.</li></ul>
+    <div class="check"><b>Check:</b> the dashboard says international payments are enabled. <span class="pill stop">STOP</span> if it is refused or still pending. Do not tell readers they can pay yet.</div>
+  </div></div>
+
+  <div class="step"><div class="n">C4</div><div class="b">
+    <h3>Create the two plans, in US dollars <span class="pill you">YOU</span></h3>
+    <ul><li>Annual: $79 every year.</li><li>Monthly: $15 every month.</li><li>Make a payment link for each. A payment link is a ready-made checkout page you can send people to, so no code is needed.</li></ul>
+    <div class="links"><a href="https://docs.stripe.com/payment-links" target="_blank" rel="noopener">Stripe: payment links</a><a href="https://razorpay.com/docs/payments/subscriptions/" target="_blank" rel="noopener">Razorpay: subscriptions</a></div>
+    <p>I have not opened those two guide pages, so check the steps there.</p>
+  </div></div>
+
+  <div class="step"><div class="n">C5</div><div class="b">
+    <h3>Test with test money only <span class="pill you">YOU</span></h3>
+    <div class="links"><a href="https://docs.stripe.com/testing" target="_blank" rel="noopener">Stripe: test card numbers</a></div>
+    <p>Use the gateway's test mode and its listed test cards. Never type a real card into a test.</p>
+    <div class="check"><b>Check:</b> a test payment shows in the dashboard and sends a receipt to the test email.</div>
+  </div></div>
+
+  <div class="step"><div class="n">C6</div><div class="b">
+    <h3>Connect the two buttons on the site <span class="pill claude">CLAUDE</span></h3>
+    <p>Send me the two payment link addresses. I will point the "Sign up for Annual" and "Sign up for Monthly" buttons to them, take out the form that saves emails only in the browser, and keep the plan choice. The gateway then records each customer's email, which also solves the storage gap. I will test it on a preview before pushing to the live site.</p>
+  </div></div>
+
+  <div class="step"><div class="n">C7</div><div class="b">
+    <h3>Add the pages a gateway expects <span class="pill claude">CLAUDE can draft</span> <span class="pill you">YOU approve</span></h3>
+    <ul><li>Refund and cancellation terms.</li><li>Privacy notice saying what happens to emails.</li><li>A contact address, and a clear statement of what is sold and for how much.</li></ul>
+    <p>Payment gateways often ask to see these before they switch on live payments. I can draft them for you to check. They are not legal advice.</p>
+  </div></div>
+
+  <div class="step"><div class="n">C8</div><div class="b">
+    <h3>Go live and test once for real <span class="pill you">YOU</span></h3>
+    <ul><li>Switch the gateway from test to live.</li><li>Buy the monthly plan yourself, then cancel and refund it, so you see the whole path.</li><li>Check the money arrives in your bank account on the gateway's payout schedule.</li></ul>
+    <div class="check"><b>Check:</b> one real payment, a receipt, and the customer's email in the dashboard.</div>
+  </div></div>
+</section>
+
+<section>
+  <h2>Before you sell anything</h2>
+  <div class="callout"><p>The page still says "70+ active sources" and a monthly issue is promised. The registry has 22 sources and no listing has been confirmed by a person. Take payment only when you are comfortable that you can deliver what the page says, and say plainly what subscribers will receive.</p></div>
+</section>
+
+<footer>Written 17 Oct 2026 from Namecheap, GitHub, Vercel, Stripe and Razorpay pages and from comparison articles. Prices, fees and eligibility change. Check each step on the provider's own page.</footer>
+</div>
+</body>
+</html>
