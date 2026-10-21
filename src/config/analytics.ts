@@ -5,7 +5,7 @@
  *    code in quotes at the end of the snippet. Paste it below.
  * The ID is not secret. While it is empty, no analytics code loads and no banner shows.
  */
-export const CLARITY_PROJECT_ID = '';
+export const CLARITY_PROJECT_ID = 'z11xs446xt';
 
 /** Where the visitor's Accept or Decline choice is remembered in their own browser. */
 export const CONSENT_STORAGE_KEY = 'docket_analytics_choice';
