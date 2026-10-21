@@ -24,6 +24,7 @@ Import this repo, Framework Preset **Vite**, build command `npm run build`, outp
 ## Known gaps
 - The signup form asks for an email and a plan ($79/year or $15/month) but takes no payment and saves the email only in the visitor's own browser. It sends nothing to you. It needs a payment link and a place to store emails before it is published.
 - The page says "20+ sources". The registry has 22, and 15 have been read on their official pages.
+- Visitor analytics (Microsoft Clarity) is built but switched off. Paste the project ID into `src/config/analytics.ts` to turn it on; a consent banner then appears.
 - No listing has been confirmed by a person.
 
 ## Rules

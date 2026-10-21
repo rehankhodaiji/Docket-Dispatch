@@ -77,7 +77,7 @@ export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: 
             </p>
 
             {/* Signup Form Card (Sharp minimal corners, paper styling) */}
-            <div id="signup-card" className="border-2 border-[#1A1714] bg-white p-5 sm:p-7 sharp-card shadow-[4px_4px_0px_#1A1714]">
+            <div id="signup-card" data-clarity-mask="true" className="border-2 border-[#1A1714] bg-white p-5 sm:p-7 sharp-card shadow-[4px_4px_0px_#1A1714]">
               {submittedThisSession ? (
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#0D4952]">
