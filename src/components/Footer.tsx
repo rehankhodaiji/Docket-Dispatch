@@ -75,6 +75,8 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span>© {new Date().getFullYear()} Docket Dispatch. All rights reserved.</span>
             <a href="/privacy/" className="hover:text-white underline underline-offset-2">Privacy</a>
+            <a href="/terms/" className="hover:text-white underline underline-offset-2">Terms</a>
+            <a href="/refunds/" className="hover:text-white underline underline-offset-2">Cancellation and refunds</a>
           </div>
           <div className="text-[#736B5E] max-w-xl text-left sm:text-right">
             Independent publication. Funder names, broadcaster trademarks, and program logos are the property of their respective entities and are referenced strictly for editorial identification and descriptive reporting purposes.

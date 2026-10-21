@@ -9,6 +9,14 @@ export function FAQ() {
       a: 'Docket is new, and you can sign up now. Choose the Annual plan ($79/year) or the Monthly plan ($15/month, $180/year) and you will receive Docket once a month. The source list and the first issues are being put together now, alongside an initial group of independent directors and line producers. The $79/year Annual rate stays the same for as long as your subscription continues.'
     },
     {
+      q: 'What exactly do I get, and how is it delivered?',
+      a: 'One email a month, on the first Tuesday, sent to the address you sign up with. Each issue lists open and upcoming documentary funding calls with the deadline, who can apply, and a link to the funder’s own page. On the Annual plan you can also reply to any issue to ask us to cover a funder, foundation or state grant, and we will tell you by email whether it will be added. If an issue does not arrive, check your spam folder and then email rehan.khodaiji@gmail.com.'
+    },
+    {
+      q: 'How do I cancel, and can I get a refund?',
+      a: 'You can cancel any time, and your access continues to the end of the period you have paid for. There are no refunds, except when we have billed you in error, for example twice for the same period or after you cancelled. The full details are on the cancellation and refunds page.'
+    },
+    {
       q: 'What if a listing is wrong?',
       a: 'Every single listing links directly to the official funder page so you can inspect the guidelines at the source. However, funding bodies occasionally modify guidelines unexpectedly, experience technical outages, or close calls early when submission volume caps are met. If you ever notice a discrepancy on a funder page, email the editor at rehan.khodaiji@gmail.com. We investigate within 24 hours and publish an immediate update.'
     },

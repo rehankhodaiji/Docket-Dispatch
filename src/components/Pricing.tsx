@@ -140,19 +140,7 @@ export function Pricing({ onSelectPlan }: PricingProps) {
                 <div className="flex items-start gap-2.5">
                   <span className="text-[#0D4952] font-mono font-bold">✓</span>
                   <span>
-                    <strong>Direct Funder Tracking Requests:</strong> Tell our editorial desk which niche foundations or state grants you need monitored.
-                  </span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <span className="text-[#0D4952] font-mono font-bold">✓</span>
-                  <span>
-                    <strong>Direct Calendar Feeds:</strong> Automatic 1-click sync into Google Calendar / iCal when the feature drops.
-                  </span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <span className="text-[#0D4952] font-mono font-bold">✓</span>
-                  <span>
-                    <strong>Direct Line to the Founder:</strong> Quarterly editorial office hours on documentary financing strategies.
+                    <strong>Funder Tracking Requests:</strong> Reply to any issue with a funder, foundation or state grant you want covered, and we will tell you by email whether it will be added.
                   </span>
                 </div>
               </div>
@@ -175,6 +163,19 @@ export function Pricing({ onSelectPlan }: PricingProps) {
 
           </div>
 
+        </div>
+
+        {/* How delivery and billing work, in plain words */}
+        <div className="mt-8 border border-[#E2DBCE] bg-white p-5 sm:p-6 sharp-card text-sm font-sans text-[#4A443B] leading-relaxed">
+          <span className="block text-xs font-mono font-semibold uppercase tracking-wider text-[#1A1714] mb-2">
+            How it works
+          </span>
+          <ul className="space-y-1.5 list-disc pl-5">
+            <li>One email arrives on the first Tuesday of each month, sent to the address you sign up with.</li>
+            <li>Prices are in US dollars. Annual renews once a year and Monthly renews every month, until you cancel.</li>
+            <li>Cancel any time. Your access continues to the end of the period you have paid for.</li>
+            <li>No refunds, except when we have billed you in error. See <a href="/refunds/" className="underline text-[#0D4952]">cancellation and refunds</a> and the <a href="/terms/" className="underline text-[#0D4952]">terms</a>.</li>
+          </ul>
         </div>
 
       </div>
