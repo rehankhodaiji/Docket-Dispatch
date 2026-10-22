@@ -1,0 +1,18 @@
+{
+  "readDate": "17 Oct 2026",
+  "channels": ["LinkedIn", "Instagram"],
+  "slides": [
+    {"theme": "teal", "kicker": "Reading funder pages", "h1": "Three things documentary funder pages leave out.", "sub": "From ten funder pages read on 17 October 2026."},
+    {"kicker": "1 · The year", "h2": "Sundance's deadlines page says \"Application opens November 17.\"", "sub": "It gives no year. The Producers Track page has it: 17 November 2026.", "fix": "Write the full date, with the year, in your calendar."},
+    {"kicker": "2 · The time zone", "h2": "The same deadline turns up in different time zones.", "items": [
+      {"b": "Sundance Documentary Fund", "span": "16:30 MDT, also written 3:30 p.m. Pacific. Same moment."},
+      {"b": "Screen Australia", "span": "5pm AEDT on 4 Feb 2027. 5pm AEST on 8 Apr 2027."},
+      {"b": "BFI Doc Society", "span": "1pm. No zone given."}], "fix": "Convert it, and keep the original zone beside it."},
+    {"kicker": "3 · Who can apply", "h2": "IDA's Pare Lorentz fund picks films through nominations.", "sub": "Its page shows a 2025 timeline and describes no way to apply directly. IDA's funding page says the fund is expected to reopen in late 2026.", "fix": "Check whether a call is open, rolling or nomination-only before you spend a weekend on it."},
+    {"theme": "ink", "kicker": "Docket Dispatch", "h1": "We print the date we read each page.", "sub": "A monthly list of documentary funding calls, with links to every funder.", "url": "docudocket.live"}
+  ],
+  "captions": {
+    "LinkedIn": "I read ten documentary funder pages on 17 October. Three gaps showed up again and again.\n\n1. The year. Sundance's deadlines page says \"Application opens November 17\" and gives no year.\n2. The time zone. Sundance's 2026 Documentary Fund close appears as 16:30 MDT and as 3:30 p.m. Pacific. Screen Australia switches between AEDT and AEST. BFI gives 1pm and no zone.\n3. Who can apply. IDA's Pare Lorentz fund picks films through nominations, and its page describes no way to apply directly.\n\nFive-minute habit: write the full date with the year, convert the zone, find the \"who can apply\" line.\n\nI print the date I read each page in Docket Dispatch, a monthly list of documentary funding calls: https://www.docudocket.live",
+    "Instagram": "I read ten documentary funder pages on 17 October. Three gaps: a missing year, a deadline written in two time zones, and a fund that picks films only through nominations. Write the full date with the year, convert the zone, and find the \"who can apply\" line before you start. Link in bio."
+  }
+}

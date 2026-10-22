@@ -1,0 +1,21 @@
+{
+  "readDate": "17 Oct 2026",
+  "channels": ["LinkedIn", "Instagram", "Bluesky", "X"],
+  "slides": [
+    {"theme": "teal", "kicker": "Documentary funding · Winter 2026-27", "h1": "Six funding calls have dates before February. Two take US producers.", "sub": "Every date below comes from the funder's own page."},
+    {"kicker": "Visions du Réel · VdR Pitching", "big": "15 Dec 2026", "lab": "Final deadline", "items": ["CHF 30 until 2 November, CHF 40 after", "Feature films over 60 minutes, in late development", "Projects from anywhere can apply"], "tag": "Takes US producers"},
+    {"kicker": "Sundance · Documentary Film Producers Track", "big": "17 Nov to 10 Feb", "bigSmall": true, "lab": "Opens 9am PT 17 Nov 2026. Closes 9am PT 10 Feb 2027.", "items": ["Lead producers with at least one documentary short", "In active production or post-production", "Non-US candidates must work and live in Europe or Latin America"], "tag": "Takes US producers"},
+    {"kicker": "The other four", "h2": "For UK, New Zealand, Australian and European applicants", "items": [
+      {"b": "BFI Doc Society", "rest": "Round 2", "span": "UK filmmakers. Closes 1pm 21 Dec 2026"},
+      {"b": "NZ Film Commission", "span": "NZ lead producers. 1pm 9 Nov"},
+      {"b": "Screen Australia", "span": "Australian companies. 5pm AEDT 4 Feb 2027"},
+      {"b": "IDFA Bertha Fund", "rest": "IBF Europe", "span": "European minority co-producers. 15 Jan 2027"}]},
+    {"theme": "ink", "kicker": "Docket Dispatch", "h1": "Every date, every eligibility line, one page.", "sub": "A monthly list of documentary funding calls. Each listing shows the date we read the funder's page.", "url": "docudocket.live/blog/documentary-funding-deadlines-november-december-2026/"}
+  ],
+  "captions": {
+    "LinkedIn": "Six documentary funding calls have dates between now and February. Two accept US-based producers directly.\n\nVisions du Réel, VdR Pitching: final deadline 15 December 2026 (CHF 30 until 2 November, CHF 40 after). Feature films over 60 minutes in late development, from anywhere.\n\nSundance, Documentary Film Producers Track: opens 17 November, closes 10 February 2027. Lead producers with at least one documentary short.\n\nThe other four are for UK, New Zealand, Australian and European applicants.\n\nI read each funder's own page on 17 October. Every date, with its time zone and a link, is here:\nhttps://www.docudocket.live/blog/documentary-funding-deadlines-november-december-2026/",
+    "Instagram": "Six documentary funding calls have dates between now and February. Two accept US-based producers directly: Visions du Réel (final deadline 15 December 2026) and Sundance's Documentary Film Producers Track (17 November to 10 February). The other four are for UK, New Zealand, Australian and European applicants. I read each funder's own page on 17 October. Link in bio.",
+    "X": "Six documentary funding calls have dates before February. Two take US producers: Visions du Réel (15 Dec 2026) and Sundance's Producers Track (17 Nov to 10 Feb). Every date, from the funders' own pages: https://www.docudocket.live/blog/documentary-funding-deadlines-november-december-2026/",
+    "Bluesky": "Six documentary funding calls have dates before February. Two take US producers: Visions du Réel (15 Dec 2026) and Sundance's Producers Track (17 Nov to 10 Feb). Every date, from the funders' own pages: https://www.docudocket.live/blog/documentary-funding-deadlines-november-december-2026/"
+  }
+}
