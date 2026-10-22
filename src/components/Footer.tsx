@@ -74,6 +74,7 @@ export function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[11px] font-mono text-[#8C8476]">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span>© {new Date().getFullYear()} Docket Dispatch. All rights reserved.</span>
+            <a href="/blog/" className="hover:text-white underline underline-offset-2">Blog</a>
             <a href="/privacy/" className="hover:text-white underline underline-offset-2">Privacy</a>
             <a href="/terms/" className="hover:text-white underline underline-offset-2">Terms</a>
             <a href="/refunds/" className="hover:text-white underline underline-offset-2">Cancellation and refunds</a>

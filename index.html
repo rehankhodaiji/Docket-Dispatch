@@ -8,13 +8,46 @@
     <meta property="og:title" content="Docket — Documentary Funding Tracker" />
     <meta property="og:description" content="Monthly digest of open grants, fellowships, and commissioning calls for US documentary filmmakers." />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content="https://www.docudocket.live/" />
+    <meta property="og:site_name" content="Docket Dispatch" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://www.docudocket.live/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Docket Dispatch blog" href="/rss.xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.docudocket.live/#org",
+            "name": "Docket Dispatch",
+            "url": "https://www.docudocket.live/",
+            "logo": "https://www.docudocket.live/favicon.svg",
+            "email": "rehan.khodaiji@gmail.com"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.docudocket.live/#site",
+            "url": "https://www.docudocket.live/",
+            "name": "Docket Dispatch",
+            "publisher": { "@id": "https://www.docudocket.live/#org" }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-[#F8F5EE] text-[#1E1B18] antialiased selection:bg-[#E29D42]/30 selection:text-[#1E1B18]">
-    <div id="root"></div>
+    <div id="root">
+      <main style="max-width:42rem;margin:0 auto;padding:2rem 1rem;font-family:Georgia,serif">
+        <h1>Docket Dispatch</h1>
+        <p>A monthly digest of open grants, fellowships and commissioning calls for independent documentary filmmakers in the United States. Each listing links to the funder's own page and shows the date we last read it.</p>
+        <p><a href="/blog/">Read the blog</a> &middot; <a href="/terms/">Terms</a> &middot; <a href="/privacy/">Privacy</a></p>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
