@@ -1,0 +1,6 @@
+{
+  "signupLive": false,
+  "approvalRequired": true,
+  "maxRevisionRounds": 3,
+  "notes": "Set signupLive to true only after the signup form captures emails and takes payment. approvalRequired stays true: nothing is posted without the user's approval of that post."
+}

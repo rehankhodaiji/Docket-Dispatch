@@ -1,18 +1,198 @@
 {
   "readDate": "17 Oct 2026",
-  "channels": ["LinkedIn", "Instagram"],
+  "channels": [
+    "LinkedIn",
+    "Instagram"
+  ],
   "slides": [
-    {"theme": "teal", "kicker": "Reading funder pages", "h1": "Three things documentary funder pages leave out.", "sub": "From ten funder pages read on 17 October 2026."},
-    {"kicker": "1 · The year", "h2": "Sundance's deadlines page says \"Application opens November 17.\"", "sub": "It gives no year. The Producers Track page has it: 17 November 2026.", "fix": "Write the full date, with the year, in your calendar."},
-    {"kicker": "2 · The time zone", "h2": "The same deadline turns up in different time zones.", "items": [
-      {"b": "Sundance Documentary Fund", "span": "16:30 MDT, also written 3:30 p.m. Pacific. Same moment."},
-      {"b": "Screen Australia", "span": "5pm AEDT on 4 Feb 2027. 5pm AEST on 8 Apr 2027."},
-      {"b": "BFI Doc Society", "span": "1pm. No zone given."}], "fix": "Convert it, and keep the original zone beside it."},
-    {"kicker": "3 · Who can apply", "h2": "IDA's Pare Lorentz fund picks films through nominations.", "sub": "Its page shows a 2025 timeline and describes no way to apply directly. IDA's funding page says the fund is expected to reopen in late 2026.", "fix": "Check whether a call is open, rolling or nomination-only before you spend a weekend on it."},
-    {"theme": "ink", "kicker": "Docket Dispatch", "h1": "We print the date we read each page.", "sub": "A monthly list of documentary funding calls, with links to every funder.", "url": "docudocket.live"}
+    {
+      "theme": "teal",
+      "kicker": "Reading funder pages",
+      "h1": "Three things documentary funder pages leave out.",
+      "sub": "From ten funder pages read on 17 October 2026."
+    },
+    {
+      "kicker": "1 · The year",
+      "h2": "Sundance's deadlines page says \"Application opens November 17.\"",
+      "sub": "It gives no year. The Producers Track page has it: 17 November 2026.",
+      "fix": "Write the full date, with the year, in your calendar."
+    },
+    {
+      "kicker": "2 · The time zone",
+      "h2": "The same deadline turns up in different time zones.",
+      "items": [
+        {
+          "b": "Sundance Documentary Fund",
+          "span": "16:30 MDT, also written 3:30 p.m. Pacific. Same moment."
+        },
+        {
+          "b": "Screen Australia",
+          "span": "5pm AEDT on 4 Feb 2027. 5pm AEST on 8 Apr 2027."
+        },
+        {
+          "b": "BFI Doc Society",
+          "span": "1pm. No zone given."
+        }
+      ],
+      "fix": "Convert it, and keep the original zone beside it."
+    },
+    {
+      "kicker": "3 · Who can apply",
+      "h2": "IDA's Pare Lorentz fund picks films through nominations.",
+      "sub": "Its page shows a 2025 timeline and describes no way to apply directly. IDA's funding page says the fund is expected to reopen in late 2026.",
+      "fix": "Check whether a call is open, rolling or nomination-only before you spend a weekend on it."
+    },
+    {
+      "theme": "ink",
+      "kicker": "Docket Dispatch",
+      "h1": "We print the date we read each page.",
+      "sub": "A monthly list of documentary funding calls, with links to every funder.",
+      "url": "docudocket.live"
+    }
   ],
   "captions": {
     "LinkedIn": "I read ten documentary funder pages on 17 October. Three gaps showed up again and again.\n\n1. The year. Sundance's deadlines page says \"Application opens November 17\" and gives no year.\n2. The time zone. Sundance's 2026 Documentary Fund close appears as 16:30 MDT and as 3:30 p.m. Pacific. Screen Australia switches between AEDT and AEST. BFI gives 1pm and no zone.\n3. Who can apply. IDA's Pare Lorentz fund picks films through nominations, and its page describes no way to apply directly.\n\nFive-minute habit: write the full date with the year, convert the zone, find the \"who can apply\" line.\n\nI print the date I read each page in Docket Dispatch, a monthly list of documentary funding calls: https://www.docudocket.live",
     "Instagram": "I read ten documentary funder pages on 17 October. Three gaps: a missing year, a deadline written in two time zones, and a fund that picks films only through nominations. Write the full date with the year, convert the zone, and find the \"who can apply\" line before you start. Link in bio."
+  },
+  "postDate": "2026-11-02",
+  "status": "drafted",
+  "facts": [
+    {
+      "claim": "Sundance deadlines page omits the year",
+      "url": "https://www.sundance.org/deadlines",
+      "read": "2026-10-17",
+      "evidence": "Application opens November 17"
+    },
+    {
+      "claim": "Sundance Producers Track gives the year",
+      "url": "https://www.sundance.org/initiatives/producers-program/",
+      "read": "2026-10-17",
+      "evidence": "Opens 9am PT Tuesday 17 November 2026"
+    },
+    {
+      "claim": "Sundance Documentary Fund close in two zones",
+      "url": "https://apply.sundance.org/prog/2027_documentary_fund_grant/",
+      "read": "2026-10-17",
+      "evidence": "Jun 15 2026 16:30 (MDT). Monday, June 15, at 3:30 p.m. Pacific time"
+    },
+    {
+      "claim": "Screen Australia switches between AEDT and AEST",
+      "url": "https://www.screenaustralia.gov.au/fund/documentary-production-program/",
+      "read": "2026-10-17",
+      "evidence": "5pm AEDT Thursday 4 February 2027 and 5pm AEST Thursday 8 April 2027"
+    },
+    {
+      "claim": "BFI Doc Society gives a time and no zone",
+      "url": "https://bfi.docsociety.org/funds/features-development/",
+      "read": "2026-10-17",
+      "evidence": "1pm Monday 21 December 2026, no time zone stated"
+    },
+    {
+      "claim": "IDA Pare Lorentz selects through nominations; 2025 timeline",
+      "url": "https://documentary.org/parelorentz",
+      "read": "2026-10-17",
+      "evidence": "We select the films through nominations from key film organizations throughout the Americas. Selection Timeline 2025"
+    },
+    {
+      "claim": "IDA funding page: expected to reopen late 2026",
+      "url": "https://documentary.org/funding",
+      "read": "2026-10-17",
+      "evidence": "Expected to reopen in late 2026 with a new theme"
+    }
+  ],
+  "audit": {
+    "when": "2026-10-22T10:24:06.810Z",
+    "verdict": "BLOCK",
+    "quality": 0,
+    "viralityProxy": 100,
+    "issues": [
+      {
+        "sev": "WARN",
+        "code": "slides",
+        "msg": "Slide 3 has 56 words (aim under 45)"
+      },
+      {
+        "sev": "WARN",
+        "code": "slides",
+        "msg": "Slide 4 has 55 words (aim under 45)"
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Sundance deadlines page omits the year\" was read 16 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Sundance Producers Track gives the year\" was read 16 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Sundance Documentary Fund close in two zones\" was read 16 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Screen Australia switches between AEDT and AEST\" was read 16 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"BFI Doc Society gives a time and no zone\" was read 16 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"IDA Pare Lorentz selects through nominations; 2025 timeline\" was read 16 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"IDA funding page: expected to reopen late 2026\" was read 16 days before the post date (limit 7). Re-read the page."
+      }
+    ],
+    "proxies": [
+      {
+        "k": "Cover headline is 12 words or fewer",
+        "ok": true,
+        "pts": 15
+      },
+      {
+        "k": "Cover or first caption line contains a number",
+        "ok": true,
+        "pts": 15
+      },
+      {
+        "k": "Names the audience in the hook (US, producers, filmmakers, documentary)",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "First caption line is 140 characters or fewer",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "5 to 8 slides",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "Has a save-worthy slide (checklist, table or \"Do this\")",
+        "ok": true,
+        "pts": 15
+      },
+      {
+        "k": "Closing slide has a single link or handle",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "At most one link per caption",
+        "ok": true,
+        "pts": 15
+      }
+    ]
   }
 }

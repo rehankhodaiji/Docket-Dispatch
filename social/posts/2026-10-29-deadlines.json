@@ -1,21 +1,207 @@
 {
   "readDate": "17 Oct 2026",
-  "channels": ["LinkedIn", "Instagram", "Bluesky", "X"],
+  "channels": [
+    "LinkedIn",
+    "Instagram",
+    "Bluesky",
+    "X"
+  ],
   "slides": [
-    {"theme": "teal", "kicker": "Documentary funding · Winter 2026-27", "h1": "Six funding calls have dates before February. Two take US producers.", "sub": "Every date below comes from the funder's own page."},
-    {"kicker": "Visions du Réel · VdR Pitching", "big": "15 Dec 2026", "lab": "Final deadline", "items": ["CHF 30 until 2 November, CHF 40 after", "Feature films over 60 minutes, in late development", "Projects from anywhere can apply"], "tag": "Takes US producers"},
-    {"kicker": "Sundance · Documentary Film Producers Track", "big": "17 Nov to 10 Feb", "bigSmall": true, "lab": "Opens 9am PT 17 Nov 2026. Closes 9am PT 10 Feb 2027.", "items": ["Lead producers with at least one documentary short", "In active production or post-production", "Non-US candidates must work and live in Europe or Latin America"], "tag": "Takes US producers"},
-    {"kicker": "The other four", "h2": "For UK, New Zealand, Australian and European applicants", "items": [
-      {"b": "BFI Doc Society", "rest": "Round 2", "span": "UK filmmakers. Closes 1pm 21 Dec 2026"},
-      {"b": "NZ Film Commission", "span": "NZ lead producers. 1pm 9 Nov"},
-      {"b": "Screen Australia", "span": "Australian companies. 5pm AEDT 4 Feb 2027"},
-      {"b": "IDFA Bertha Fund", "rest": "IBF Europe", "span": "European minority co-producers. 15 Jan 2027"}]},
-    {"theme": "ink", "kicker": "Docket Dispatch", "h1": "Every date, every eligibility line, one page.", "sub": "A monthly list of documentary funding calls. Each listing shows the date we read the funder's page.", "url": "docudocket.live/blog/documentary-funding-deadlines-november-december-2026/"}
+    {
+      "theme": "teal",
+      "kicker": "Documentary funding · Winter 2026-27",
+      "h1": "Six funding calls have dates before February. Two take US producers.",
+      "sub": "Every date below comes from the funder's own page."
+    },
+    {
+      "kicker": "Visions du Réel · VdR Pitching",
+      "big": "15 Dec 2026",
+      "lab": "Final deadline",
+      "items": [
+        "CHF 30 until 2 November, CHF 40 after",
+        "Feature films over 60 minutes, in late development",
+        "Projects from anywhere can apply"
+      ],
+      "tag": "Takes US producers"
+    },
+    {
+      "kicker": "Sundance · Documentary Film Producers Track",
+      "big": "17 Nov to 10 Feb",
+      "bigSmall": true,
+      "lab": "Opens 9am PT 17 Nov 2026. Closes 9am PT 10 Feb 2027.",
+      "items": [
+        "Lead producers with at least one documentary short",
+        "In active production or post-production",
+        "Non-US candidates must work and live in Europe or Latin America"
+      ],
+      "tag": "Takes US producers"
+    },
+    {
+      "kicker": "The other four",
+      "h2": "For UK, New Zealand, Australian and European applicants",
+      "items": [
+        {
+          "b": "BFI Doc Society",
+          "rest": "Round 2",
+          "span": "UK filmmakers. Closes 1pm 21 Dec 2026"
+        },
+        {
+          "b": "NZ Film Commission",
+          "span": "NZ lead producers. 1pm 9 Nov"
+        },
+        {
+          "b": "Screen Australia",
+          "span": "Australian companies. 5pm AEDT 4 Feb 2027"
+        },
+        {
+          "b": "IDFA Bertha Fund",
+          "rest": "IBF Europe",
+          "span": "European minority co-producers. 15 Jan 2027"
+        }
+      ]
+    },
+    {
+      "theme": "ink",
+      "kicker": "Docket Dispatch",
+      "h1": "Every date, every eligibility line, one page.",
+      "sub": "A monthly list of documentary funding calls. Each listing shows the date we read the funder's page.",
+      "url": "docudocket.live/blog/documentary-funding-deadlines-november-december-2026/"
+    }
   ],
   "captions": {
     "LinkedIn": "Six documentary funding calls have dates between now and February. Two accept US-based producers directly.\n\nVisions du Réel, VdR Pitching: final deadline 15 December 2026 (CHF 30 until 2 November, CHF 40 after). Feature films over 60 minutes in late development, from anywhere.\n\nSundance, Documentary Film Producers Track: opens 17 November, closes 10 February 2027. Lead producers with at least one documentary short.\n\nThe other four are for UK, New Zealand, Australian and European applicants.\n\nI read each funder's own page on 17 October. Every date, with its time zone and a link, is here:\nhttps://www.docudocket.live/blog/documentary-funding-deadlines-november-december-2026/",
     "Instagram": "Six documentary funding calls have dates between now and February. Two accept US-based producers directly: Visions du Réel (final deadline 15 December 2026) and Sundance's Documentary Film Producers Track (17 November to 10 February). The other four are for UK, New Zealand, Australian and European applicants. I read each funder's own page on 17 October. Link in bio.",
     "X": "Six documentary funding calls have dates before February. Two take US producers: Visions du Réel (15 Dec 2026) and Sundance's Producers Track (17 Nov to 10 Feb). Every date, from the funders' own pages: https://www.docudocket.live/blog/documentary-funding-deadlines-november-december-2026/",
     "Bluesky": "Six documentary funding calls have dates before February. Two take US producers: Visions du Réel (15 Dec 2026) and Sundance's Producers Track (17 Nov to 10 Feb). Every date, from the funders' own pages: https://www.docudocket.live/blog/documentary-funding-deadlines-november-december-2026/"
+  },
+  "postDate": "2026-10-29",
+  "status": "drafted",
+  "facts": [
+    {
+      "claim": "Visions du Réel VdR Pitching: final deadline, fees, eligibility",
+      "url": "https://www.visionsdureel.ch/en/vdr-industry/vdr-pitching/",
+      "read": "2026-10-17",
+      "evidence": "Final deadline 15 December 2026. CHF 30 on or before 2 November 2026, CHF 40 from 3 November. Feature films over 60 minutes in late development. Projects from all over the world can apply."
+    },
+    {
+      "claim": "Sundance Documentary Film Producers Track: dates and eligibility",
+      "url": "https://www.sundance.org/initiatives/producers-program/",
+      "read": "2026-10-17",
+      "evidence": "Opens 9am PT Tuesday 17 November 2026, closes 9am PT Wednesday 10 February 2027. Lead producers who have produced at least one documentary short, in active production or post. Non-US candidates must work and live in Europe or Latin America."
+    },
+    {
+      "claim": "BFI Doc Society Development Fund Round 2",
+      "url": "https://bfi.docsociety.org/funds/features-development/",
+      "read": "2026-10-17",
+      "evidence": "Round 2 opens 1pm Monday 9 November 2026 and closes 1pm Monday 21 December 2026. UK filmmakers."
+    },
+    {
+      "claim": "NZ Film Commission Feature Film Production Investment",
+      "url": "https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment",
+      "read": "2026-10-17",
+      "evidence": "Deadline 1pm Monday 9 November. Lead producer must be a New Zealand citizen or permanent resident."
+    },
+    {
+      "claim": "Screen Australia Documentary Production",
+      "url": "https://www.screenaustralia.gov.au/fund/documentary-production-program/",
+      "read": "2026-10-17",
+      "evidence": "5pm AEDT Thursday 4 February 2027 and 5pm AEST Thursday 8 April 2027. Australian production companies."
+    },
+    {
+      "claim": "IDFA Bertha Fund IBF Europe",
+      "url": "https://professionals.idfa.nl/training-funding/funding/ibf-europe/",
+      "read": "2026-10-17",
+      "evidence": "Entries open 15 November, deadline 15 January 2027. European minority co-producers."
+    }
+  ],
+  "audit": {
+    "when": "2026-10-22T10:25:11.241Z",
+    "verdict": "BLOCK",
+    "quality": 0,
+    "viralityProxy": 100,
+    "issues": [
+      {
+        "sev": "WARN",
+        "code": "slides",
+        "msg": "Slide 3 has 50 words (aim under 45)"
+      },
+      {
+        "sev": "WARN",
+        "code": "slides",
+        "msg": "Slide 4 has 52 words (aim under 45)"
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Visions du Réel VdR Pitching: final deadline, fees, eligibility\" was read 12 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Sundance Documentary Film Producers Track: dates and eligibility\" was read 12 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"BFI Doc Society Development Fund Round 2\" was read 12 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"NZ Film Commission Feature Film Production Investment\" was read 12 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"Screen Australia Documentary Production\" was read 12 days before the post date (limit 7). Re-read the page."
+      },
+      {
+        "sev": "BLOCK",
+        "code": "stale",
+        "msg": "\"IDFA Bertha Fund IBF Europe\" was read 12 days before the post date (limit 7). Re-read the page."
+      }
+    ],
+    "proxies": [
+      {
+        "k": "Cover headline is 12 words or fewer",
+        "ok": true,
+        "pts": 15
+      },
+      {
+        "k": "Cover or first caption line contains a number",
+        "ok": true,
+        "pts": 15
+      },
+      {
+        "k": "Names the audience in the hook (US, producers, filmmakers, documentary)",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "First caption line is 140 characters or fewer",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "5 to 8 slides",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "Has a save-worthy slide (checklist, table or \"Do this\")",
+        "ok": true,
+        "pts": 15
+      },
+      {
+        "k": "Closing slide has a single link or handle",
+        "ok": true,
+        "pts": 10
+      },
+      {
+        "k": "At most one link per caption",
+        "ok": true,
+        "pts": 15
+      }
+    ]
   }
 }
