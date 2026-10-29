@@ -2,6 +2,7 @@
   "issueNumber": 1,
   "month": "November 2026",
   "sendDate": "2026-11-03",
+  "approved": false,
   "status": "SAMPLE: every page below was read on the funder's own site on 17 Oct 2026. Read each one again and confirm each date by hand before sending.",
   "intro": "Seven calls to watch and three on the watchlist. Each one links to the funder's own page, and we say \"not stated\" where a page does not say.",
   "corrections": "None this issue.",

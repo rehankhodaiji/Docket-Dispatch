@@ -128,12 +128,17 @@ const text = [
   '--', 'Privacy: https://www.docudocket.live/privacy/', 'Unsubscribe: {{unsubscribe_url}}', 'Docket Dispatch · {{postal_address}}',
 ].join('\n');
 
-const outDir = path.resolve(__dirname, '..', 'public', 'project', 'emails');
-fs.mkdirSync(outDir, { recursive: true });
+// The mailer reads the built issue from emails/out (never served to the public).
+// Only the SAMPLE issue is also copied under public/project/emails so it can be previewed on the project pages.
+const outDirs = [path.resolve(__dirname, 'out')];
+if (/^SAMPLE/.test(issue.status || '')) outDirs.push(path.resolve(__dirname, '..', 'public', 'project', 'emails'));
 // Encode every non-ASCII character as an HTML entity so no mail app or browser can mis-read the encoding
-const asciiHtml = html.replace(/[^\x00-\x7F]/g, (c) => '&#' + c.codePointAt(0) + ';');
-fs.writeFileSync(path.join(outDir, `issue-${nn}.html`), asciiHtml);
-fs.writeFileSync(path.join(outDir, `issue-${nn}.txt`), text);
+const asciiHtml = html.replace(/[^ -]/g, (c) => '&#' + c.codePointAt(0) + ';');
+for (const outDir of outDirs) {
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, `issue-${nn}.html`), asciiHtml);
+  fs.writeFileSync(path.join(outDir, `issue-${nn}.txt`), text);
+}
 console.log(`Built issue ${nn}: ${main} main listings (${SECTIONS.map((s) => s.id + '=' + count(s.id)).join(', ')}), ${(issue.closed || []).length} closed names.`);
 if (warnings.length) console.log('\nBefore sending, fix these:\n - ' + warnings.join('\n - '));
 
