@@ -4,10 +4,11 @@ description: Documentary funding calls with dates in November and December 2026:
 slug: documentary-funding-deadlines-november-december-2026
 date: 2026-10-29
 facts_checked: 2026-10-17
+updated: 2026-11-04
 sources: Visions du Réel, VdR Pitching => https://www.visionsdureel.ch/en/vdr-industry/vdr-pitching/ | NZ Film Commission, Feature Film Production Investment => https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment | BFI Doc Society, Development Fund => https://bfi.docsociety.org/funds/features-development/ | Sundance Institute, Producers Track => https://www.sundance.org/initiatives/producers-program/ | IDFA Bertha Fund, IBF Europe => https://professionals.idfa.nl/training-funding/funding/ibf-europe/ | Screen Australia, Documentary Production => https://www.screenaustralia.gov.au/fund/documentary-production-program/
 ---
 
-Six documentary funding calls have dates between now and early 2027. Two of them take applications from US-based producers. The others are for the UK, New Zealand, Australia, and European co-producers. Every date below comes from the funder's own page. Time zones are the funder's, as the page states them.
+Six documentary funding calls have dates between now and early 2027. One of them clearly takes applications from US-based producers, and one lists them as eligible but says applicants are chosen by invitation. The others are for the UK, New Zealand, Australia, and European co-producers. Every date below comes from the funder's own page. Time zones are the funder's, as the page states them.
 
 ## At a glance
 
@@ -16,13 +17,13 @@ Six documentary funding calls have dates between now and early 2027. Two of them
 | Visions du Réel, VdR Pitching | Final deadline 15 December 2026 | Feature-length projects over 60 minutes, from anywhere, in late development |
 | NZ Film Commission, Feature Film Production Investment | 1pm Monday 9 November 2026 | New Zealand lead producers |
 | BFI Doc Society, Development Fund Round 2 | Opens 1pm Monday 9 November, closes 1pm Monday 21 December 2026 | UK filmmakers |
-| Sundance Institute, Documentary Film Producers Track | Opens 9am PT Tuesday 17 November 2026, closes 9am PT Wednesday 10 February 2027 | Lead producers who are US-based, or who work and live in Europe or Latin America |
+| Sundance Institute, Documentary Film Producers Track | Opens 9am PT Tuesday 17 November 2026, closes 9am PT Wednesday 10 February 2027 | Lead producers who are US-based, or who work and live in Europe or Latin America. The page says applicants are considered by invitation only |
 | IDFA Bertha Fund, IBF Europe | Entries open 15 November, deadline 15 January 2027 | European minority co-producers |
 | Screen Australia, Documentary Production | 5pm AEDT Thursday 4 February 2027 | Australian production companies |
 
 ## Which of these can a US filmmaker use?
 
-Two. The Sundance Documentary Film Producers Track is open to US-based producers, and Visions du Réel takes projects from all over the world. BFI Doc Society is for UK filmmakers, the NZ Film Commission is for New Zealand producers, Screen Australia funds Australian companies, and IBF Europe entries come from European co-producers.
+One clearly: Visions du Réel takes projects from all over the world. The Sundance Documentary Film Producers Track lists US-based producers as eligible, but its FAQ says "All applicants are considered by invitation only", so ask Sundance (docproducers@sundance.org) how invitations work before you plan around it. BFI Doc Society is for UK filmmakers, the NZ Film Commission is for New Zealand producers, Screen Australia funds Australian companies, and IBF Europe entries come from European co-producers.
 
 ## Visions du Réel: VdR Pitching
 
@@ -32,7 +33,7 @@ The fee is CHF 30 for submissions on or before 2 November 2026 and CHF 40 from 3
 
 ## NZ Film Commission: Feature Film Production Investment
 
-The next deadline is 1pm Monday 9 November. The page heading reads "The 2026 deadlines", and the line itself carries no year. The lead producer must be a New Zealand citizen or permanent resident, the film must have significant New Zealand content, and the project must be production-ready with a confirmed schedule and a viable finance plan.
+The next deadline is 1pm Monday 9 November. The page heading reads "The 2026 deadlines", and the line itself carries no year. The applicant must be an experienced New Zealand producer, the lead producer must be a New Zealand citizen or permanent resident, the film must have significant New Zealand content, and the project must be production-ready with a confirmed schedule and a viable finance plan.
 
 The page offers equity investment of up to $2.5 million and grants of up to $500,000. It shows dollars and does not name the currency. It refers to "feature films" and does not say whether documentary features are eligible, so ask the commission before you prepare an application. Applications go through the commission's portal at funding.nzfilm.co.nz.
 
@@ -44,13 +45,13 @@ The fund supports independent non-fiction films by UK filmmakers, from early to 
 
 ## Sundance Institute: Documentary Film Producers Track
 
-The documentary track opens at 9am Pacific on Tuesday 17 November 2026 and closes at 9am Pacific on Wednesday 10 February 2027. Applicants must be lead producers who have produced at least one documentary short and are in active production or post-production. The page says non-US candidates must work and live in Europe or Latin America.
+The documentary track opens at 9am Pacific on Tuesday 17 November 2026 and closes at 9am Pacific on Wednesday 10 February 2027. Applicants must be the lead producer and not the director, have produced at least one documentary short and no more than two features as lead producer, and be in active production or post-production. The page says non-US candidates must work and live in Europe or Latin America. It calls the application open, but its FAQ says all applicants are considered by invitation only.
 
 This is a program for producers. The page lists no grant amount, and it does not state a fee for the documentary track. Applications go through apply.sundance.org.
 
 ## IDFA Bertha Fund: IBF Europe
 
-The page says entries open on 15 November, without a year, and that the next deadline is 15 January 2027. The 2026 call has closed, and the page says the regulations for the 2027 round are still being finalized, so expect details to change.
+The page says entries open on 15 November, without a year, and that the next deadline is 15 January 2027. The page now applies the 2027 rules to this call. Projects must reach rough cut when they apply, and the total budget can be up to €600,000.
 
 The applicant must be a minority producer in the project and a European audiovisual entity owned by nationals of MEDIA Sub-programme countries. The European co-producer enters the project. The project needs a director from a country on the IBF Europe Country List and at least one MEDIA Sub-programme co-producer with a share of at least 20%. The maximum contribution is €40,000 per project, for production and post-production costs.
 

@@ -4,10 +4,11 @@ description: Missing years, shifting time zones, hidden eligibility and nominati
 slug: what-documentary-funder-pages-leave-out
 date: 2026-11-12
 facts_checked: 2026-10-17
+updated: 2026-11-04
 sources: Sundance Institute, deadlines page => https://www.sundance.org/deadlines | Sundance Institute, Documentary Fund => https://apply.sundance.org/prog/2027_documentary_fund_grant/ | Sundance Institute, Producers Track => https://www.sundance.org/initiatives/producers-program/ | NZ Film Commission => https://www.nzfilm.co.nz/funding-support-nz-filmmakers/funding/feature-film-production-investment | IDFA Bertha Fund, IBF Europe => https://professionals.idfa.nl/training-funding/funding/ibf-europe/ | Screen Australia => https://www.screenaustralia.gov.au/fund/documentary-production-program/ | BFI Doc Society => https://bfi.docsociety.org/funds/features-development/ | ITVS Open Call => https://itvs.org/funds/open-call/ | IDA, Pare Lorentz Fund => https://documentary.org/parelorentz | IDA, funding programs => https://documentary.org/funding | Visions du Réel, VdR Pitching => https://www.visionsdureel.ch/en/vdr-industry/vdr-pitching/
 ---
 
-Before each issue of Docket Dispatch, we read the funder's own page for every call. On 17 October 2026 we read ten of them. These are seven gaps that would have cost an applicant time, with the page where we found each one and what to do about it.
+Before each issue of Docket Dispatch, we read the funder's own page for every call. On 17 October 2026 we read ten of them, and we re-read eight on 4 November. These are seven gaps that would have cost an applicant time, with the page where we found each one and what to do about it.
 
 ## 1. The year is missing
 
@@ -33,15 +34,15 @@ BFI Doc Society says "You must apply to the standards before submitting your app
 
 **What to do:** read for steps that come before the application, and count them in your timeline.
 
-## 5. Two pages from the same funder disagree
+## 5. One page says open, another part says by invitation
 
-IDA's Pare Lorentz Documentary Fund page shows a "Selection Timeline 2025" and no 2026 deadline. IDA's funding page, in an update dated 10 August 2026, says the fund is expected to reopen in late 2026 with a new theme.
+Sundance's Producers Track page describes the application as open from 17 November 2026 to 10 February 2027. Its FAQ says "All applicants are considered by invitation only." The page does not explain how an invitation is given.
 
-**What to do:** go with the newest dated page, and treat "expected" as a reason to watch the funder, not as a date.
+**What to do:** when two parts of a page disagree, write to the funder before you plan around either one.
 
 ## 6. Some calls take no direct applications
 
-The Pare Lorentz page says: "We select the films through nominations from key film organizations throughout the Americas." Nominated projects submit short applications, and the top 20 finalists submit the Core Application. The page does not describe a way to apply directly.
+The Pare Lorentz page says: "We select films through nominations from key film organizations throughout the United States." For 2026 only Catapult Film Fund is listed as a nominator. Nominated projects then submit a short application and, as finalists, a Core Application. The page does not describe a way to apply directly.
 
 **What to do:** before you spend a weekend on materials, find out whether a call is open, rolling, or nomination-only.
 

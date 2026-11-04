@@ -199,13 +199,13 @@ export function SampleDigest() {
                           <div>
                             <span className="text-[#736B5E] block">FISCAL SPONSORSHIP</span>
                             <span className="font-semibold text-[#1A1714]">
-                              {listing.fiscalSponsorRequired ? 'Required (501(c)(3) or IDA/Film Independent)' : 'Not required / Direct to LLC'}
+                              {listing.fiscalSponsor}
                             </span>
                           </div>
 
                           <div>
                             <span className="text-[#736B5E] block">APPLICATION FEE</span>
-                            <span className="font-semibold text-[#1A1714]">$0 (Per official guidelines)</span>
+                            <span className="font-semibold text-[#1A1714]">{listing.applicationFee}</span>
                           </div>
 
                           <div>

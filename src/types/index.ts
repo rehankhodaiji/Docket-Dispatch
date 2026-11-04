@@ -10,7 +10,8 @@ export interface FundingListing {
   eligibility: string;
   description: string;
   decisionTimeline: string;
-  fiscalSponsorRequired: boolean;
+  fiscalSponsor: string;
+  applicationFee: string;
   notes: string;
 }
 

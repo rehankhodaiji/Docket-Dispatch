@@ -4,6 +4,7 @@ description: The 2026 application windows for Sundance, BFI Doc Society, Telefil
 slug: when-documentary-funders-open-2026-windows
 date: 2026-11-26
 facts_checked: 2026-10-17
+updated: 2026-11-04
 sources: Telefilm Canada, Theatrical Documentary Program => https://telefilm.ca/programmes/theatrical-documentary | Berkeley Film Foundation, Documentary Grant Program => https://berkeleyfilmfoundation.org/documentary-grant-program | Sundance Institute, Documentary Fund => https://apply.sundance.org/prog/2027_documentary_fund_grant/ | Sundance Institute, Producers Track => https://www.sundance.org/initiatives/producers-program/ | BFI Doc Society, Development Fund => https://bfi.docsociety.org/funds/features-development/ | Visions du Réel, VdR Pitching => https://www.visionsdureel.ch/en/vdr-industry/vdr-pitching/ | IDFA Bertha Fund, IBF Europe => https://professionals.idfa.nl/training-funding/funding/ibf-europe/ | Screen Australia, Documentary Production => https://www.screenaustralia.gov.au/fund/documentary-production-program/ | Channel 4, current briefs => https://www.channel4.com/4producers/all-current-briefs | ITVS Open Call => https://itvs.org/funds/open-call/ | IDA, funding programs => https://documentary.org/funding
 ---
 
@@ -34,7 +35,7 @@ The Sundance Documentary Fund window was open for four weeks. Applicants will be
 
 - **Channel 4.** Its 4Producers briefs page says the commissioning teams accept pitches on a rolling, ongoing basis. Its Documentaries and Factual Entertainment brief lists no deadline.
 - **ITVS Open Call.** The page says it is not currently accepting applications and gives no dates.
-- **IDA Pare Lorentz Documentary Fund.** IDA's funding page says it is expected to reopen in late 2026 with a new theme. Films are chosen through nominations.
+- **IDA Pare Lorentz Documentary Fund.** Films are chosen through nominations, in three rounds: November 2026, February 2027 and May 2027. For the first round, nominated projects submit a short application in early December.
 
 ## How to use a calendar like this
 
