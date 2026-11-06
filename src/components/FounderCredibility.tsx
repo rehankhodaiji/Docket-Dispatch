@@ -32,10 +32,6 @@ export function FounderCredibility() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="pt-2 px-1 text-[11px] font-mono text-[#736B5E] flex justify-between">
-                  <span>FIG. 02 — PRODUCTION DESK ARCHIVE</span>
-                  <span>12+ YRS BROADCAST OPS</span>
-                </div>
               </div>
 
               {/* Broadcaster Credits Bar */}
