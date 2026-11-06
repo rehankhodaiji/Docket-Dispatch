@@ -84,7 +84,7 @@ export function FounderCredibility() {
                   <span className="text-[11px] text-[#736B5E]">Founder, Docket</span>
                 </div>
                 <div className="text-[11px] text-[#736B5E]">
-                  Contact: <a href="mailto:rehan.khodaiji@gmail.com" className="text-[#0D4952] underline">rehan.khodaiji@gmail.com</a>
+                  Contact: <a href="mailto:docudocket@gmail.com" className="text-[#0D4952] underline">docudocket@gmail.com</a>
                 </div>
               </div>
 

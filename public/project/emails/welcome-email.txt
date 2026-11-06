@@ -27,7 +27,7 @@ On the Annual plan you can ask us to look at funders we don't cover yet. Reply t
 [END ANNUAL ONLY]
 
 SPOTTED A MISTAKE?
-Reply to this email or write to rehan.khodaiji@gmail.com. We will look into it and note the fix in the next issue.
+Reply to this email or write to docudocket@gmail.com. We will look into it and note the fix in the next issue.
 
 YOUR SUBSCRIPTION
 Your payment receipt came separately from our payment provider. You can manage or cancel your subscription here: {{manage_url}}

@@ -110,7 +110,7 @@ export default function App() {
         <FAQ />
       </main>
 
-      {/* Section 8: Footer with contact email rehan.khodaiji@gmail.com */}
+      {/* Section 8: Footer with contact email docudocket@gmail.com */}
       <Footer />
 
       <ConsentBanner />

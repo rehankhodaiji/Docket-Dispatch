@@ -10,7 +10,7 @@ export function FAQ() {
     },
     {
       q: 'What exactly do I get, and how is it delivered?',
-      a: 'One email a month, on the first Tuesday, sent to the address you sign up with. Each issue lists open and upcoming documentary funding calls with the deadline, who can apply, and a link to the funder’s own page. On the Annual plan you can also reply to any issue to ask us to cover a funder, foundation or state grant, and we will tell you by email whether it will be added. If an issue does not arrive, check your spam folder and then email rehan.khodaiji@gmail.com.'
+      a: 'One email a month, on the first Tuesday, sent to the address you sign up with. Each issue lists open and upcoming documentary funding calls with the deadline, who can apply, and a link to the funder’s own page. On the Annual plan you can also reply to any issue to ask us to cover a funder, foundation or state grant, and we will tell you by email whether it will be added. If an issue does not arrive, check your spam folder and then email docudocket@gmail.com.'
     },
     {
       q: 'How do I cancel, and can I get a refund?',
@@ -18,7 +18,7 @@ export function FAQ() {
     },
     {
       q: 'What if a listing is wrong?',
-      a: 'Every single listing links directly to the official funder page so you can inspect the guidelines at the source. However, funding bodies occasionally modify guidelines unexpectedly, experience technical outages, or close calls early when submission volume caps are met. If you ever notice a discrepancy on a funder page, email the editor at rehan.khodaiji@gmail.com. We investigate within 24 hours and publish an immediate update.'
+      a: 'Every single listing links directly to the official funder page so you can inspect the guidelines at the source. However, funding bodies occasionally modify guidelines unexpectedly, experience technical outages, or close calls early when submission volume caps are met. If you ever notice a discrepancy on a funder page, email the editor at docudocket@gmail.com. We investigate within 24 hours and publish an immediate update.'
     },
     {
       q: 'Is this only for US filmmakers?',
@@ -80,8 +80,8 @@ export function FAQ() {
         {/* Quick inquiry prompt */}
         <div className="mt-8 text-center sm:text-left text-xs font-mono text-[#736B5E]">
           Have a specific grant database or question not covered here? Contact the editor directly at{' '}
-          <a href="mailto:rehan.khodaiji@gmail.com" className="text-[#0D4952] font-semibold underline">
-            rehan.khodaiji@gmail.com
+          <a href="mailto:docudocket@gmail.com" className="text-[#0D4952] font-semibold underline">
+            docudocket@gmail.com
           </a>
         </div>
 

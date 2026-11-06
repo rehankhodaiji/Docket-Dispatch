@@ -60,10 +60,10 @@ export function Footer() {
             </p>
             <div className="pt-2">
               <a
-                href="mailto:rehan.khodaiji@gmail.com"
+                href="mailto:docudocket@gmail.com"
                 className="text-[#E8A54E] hover:underline font-semibold block break-all"
               >
-                rehan.khodaiji@gmail.com
+                docudocket@gmail.com
               </a>
             </div>
           </div>
