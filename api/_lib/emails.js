@@ -137,7 +137,7 @@ Every listing shows the day we last read the funder's page. Pages change after t
 4. OPEN THE FUNDER'S PAGE BEFORE YOU SPEND A WEEKEND
 Each listing links to the official page. Read the guidelines there before you start an application.
 
-We write up the gaps we keep finding on funder pages here: ${SITE}/blog/
+We write up the gaps we keep finding on funder pages here: ${SITE}/blog/?utm_source=email&utm_medium=lifecycle&utm_campaign=day-10
 
 Rehan Khodaiji
 Docket Dispatch
@@ -152,7 +152,7 @@ ${textFooter()}`;
       li('2. Read the deadline with its year and time zone', 'Funder pages often give a time without a zone, or a date without a year. We print what the page says and tell you when it is silent. Put the full date and the zone in your calendar.') +
       li('3. Look at the &ldquo;Checked&rdquo; date', 'Every listing shows the day we last read the funder&rsquo;s page. Pages change after that, so the newer the date, the safer the listing.') +
       li('4. Open the funder&rsquo;s page before you spend a weekend', 'Each listing links to the official page. Read the guidelines there before you start an application.') +
-      p(`We write up the gaps we keep finding on funder pages here: <a href="${SITE}/blog/" style="color:#0D4952;">${SITE.replace('https://', '')}/blog/</a>`) +
+      p(`We write up the gaps we keep finding on funder pages here: <a href="${SITE}/blog/?utm_source=email&amp;utm_medium=lifecycle&amp;utm_campaign=day-10" style="color:#0D4952;">${SITE.replace('https://', '')}/blog/</a>`) +
       p('Rehan Khodaiji<br>Docket Dispatch'),
   });
   return { subject, preheader, text, html };

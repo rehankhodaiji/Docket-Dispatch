@@ -107,7 +107,8 @@ tr:last-child td{border-bottom:0}
 .list .d{display:block;margin:4px 0 0;font-size:15.5px;color:#5D564C}
 .list .when{font:500 11px var(--mono);letter-spacing:.08em;color:#736B5E;text-transform:uppercase}
 .sources{font-size:14.5px}.sources li{font-size:14.5px;margin-bottom:6px;line-height:1.55}`;
-function shell({ title, description, canonical, body, jsonld, type = 'website' }) {
+const CLARITY_ID = ((fs.readFileSync(path.join(__dirname, '..', 'src', 'config', 'analytics.ts'), 'utf8').match(/CLARITY_PROJECT_ID\s*=\s*'([^']*)'/) || [])[1] || '').trim();
+function shell({ title, description, canonical, body, jsonld, type = 'website', post = '' }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -127,6 +128,7 @@ function shell({ title, description, canonical, body, jsonld, type = 'website' }
 <link rel="stylesheet" href="/project/theme.css">
 <style>${css}</style>
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
+${CLARITY_ID ? `<script src="/analytics-static.js" data-clarity="${CLARITY_ID}" data-page="${post ? 'blog-post' : 'blog-index'}"${post ? ` data-post="${esc(post)}"` : ''} defer></script>` : ''}
 </head>
 <body>
 <nav class="topbar" aria-label="Site"><span><a href="/">The Docket Dispatch</a><span class="sep">/</span><a href="/blog/">Blog</a></span><span class="right"><a href="/#pricing">Get the monthly list</a></span></nav>
@@ -165,7 +167,7 @@ ${related.length ? `<h2>More from the blog</h2><ul>${related.map((r) => `<li><a 
       { '@type': 'ListItem', position: 2, name: 'Blog', item: SITE + '/blog/' },
       { '@type': 'ListItem', position: 3, name: m.title, item: url } ] } ] };
   fs.mkdirSync(path.join(blogDir, m.slug), { recursive: true });
-  fs.writeFileSync(path.join(blogDir, m.slug, 'index.html'), shell({ title: m.title + ' | Docket', description: m.description, canonical: url, body, jsonld, type: 'article' }));
+  fs.writeFileSync(path.join(blogDir, m.slug, 'index.html'), shell({ title: m.title + ' | Docket', description: m.description, canonical: url, body, jsonld, type: 'article', post: m.slug }));
 }
 
 // ---------- blog index ----------

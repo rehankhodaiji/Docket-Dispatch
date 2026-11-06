@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SignupSubmission, PlanId } from '../types';
 import { checkoutUrl } from '../config/payments';
+import { trackEvent, tagSession } from '../analytics';
 import fieldImg from '../assets/images/doc_editorial_field_1790590177027.jpg';
 
 interface HeroProps {
@@ -47,10 +48,13 @@ export function Hero({ onAddSubmission, latestSubmission, plan, onPlanChange }: 
     };
 
     onAddSubmission(newSubmission);
+    tagSession('plan', plan);
+    trackEvent('signup_submitted');
 
     // Send the reader to Dodo checkout for the chosen plan (product ids live in src/config/payments.ts).
     const checkout = checkoutUrl(plan, cleanEmail);
     if (checkout) {
+      trackEvent('checkout_started');
       window.location.assign(checkout);
       return;
     }

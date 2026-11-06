@@ -14,7 +14,7 @@ import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { SignupSubmission, PlanId } from './types';
 import { ConsentBanner } from './components/ConsentBanner';
-import { loadClarity } from './analytics';
+import { loadClarity, captureAttribution } from './analytics';
 
 const STORAGE_KEY = 'docket_signup_submissions';
 
@@ -43,6 +43,7 @@ export default function App() {
   });
 
   useEffect(() => {
+    captureAttribution();
     loadClarity();
   }, []);
 

@@ -42,3 +42,44 @@ export function loadClarity(): void {
   document.head.appendChild(script);
   applyConsent(getChoice() ?? 'denied');
 }
+
+/** Sends a named event to Clarity (a no-op until Clarity has loaded). */
+export function trackEvent(name: string): void {
+  win.clarity?.('event', name);
+}
+
+/** Adds a filterable tag (for example plan=annual) to the visitor's Clarity session. */
+export function tagSession(key: string, value: string): void {
+  win.clarity?.('set', key, value);
+}
+
+const ATTRIBUTION_KEY = 'docket_source';
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
+
+/**
+ * Remembers where the visit came from (the utm_ values in the address) for this browser tab only,
+ * so the payment can be tied to its source. Stored in sessionStorage; no cookie, nothing sent anywhere here.
+ */
+export function captureAttribution(): void {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const found: Record<string, string> = {};
+    for (const k of UTM_KEYS) {
+      const v = params.get(k);
+      if (v) found[k] = v.slice(0, 60);
+    }
+    if (Object.keys(found).length && !sessionStorage.getItem(ATTRIBUTION_KEY)) {
+      sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(found));
+    }
+  } catch {
+    // storage may be blocked; the payment is then recorded as "direct"
+  }
+}
+
+export function getAttribution(): Record<string, string> {
+  try {
+    return JSON.parse(sessionStorage.getItem(ATTRIBUTION_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}

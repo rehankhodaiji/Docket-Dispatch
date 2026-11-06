@@ -1,4 +1,5 @@
 import { PlanId } from '../types';
+import { getAttribution } from '../analytics';
 
 /**
  * Dodo Payments settings.
@@ -17,6 +18,11 @@ export const THANKS_URL = 'https://www.docudocket.live/thanks/';
 /** Builds a Dodo payment link: the reader's email is filled in and Dodo returns them to the thank-you page. */
 export function buildCheckoutUrl(productId: string, email: string): string {
   const params = new URLSearchParams({ quantity: '1', email, redirect_url: THANKS_URL });
+  // Dodo stores any metadata_ value with the payment, so a sale can be traced to where the visit came from.
+  const from = getAttribution();
+  params.set('metadata_source', from.utm_source || 'direct');
+  if (from.utm_medium) params.set('metadata_medium', from.utm_medium);
+  if (from.utm_campaign) params.set('metadata_campaign', from.utm_campaign);
   return `${CHECKOUT_BASE}${encodeURIComponent(productId)}?${params.toString()}`;
 }
 
